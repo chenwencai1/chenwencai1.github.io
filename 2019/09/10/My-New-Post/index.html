@@ -11,18 +11,18 @@
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="欢迎进行交流纠正">
+  <meta name="description" content="[toc] #less  http://lesscss.cn/Less 是一门 CSS 预处理语言，它扩展了 CSS 语言，增加了变量、Mixin、函数等特性，使 CSS 更易维护和扩展。预期类似的预编译器（语言）还有：sass/stylus等；所谓的预编译，就是把css这种标记语言，按照面向对象（编程语言）的方式进行编写，但是这种写法浏览器不能直接识别，需要我们把其再编译为正常的css代码才可以">
 <meta name="keywords" content="开源精神、极客精神">
 <meta property="og:type" content="article">
 <meta property="og:title" content="My New Post">
 <meta property="og:url" content="http://yoursite.com/2019/09/10/My-New-Post/index.html">
 <meta property="og:site_name" content="码农乐园">
-<meta property="og:description" content="欢迎进行交流纠正">
+<meta property="og:description" content="[toc] #less  http://lesscss.cn/Less 是一门 CSS 预处理语言，它扩展了 CSS 语言，增加了变量、Mixin、函数等特性，使 CSS 更易维护和扩展。预期类似的预编译器（语言）还有：sass/stylus等；所谓的预编译，就是把css这种标记语言，按照面向对象（编程语言）的方式进行编写，但是这种写法浏览器不能直接识别，需要我们把其再编译为正常的css代码才可以">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2019-09-10T11:16:39.423Z">
+<meta property="og:updated_time" content="2019-09-10T15:48:28.219Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="My New Post">
-<meta name="twitter:description" content="欢迎进行交流纠正">
+<meta name="twitter:description" content="[toc] #less  http://lesscss.cn/Less 是一门 CSS 预处理语言，它扩展了 CSS 语言，增加了变量、Mixin、函数等特性，使 CSS 更易维护和扩展。预期类似的预编译器（语言）还有：sass/stylus等；所谓的预编译，就是把css这种标记语言，按照面向对象（编程语言）的方式进行编写，但是这种写法浏览器不能直接识别，需要我们把其再编译为正常的css代码才可以">
   
     <link rel="alternative" href="/atom.xml" title="码农乐园" type="application/atom+xml">
   
@@ -207,7 +207,55 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>[toc]</p>
+<p>#less</p>
+<blockquote>
+<p><a href="http://lesscss.cn/" target="_blank" rel="noopener">http://lesscss.cn/</a><br>Less 是一门 CSS 预处理语言，它扩展了 CSS 语言，增加了变量、Mixin、函数等特性，使 CSS 更易维护和扩展。<br>预期类似的预编译器（语言）还有：sass/stylus等；所谓的预编译，就是把css这种标记语言，按照面向对象（编程语言）的方式进行编写，但是这种写法浏览器不能直接识别，需要我们把其再编译为正常的css代码才可以</p>
+</blockquote>
+<p>##less使用方式</p>
+<blockquote>
+<p> less的编译常用的分为两种</p>
+</blockquote>
+<h3 id="1-开发环境下（开发项目的时候）"><a href="#1-开发环境下（开发项目的时候）" class="headerlink" title="1.开发环境下（开发项目的时候）"></a>1.开发环境下（开发项目的时候）</h3><blockquote>
+<p>我们基于less-2.5.3.min.js进行编译：基于link把less文件导入，但是rel的值必须是stylesheet/less，这样导入的js会找到这些less文件，把less编译为css即可</p>
+</blockquote>
+<p>###2.生产环境中（项目部署上线的时候）</p>
+<blockquote>
+<p>我们需要把less编译为css，然后让页面中导入的都是编译后的css，需要基于node环境，并且基于less模块进行编译（命令操作方式）<br> 安装node（安装npm）<br>          $ npm install less -g<br>找到对应的less文件目录，在目录中：$ lessc xxx.less xxx.css  -x(设置-x是为了把代码压缩))</p>
+</blockquote>
+<p>###less注意事项</p>
+<blockquote>
+<p>我们基于@import最好导入的是LESS文件（只有这样最后才能编译到一起；设置reference是只导入进来调取使用，编译的时候不进行编译；</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@import (reference) &apos;./common.less&apos;;</span><br></pre></td></tr></table></figure>
+
+<p>###less</p>
+<blockquote>
+<ol>
+<li>嵌套（减少前缀） </li>
+<li>每一个大括号都是一个私有的作用域，在里面用到的变量，先看是否为私有的（是否在当前作用域中声明过和形参变量），不是私有的，找上级作用域中的 =&gt;”类似于JS作用域链这套机制” </li>
+<li>unit(变量名，变更单位)：less中内置的函数，用来设置或者去除单位的（有单位就是去除单位，没单位就是加上单位）</li>
+<li>一般变量设置时都不加单位，什么时候用再加单位</li>
+<li>&amp;嵌套中的连接符,让后面的选择器紧挨着父选择器 .box1&gt;img</li>
+<li>@W-20这样被理解为是一个变量名（变量名可以包含-）</li>
+</ol>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">.box1 &#123;</span><br><span class="line">	@A1: lightgreen;</span><br><span class="line">	@W: 200;</span><br><span class="line">	@H: 200px;</span><br><span class="line">	.func_center(@W, unit(@H, px));</span><br><span class="line">	box-sizing: border-box;</span><br><span class="line">	width: unit(@W, px);</span><br><span class="line">	height: @H;</span><br><span class="line">	border: 5px solid @A1;</span><br><span class="line">	//.box1 img</span><br><span class="line">	img &#123;</span><br><span class="line">		//@W-20这样被理解为是一个变量名（变量名可以包含-）</span><br><span class="line">		width: unit((@W)-20, px);</span><br><span class="line">		height: unit(unit(@H, px)-20, px);</span><br><span class="line">	&#125;</span><br><span class="line">	//&amp;嵌套中的连接符,让后面的选择器紧挨着父选择器 .box1&gt;img</span><br><span class="line">	// &amp;&gt;img &#123;</span><br><span class="line">	// 	transform: skew(45deg);</span><br><span class="line">	// &#125;</span><br><span class="line">	//.box1:hover</span><br><span class="line">	&amp;:hover &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>###less中的三种函数</p>
+<blockquote>
+<p> 1.每一个样式类都能被充当一个函数，直接在其它的作用域中调取执行（执行特点：不需要传参，可以不加小括号） =&gt;这种函数的调用是把原有的代码都原封不动的拿过来一份一模一样的（包括其所有的后代样式）<br> 2.带参数的函数（创建函数带着小括号），也是直接点的方式调用，但是编译成为css的时候，函数不会编译，但是函数执行出来的代码会放到每一个调取函数的选择器中，<strong>存在argument</strong><br>3.less中的内置函数</p>
+<blockquote>
+<p>  unit(变量名，变量单位)<br> darken(颜色变量名，变深百分比)<br> lighten(颜色变量名，变浅百分比)</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">.box2 &#123;</span><br><span class="line"> 	.box1;</span><br><span class="line"> &#125;</span><br><span class="line"> .box2 &#123;</span><br><span class="line"> 	&amp;:extend(.box1);</span><br><span class="line"> &#125;</span><br><span class="line"> .box2:extend(.box1) &#123;&#125;</span><br><span class="line"> .link &#123;</span><br><span class="line">	@BG: lightblue;</span><br><span class="line">	margin: 20px;</span><br><span class="line">	width: 100px;</span><br><span class="line">	height: 35px;</span><br><span class="line">	border: 1px solid #AAA;</span><br><span class="line">	background: @BG;</span><br><span class="line">	&amp;:hover &#123;</span><br><span class="line">		background: lighten(@BG, 10%);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>###less中的继承extend</p>
+<blockquote>
+<p>1.基于继承也能实现样式的公用（原理：两个样式类公用同一套代码，但是后代样式不能被继承）</p>
+</blockquote>
+
       
     </div>
     
