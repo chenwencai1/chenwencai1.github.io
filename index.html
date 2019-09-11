@@ -173,6 +173,135 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-客户端和服务器端" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/09/11/客户端和服务器端/" class="article-date">
+  	<time datetime="2019-09-11T03:39:46.546Z" itemprop="datePublished">2019-09-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<p>#客户端和服务器端</p>
+<p>##客户端和服务器端的理解</p>
+<blockquote>
+<p>客户端：可以向服务器发请求，并接收返回的内容进行处理<br>服务器端：能够接收客户端请求，并且把相关的资源</p>
+</blockquote>
+<p>##客户端和服务器端之间的交互模型</p>
+<p>###请求阶段request：</p>
+<blockquote>
+<ol>
+<li>浏览器进行 URL 地址解析</li>
+<li>DNS（域名服务器）进行域名解析，确定要连接哪台服务器</li>
+<li>和服务器建立TCP连接</li>
+<li>把客户端信息传递给服务器（发送HTTP请求）</li>
+<li>服务器得到并处理请求（HTTP响应内容） </li>
+</ol>
+</blockquote>
+<p>###响应阶段response：</p>
+<blockquote>
+<ol start="6">
+<li>客户端渲染服务器返回的内容</li>
+<li>断开和服务器的TCP连接</li>
+</ol>
+</blockquote>
+<p>###地址解析URL/URI/URN</p>
+<blockquote>
+<p>URL：统一资源定位器，根据这个地址能够找到对应的资源<br>URN：统一资源名称，一般指国际上通用的一些名字，例如国际统一发版的编号<br>URI：统一资源标识符，URL和URN都是URI的子集。</p>
+</blockquote>
+<p>###一个完整的URL所包含的内容</p>
+<blockquote>
+<p><a href="http://www.zhufengpeixun.cn:80/stu/index.html?form=wx&amp;lx=1#zhufeng" target="_blank" rel="noopener">http://www.zhufengpeixun.cn:80/stu/index.html?form=wx&amp;lx=1#zhufeng</a></p>
+<blockquote>
+<p><strong>协议(http://)  :传输协议就是能够把客户端和服务器端通信的信息进行传输的工具。（类似于快递小哥）</strong></p>
+<blockquote>
+<p>常见的传输协议：</p>
+<ol>
+<li>http 超文本传输协议。除了传输文本，还可以传输媒体资源文件（或者流文件）及XML格式数据</li>
+<li>https 更加安全的http，一般涉及支付的网站都要采用https协议（s:ssl加密传输）</li>
+<li>ftp 文件传输协议。FileZilla:ftp上传工具，通过这个工具可以把本地文件上传服务器上。（一般应用于把本地资源上传到服务器端）</li>
+</ol>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><strong>域名(<a href="http://www.zhufengpeixun.cn" target="_blank" rel="noopener">www.zhufengpeixun.cn</a>)  ：一个让用户方便记忆的名字（不通过域名，通过外网IP也可以访问服务器）</strong></p>
+<blockquote>
+<p>顶级域名  qq.com<br>一级域名 <a href="http://www.qq.com" target="_blank" rel="noopener">www.qq.com</a><br>二级域名 sports.qq.com<br>三级域名 kbs.sports.qq.com<br>.com  国际域名<br>.cn     中文域名<br>.com.cn  怎么用都行<br>.edu  教育单位<br>.gov  政府单位<br>.io   博客<br>.org  官方组织<br>.net   系统类网站</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><strong>端口号(:80)   范围：0~65535  用端口号来区分同一台服务器上的不同项目</strong></p>
+<blockquote>
+<p>http默认端口号：80<br>https默认端口号：443<br>ftp默认端口号：21<br>如果项目采用的就是默认端口号，我们在书写地址的时候不用加端口号，浏览器在发送请求的时候会帮我们默认加上</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><strong>请求资源路径名称(/stu/index.html)</strong></p>
+<blockquote>
+<p>默认的路径或者名称（不指定资源名，服务器会找到默认的资源，一般默认的资源名是defaule.html 可以自己配置）<br>注意伪URL的处理</p>
+<blockquote>
+<p>URL重写技术是为了增加SEO搜索引擎优化的，动态的网址一般不能被搜索引擎收录，所以我们要把动态网址静态化，此时需要的是重写URL</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>服务器接收到请求后</p>
+<ol>
+<li>根据端口号找到对应的项目</li>
+<li>根据请求资源的路径名称找到对应的资源</li>
+<li>将找到的资源传递给客户端</li>
+</ol>
+</blockquote>
+</blockquote>
+<blockquote>
+<p><strong>问号传参信息(?form=wx&amp;lx=1)</strong></p>
+<blockquote>
+<p>客户端把信息传递给服务器的方式</p>
+<blockquote>
+<p>URL地址问号传参<br>请求报文传输（请求头和请求主体）<br>也可以不同页面之间的信息交互，例如从列表到详情</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<blockquote>
+<p> <strong>HASH值(#zhufeng)</strong></p>
+<blockquote>
+<p> 也能充当信息传输的方式<br> 锚点定位<br>基于HASH实现路由管控（不同的HASH值，代表不同的组件和模块）</p>
+</blockquote>
+</blockquote>
+</blockquote>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-My-New-Post" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
