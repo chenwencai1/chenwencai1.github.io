@@ -119,7 +119,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/面试/" style="font-size: 10px;">面试</a>
+						<a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
 					</div>
 				</section>
 				
@@ -525,6 +525,10 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试/">面试</a></li></ul>
+	</div>
+
       
 
       
@@ -572,337 +576,80 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>[toc]</p>
-<h1 id="客户端和服务器端"><a href="#客户端和服务器端" class="headerlink" title="客户端和服务器端"></a>客户端和服务器端</h1><h2 id="客户端和服务器端的理解"><a href="#客户端和服务器端的理解" class="headerlink" title="客户端和服务器端的理解"></a>客户端和服务器端的理解</h2><ul>
+        <h1 id="客户端和服务器端"><a href="#客户端和服务器端" class="headerlink" title="客户端和服务器端"></a>客户端和服务器端</h1><h2 id="客户端和服务器端的理解"><a href="#客户端和服务器端的理解" class="headerlink" title="客户端和服务器端的理解"></a>客户端和服务器端的理解</h2><ul>
 <li>客户端：可以向服务器发请求，并接收返回的内容进行处理</li>
 <li>服务器端：能够接收客户端请求，并且把相关的资源<h2 id="客户端和服务器端之间的交互模型"><a href="#客户端和服务器端之间的交互模型" class="headerlink" title="客户端和服务器端之间的交互模型"></a>客户端和服务器端之间的交互模型</h2><h3 id="请求阶段request："><a href="#请求阶段request：" class="headerlink" title="请求阶段request："></a>请求阶段request：</h3></li>
-<li><ol>
+</ul>
+<ol>
 <li>浏览器进行 URL 地址解析</li>
-</ol>
-</li>
-<li><ol start="2">
 <li>DNS（域名服务器）进行域名解析，确定要连接哪台服务器</li>
-</ol>
-</li>
-<li><ol start="3">
 <li>和服务器建立TCP连接</li>
-</ol>
-</li>
-<li><ol start="4">
 <li>把客户端信息传递给服务器（发送HTTP请求）</li>
-</ol>
-</li>
-<li><ol start="5">
 <li>服务器得到并处理请求（HTTP响应内容） <h3 id="响应阶段response："><a href="#响应阶段response：" class="headerlink" title="响应阶段response："></a>响应阶段response：</h3></li>
-</ol>
-</li>
-<li><ol start="6">
 <li>客户端渲染服务器返回的内容</li>
-</ol>
-</li>
-<li><ol start="7">
 <li>断开和服务器的TCP连接<h3 id="地址解析URL-URI-URN"><a href="#地址解析URL-URI-URN" class="headerlink" title="地址解析URL/URI/URN"></a>地址解析URL/URI/URN</h3></li>
 </ol>
-</li>
+<ul>
 <li>URL：统一资源定位器，根据这个地址能够找到对应的资源</li>
 <li>URN：统一资源名称，一般指国际上通用的一些名字，例如国际统一发版的编号</li>
 <li>URI：统一资源标识符，URL和URN都是URI的子集。<h3 id="一个完整的URL所包含的内容"><a href="#一个完整的URL所包含的内容" class="headerlink" title="一个完整的URL所包含的内容"></a>一个完整的URL所包含的内容</h3></li>
 <li><a href="http://www.zhufengpeixun.cn:80/stu/index.html?form=wx&amp;lx=1#zhufeng" target="_blank" rel="noopener">http://www.zhufengpeixun.cn:80/stu/index.html?form=wx&amp;lx=1#zhufeng</a></li>
-<li><ul>
-<li><strong>协议(http://)  :传输协议就是能够把客户端和服务器端通信的信息进行传输的工具。（类似于快递小哥）</strong></li>
 </ul>
-</li>
-<li><ul>
-<li><ul>
+<p><strong>协议(http://)  :传输协议就是能够把客户端和服务器端通信的信息进行传输的工具。（类似于快递小哥）</strong></p>
+<ul>
 <li>常见的传输协议：</li>
 </ul>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
-<li><ol>
+<ol>
 <li>http 超文本传输协议。除了传输文本，还可以传输媒体资源文件（或者流文件）及XML格式数据</li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
-<li><ol start="2">
 <li>https 更加安全的http，一般涉及支付的网站都要采用https协议（s:ssl加密传输）</li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
-<li><ol start="3">
 <li>ftp 文件传输协议。FileZilla:ftp上传工具，通过这个工具可以把本地文件上传服务器上。（一般应用于把本地资源上传到服务器端）</li>
 </ol>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li></li>
-<li><ul>
-<li><strong>域名(<a href="http://www.zhufengpeixun.cn" target="_blank" rel="noopener">www.zhufengpeixun.cn</a>)  ：一个让用户方便记忆的名字（不通过域名，通过外网IP也可以访问服务器）</strong></li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
+<p><strong>域名(<a href="http://www.zhufengpeixun.cn" target="_blank" rel="noopener">www.zhufengpeixun.cn</a>)  ：一个让用户方便记忆的名字（不通过域名，通过外网IP也可以访问服务器）</strong></p>
+<ul>
 <li>顶级域名  qq.com</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
 <li>一级域名 <a href="http://www.qq.com" target="_blank" rel="noopener">www.qq.com</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
 <li>二级域名 sports.qq.com</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
 <li>三级域名 kbs.sports.qq.com</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
 <li>.com  国际域名</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
 <li>.cn     中文域名</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
 <li>.com.cn  怎么用都行</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
 <li>.edu  教育单位</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
 <li>.gov  政府单位</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
 <li>.io   博客</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
 <li>.org  官方组织</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
 <li>.net   系统类网站</li>
 </ul>
-</li>
-</ul>
-</li>
-<li></li>
-<li><ul>
-<li><strong>端口号(:80)   范围：0~65535  用端口号来区分同一台服务器上的不同项目</strong></li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
+<p><strong>端口号(:80)   范围：0~65535  用端口号来区分同一台服务器上的不同项目</strong></p>
+<ul>
 <li>http默认端口号：80</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
 <li>https默认端口号：443</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
 <li>ftp默认端口号：21</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
 <li>如果项目采用的就是默认端口号，我们在书写地址的时候不用加端口号，浏览器在发送请求的时候会帮我们默认加上</li>
 </ul>
-</li>
-</ul>
-</li>
-<li></li>
-<li><ul>
-<li><strong>请求资源路径名称(/stu/index.html)</strong></li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
+<p><strong>请求资源路径名称(/stu/index.html)</strong></p>
+<ul>
 <li>默认的路径或者名称（不指定资源名，服务器会找到默认的资源，一般默认的资源名是defaule.html 可以自己配置）</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
 <li>注意伪URL的处理</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
-<li><ul>
 <li>URL重写技术是为了增加SEO搜索引擎优化的，动态的网址一般不能被搜索引擎收录，所以我们要把动态网址静态化，此时需要的是重写URL</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li></li>
-<li><ul>
-<li><ul>
 <li>服务器接收到请求后</li>
 </ul>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
-<li><ol>
+<ol>
 <li>根据端口号找到对应的项目</li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
-<li><ol start="2">
 <li>根据请求资源的路径名称找到对应的资源</li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
-<li><ol start="3">
 <li>将找到的资源传递给客户端</li>
 </ol>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li></li>
-<li><ul>
-<li><strong>问号传参信息(?form=wx&amp;lx=1)</strong></li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
+<p><strong>问号传参信息(?form=wx&amp;lx=1)</strong></p>
+<ul>
 <li>客户端把信息传递给服务器的方式</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
-<li><ul>
 <li>URL地址问号传参</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
-<li><ul>
 <li>请求报文传输（请求头和请求主体）</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
 <li>也可以不同页面之间的信息交互，例如从列表到详情</li>
 </ul>
-</li>
-</ul>
-</li>
-<li></li>
-<li><ul>
-<li><strong>HASH值(#zhufeng)</strong></li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
+<p><strong>HASH值(#zhufeng)</strong></p>
+<ul>
 <li>也能充当信息传输的方式</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
 <li>锚点定位</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><ul>
-<li><ul>
 <li>基于HASH实现路由管控（不同的HASH值，代表不同的组件和模块）</li>
-</ul>
-</li>
-</ul>
-</li>
 </ul>
 
       
@@ -911,6 +658,10 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
+	</div>
+
       
 
       
@@ -947,7 +698,7 @@
   
     <h1 itemprop="name">
       <a class="article-title" href="/2019/09/10/less/">
-        less
+        less介绍
         
       </a>
     </h1>
@@ -958,13 +709,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>[toc]</p>
-<p>#less</p>
-<blockquote>
+        <h1 id="less"><a href="#less" class="headerlink" title="less"></a>less</h1><blockquote>
 <p><a href="http://lesscss.cn/" target="_blank" rel="noopener">http://lesscss.cn/</a><br>Less 是一门 CSS 预处理语言，它扩展了 CSS 语言，增加了变量、Mixin、函数等特性，使 CSS 更易维护和扩展。<br>预期类似的预编译器（语言）还有：sass/stylus等；所谓的预编译，就是把css这种标记语言，按照面向对象（编程语言）的方式进行编写，但是这种写法浏览器不能直接识别，需要我们把其再编译为正常的css代码才可以</p>
 </blockquote>
-<p>##less使用方式</p>
-<blockquote>
+<h2 id="less使用方式"><a href="#less使用方式" class="headerlink" title="less使用方式"></a>less使用方式</h2><blockquote>
 <p> less的编译常用的分为两种</p>
 </blockquote>
 <h3 id="1-开发环境下（开发项目的时候）"><a href="#1-开发环境下（开发项目的时候）" class="headerlink" title="1.开发环境下（开发项目的时候）"></a>1.开发环境下（开发项目的时候）</h3><blockquote>
@@ -980,8 +728,7 @@
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@import (reference) &apos;./common.less&apos;;</span><br></pre></td></tr></table></figure>
 
-<p>###less</p>
-<blockquote>
+<h3 id="less-1"><a href="#less-1" class="headerlink" title="less"></a>less</h3><blockquote>
 <ol>
 <li>嵌套（减少前缀） </li>
 <li>每一个大括号都是一个私有的作用域，在里面用到的变量，先看是否为私有的（是否在当前作用域中声明过和形参变量），不是私有的，找上级作用域中的 =&gt;”类似于JS作用域链这套机制” </li>
@@ -993,8 +740,7 @@
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">.box1 &#123;</span><br><span class="line">	@A1: lightgreen;</span><br><span class="line">	@W: 200;</span><br><span class="line">	@H: 200px;</span><br><span class="line">	.func_center(@W, unit(@H, px));</span><br><span class="line">	box-sizing: border-box;</span><br><span class="line">	width: unit(@W, px);</span><br><span class="line">	height: @H;</span><br><span class="line">	border: 5px solid @A1;</span><br><span class="line">	//.box1 img</span><br><span class="line">	img &#123;</span><br><span class="line">		//@W-20这样被理解为是一个变量名（变量名可以包含-）</span><br><span class="line">		width: unit((@W)-20, px);</span><br><span class="line">		height: unit(unit(@H, px)-20, px);</span><br><span class="line">	&#125;</span><br><span class="line">	//&amp;嵌套中的连接符,让后面的选择器紧挨着父选择器 .box1&gt;img</span><br><span class="line">	// &amp;&gt;img &#123;</span><br><span class="line">	// 	transform: skew(45deg);</span><br><span class="line">	// &#125;</span><br><span class="line">	//.box1:hover</span><br><span class="line">	&amp;:hover &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>###less中的三种函数</p>
-<blockquote>
+<h3 id="less中的三种函数"><a href="#less中的三种函数" class="headerlink" title="less中的三种函数"></a>less中的三种函数</h3><blockquote>
 <p> 1.每一个样式类都能被充当一个函数，直接在其它的作用域中调取执行（执行特点：不需要传参，可以不加小括号） =&gt;这种函数的调用是把原有的代码都原封不动的拿过来一份一模一样的（包括其所有的后代样式）<br> 2.带参数的函数（创建函数带着小括号），也是直接点的方式调用，但是编译成为css的时候，函数不会编译，但是函数执行出来的代码会放到每一个调取函数的选择器中，<strong>存在argument</strong><br>3.less中的内置函数</p>
 <blockquote>
 <p>  unit(变量名，变量单位)<br> darken(颜色变量名，变深百分比)<br> lighten(颜色变量名，变浅百分比)</p>
@@ -1002,8 +748,7 @@
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">.box2 &#123;</span><br><span class="line"> 	.box1;</span><br><span class="line"> &#125;</span><br><span class="line"> .box2 &#123;</span><br><span class="line"> 	&amp;:extend(.box1);</span><br><span class="line"> &#125;</span><br><span class="line"> .box2:extend(.box1) &#123;&#125;</span><br><span class="line"> .link &#123;</span><br><span class="line">	@BG: lightblue;</span><br><span class="line">	margin: 20px;</span><br><span class="line">	width: 100px;</span><br><span class="line">	height: 35px;</span><br><span class="line">	border: 1px solid #AAA;</span><br><span class="line">	background: @BG;</span><br><span class="line">	&amp;:hover &#123;</span><br><span class="line">		background: lighten(@BG, 10%);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>###less中的继承extend</p>
-<blockquote>
+<h3 id="less中的继承extend"><a href="#less中的继承extend" class="headerlink" title="less中的继承extend"></a>less中的继承extend</h3><blockquote>
 <p>1.基于继承也能实现样式的公用（原理：两个样式类公用同一套代码，但是后代样式不能被继承）</p>
 </blockquote>
 
@@ -1013,6 +758,10 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
+	</div>
+
       
 
       
