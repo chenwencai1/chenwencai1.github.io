@@ -191,6 +191,149 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-AJAX基础操作" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/09/13/AJAX基础操作/" class="article-date">
+  	<time datetime="2019-09-13T10:33:44.000Z" itemprop="datePublished">2019-09-13</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/13/AJAX基础操作/">
+        AJAX基础操作
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="AJAX的基础操作"><a href="#AJAX的基础操作" class="headerlink" title="AJAX的基础操作"></a>AJAX的基础操作</h1><ol>
+<li>创建一个AJAX实例</li>
+<li>配置发送请求的信息<ul>
+<li>HTTP：设置请求方式</li>
+<li>URL：请求地址</li>
+<li>async：设置同步还是异步，默认异步（true：同步  false：异步）</li>
+<li>user-name:传递给服务器的用户名</li>
+<li>user-pass:传递给服务器的密码</li>
+</ul>
+</li>
+<li>设置监听器。监听ajax的状态，在状态为x的时候，获取服务器响应的内容<ul>
+<li>状态码：0 1 2 3 4</li>
+</ul>
+</li>
+<li>发送请求。（send()实参默认为null，放的是请求主体的内容）<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let xhr=new XMLHttpRequest;</span><br><span class="line">xhr.open(&apos;GET&apos;,&apos;./json/xxx.json&apos;,true);</span><br><span class="line">xhr.onreadystatechange=function()&#123;</span><br><span class="line">	if(xhr.readyState===4 &amp;&amp; /^(2|3)\d&#123;2&#125;$/.test(xhr.status))&#123;</span><br><span class="line">		let result=xhr.responseText;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">xhr.send();</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li>AJAX任务（发送一个请求给服务器，从服务器中获取对应的信息）从send（）执行后开始，到xhr.responseText===4的时候算任务结束。<h2 id="HTTP的请求方式"><a href="#HTTP的请求方式" class="headerlink" title="HTTP的请求方式"></a>HTTP的请求方式</h2></li>
+<li>一般用于从服务器获取信息，post系列一般用于给服务器推送信息，两者都可以给服务器信息，也从服务器中获取信息。</li>
+<li>真实项目中用对应的请求方式，会使请求变得更加明确（语义化），不遵循这些方式也可以，在语法上是允许的；但是这些是开发者们约定俗称的规范<h3 id="GET系列请求"><a href="#GET系列请求" class="headerlink" title="GET系列请求"></a>GET系列请求</h3></li>
+<li>给服务器的信息少，拿的信息多</li>
+<li>请求页面渲染时候用get</li>
+<li>GET请求种类：</li>
+</ul>
+<ol>
+<li>GET</li>
+<li>DELETE   一般告诉服务器，从服务器中删除一些东西</li>
+<li>HEAD   只想获取响应头信息，告诉服务器不要响应主体信息</li>
+<li>options   试探性请求。发给请求给服务器，看服务器能不能接收到，能不能返回<h3 id="POST系列请求"><a href="#POST系列请求" class="headerlink" title="POST系列请求"></a>POST系列请求</h3></li>
+</ol>
+<ul>
+<li>给服务器的信息多，拿的信息少</li>
+<li>将表单元素信息提交给服务器时，用post，提交的信息多，只需要得到信息返回的状态码信息</li>
+<li>post请求种类：</li>
+</ul>
+<ol>
+<li>post</li>
+<li>put和delete对应。一般是让服务器把我传递的信息存储到服务器中（一般应用于文件和大型数据内容）<h3 id="客户端给服务器传递信息的方式"><a href="#客户端给服务器传递信息的方式" class="headerlink" title="客户端给服务器传递信息的方式"></a>客户端给服务器传递信息的方式</h3></li>
+<li>问号传参</li>
+</ol>
+<ul>
+<li>xhr.open(‘get’ , ‘./xxx.json?xxx=xx&amp;xxx=xx’)</li>
+</ul>
+<ol start="2">
+<li>设置请求头</li>
+</ol>
+<ul>
+<li>在请求头中设置  xhr.setRequestHeader([key],[calue])</li>
+</ul>
+<ol start="3">
+<li>设置请求主体</li>
+</ol>
+<ul>
+<li>xhr.send(请求主体信息)<h3 id="服务器给客户端传递信息的方式"><a href="#服务器给客户端传递信息的方式" class="headerlink" title="服务器给客户端传递信息的方式"></a>服务器给客户端传递信息的方式</h3></li>
+</ul>
+<ol>
+<li>通过响应头</li>
+<li>通过响应主体（大部分信息都是基于响应主体返回的）<h3 id="GET系列和POST系列的本质区别："><a href="#GET系列和POST系列的本质区别：" class="headerlink" title="GET系列和POST系列的本质区别："></a>GET系列和POST系列的本质区别：</h3></li>
+</ol>
+<ul>
+<li>get系列传递给服务器信息的方式一般采用：问号传参</li>
+<li>post系列传递给服务器信息的方式一般采用：设置请求主体</li>
+<li>这导致了：</li>
+</ul>
+<ol>
+<li>GET传递给服务器的内容比POST少，因为URL有最长大小限制（IE浏览器一般限制2KB、谷歌4~8KB，超过得长度部分自动被浏览器截取了）</li>
+</ol>
+<ul>
+<li>xhr.open( ‘ GET ‘ , ‘./json/xxx.json？name=ignni’);</li>
+<li>请求主体中传递的内容理论上没有大小限制，但是真实中，为了保证传输的速度，我们会限制</li>
+<li>xhr.send( ‘ GET ‘ , ‘./json/xxx.json？name=ignni ‘ );</li>
+</ul>
+<ol start="2">
+<li>GET会产生缓存（这种缓存不是自己控制的）</li>
+</ol>
+<ul>
+<li>因为请求的地址（尤其是问号传递的信息一样），浏览器有时候会认为和上次请求的信息数据一样，拿的是上一次的信息；这种缓存我们不期望有，get请求多次，我们要去除这个缓存</li>
+</ul>
+<ol start="3">
+<li>GET相比较post来说不安全：需要安全的问题都用post</li>
+</ol>
+<ul>
+<li>GET是基于问号传参传递给服务器内容，容易被URL劫持，这样别人可以拦截修改get信息。</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试/">面试</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-AJAX介绍" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
