@@ -119,7 +119,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						
+						<a href="/tags/面试/" style="font-size: 10px;">面试</a>
 					</div>
 				</section>
 				
@@ -190,6 +190,112 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-性能优化" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/09/13/性能优化/" class="article-date">
+  	<time datetime="2019-09-13T06:03:08.000Z" itemprop="datePublished">2019-09-13</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/13/性能优化/">
+        性能优化
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前端性能优化"><a href="#前端性能优化" class="headerlink" title="前端性能优化"></a>前端性能优化</h1><h2 id="1-减少HTTP请求次数和传输报文的大小"><a href="#1-减少HTTP请求次数和传输报文的大小" class="headerlink" title="1. 减少HTTP请求次数和传输报文的大小"></a>1. 减少HTTP请求次数和传输报文的大小</h2><ol>
+<li><strong>文件合并压缩</strong></li>
+<li>雪碧图 css sprite</li>
+<li>图片base64（用base码代表图片，减少HTTP请求，增加浏览器渲染速度，所以真实项目中，尤其是移动端，如果图片加载缓慢，可能base64就好了；但是，base64不利于维护和开发，所以少使用；）</li>
+<li>尽量使用字体图标（icon font）或者SVG等矢量图<br> <strong>优势：</strong><ol>
+<li>减少HTTP请求次数和传输报文的大小</li>
+<li>渲染更快：他们都是基于代码渲染的，而对于位图（.gif/jpg/gif）是需要先把图片编码在渲染</li>
+<li>不容易失帧变形</li>
+</ol>
+</li>
+<li><strong>图片懒加载（延迟加载技术）（数据懒加载，不要一次加载太多数据）</strong><br> <strong>优势：</strong><ol>
+<li>第一次加载不去加载真实的图片，提高第一次渲染页面的速度</li>
+<li>当页面加载完，把出现在用户视野中的图片加载，不出现的不加载（节约流量，也减少了对服务器的压力）</li>
+</ol>
+</li>
+<li>音视频取消预加载</li>
+<li>在客户端和服务器端进行信息交互的时候，对于多项数据我们尽可能基于JSON格式来进行传送（JSON格式的数据处理方便，资源偏小），XML格式比JSON格式要大（还可以基于二进制或者文件流传输）</li>
+<li>开启服务器端的gzip压缩。把页面中的CSS、JS、图片等文件进行合并并压缩<br> 合并：争取css和js都只导入一个（webpack可以实现自动合并压缩）<br> 压缩：基于webpack可以压缩，对于图片自己可以先压缩，还可以使用服务器的GZIP压缩</li>
+<li>图片地图：对于多次调取使用的图片（尤其是背景图），我们尽可能把它提取成为公共的样式，需要的时候加上样式就可以了，不需要每次都舍此background。<h2 id="2-设置各种缓存、预处理和长连接机制"><a href="#2-设置各种缓存、预处理和长连接机制" class="headerlink" title="2. 设置各种缓存、预处理和长连接机制"></a>2. 设置各种缓存、预处理和长连接机制</h2><h3 id="网络缓存优化"><a href="#网络缓存优化" class="headerlink" title="网络缓存优化"></a>网络缓存优化</h3></li>
+<li>DNS缓存或者预处理（DNS PREFETCH），减少DNS的查找</li>
+<li>把不经常更改的静态资源做缓存处理。强缓存(Expires HTTP) 和 协商缓存（304）</li>
+<li>建立connection：keep-alive ，TCP长连接<h3 id="本地缓存优化"><a href="#本地缓存优化" class="headerlink" title="本地缓存优化"></a>本地缓存优化</h3></li>
+<li>设置本地的离线存储（manifest）或者把一些不经常更改的数据做成本地临时存储<br>###其他优化</li>
+<li>地域分布式服务器CDN。还可以加服务器（都需要很多钱）</li>
+<li>使用HTTP2版本协议（现在一般都是HTTP1.1）<br> HTTP2版本协议支持多条TCP通道共存=》管道化连接<h2 id="3-代码方面的性能优化"><a href="#3-代码方面的性能优化" class="headerlink" title="3. 代码方面的性能优化"></a>3. 代码方面的性能优化</h2></li>
+<li>减少DOM的重绘和回流（减少直接对DOM操作），当代项目一般都是基于mvvm、mvc数据驱动视图渲染的，性能要好。</li>
+<li>在JS中尽量减少闭包的使用<br> <strong>原理：</strong>过多使用闭包会产生不销毁的内存，处理不好会导致“栈溢出”<br> 栈溢出实例：<ol>
+<li>死递归（可以用定时器方式解决）</li>
+<li>相互引用，形成嵌套式内存</li>
+</ol>
+</li>
+<li>在JS中避免“嵌套循环（嵌套循环会成倍增加循环次数）”和“死循环”</li>
+<li>尽可能使用事件委托。（也是减少dom操作）</li>
+<li>手动回收堆栈内存（赋值为null）</li>
+<li>尽可能减少选择器的层级。（CSS选择器解析规则是从右向左解析）</li>
+<li>避免使用iframe（因为iframe会嵌入其他页面，这样父页面渲染的时候还会把子页面渲染了，渲染进度会变慢）</li>
+<li>尽可能实现JS的封装（低耦合高内聚），减少页面中的冗余代码。</li>
+<li><ol>
+<li>尽量减少对于filter滤镜属性的使用（耗性能）。</li>
+<li>避免使用with语句（性能特别差）。</li>
+<li>尽量减少CSS表达式的使用(expression)（性能特别差，和with一样）</li>
+</ol>
+</li>
+<li>在项目中尽可能使用异步编程来模拟出多线程的效果，避免主线程阻塞。（在CSS导入的时候尽量减少使用@import导入式）</li>
+<li>对于动画来说，能使用css解决的不适用js，（能使用transform处理的，不用传统的css样式，应为transform开启了性能加速，不会引发回流，再或者使用定位元素，脱离文档流。使用window.requestAnimationFrame（JS中的帧动画）代替传统的定时器动画）<br>window.requestAnimationFrame：当页面处于休眠无访问状态，动画会自己暂停，知道恢复访问才开始，而定时器是不论什么状态，只要页面不关闭，动画一直运行</li>
+<li>减少递归的使用，避免死递归，避免由于递归导致的栈内存嵌套</li>
+<li>减少使用eval（主要原因是防止压缩代码时候，由于符号书写不规范，导致代码混乱）</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试/">面试</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-前端性能优化" class="article article-type-post" itemscope itemprop="blogPost">
   
