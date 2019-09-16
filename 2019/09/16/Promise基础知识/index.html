@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>开源精神、极客精神-Promise基础知识 | 码农乐园</title>
+
+  <!-- keywords -->
+  
+    <meta name="keywords" content="开源精神、极客精神">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Promise ES6语法中新增加的内置类，用来处理JS中异步编程的。 Promise设计模式：基于promise对异步操作进行管理异步编程中的回调地狱（都是异步） ajax的串行：请求是一个一个发送的，上一个请求完成后才进行下一个请求，每次请求成功后拿到此次请求的数据，最后一个请求成功后就拿到每一次请求的数据  ajax里面再次嵌套ajax执行 ajax的并行：多请求可以同时发送，但是需要所有请">
+<meta name="keywords" content="JS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Promise基础知识">
+<meta property="og:url" content="http://yoursite.com/2019/09/16/Promise基础知识/index.html">
+<meta property="og:site_name" content="码农乐园">
+<meta property="og:description" content="Promise ES6语法中新增加的内置类，用来处理JS中异步编程的。 Promise设计模式：基于promise对异步操作进行管理异步编程中的回调地狱（都是异步） ajax的串行：请求是一个一个发送的，上一个请求完成后才进行下一个请求，每次请求成功后拿到此次请求的数据，最后一个请求成功后就拿到每一次请求的数据  ajax里面再次嵌套ajax执行 ajax的并行：多请求可以同时发送，但是需要所有请">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2019-09-16T06:14:38.722Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Promise基础知识">
+<meta name="twitter:description" content="Promise ES6语法中新增加的内置类，用来处理JS中异步编程的。 Promise设计模式：基于promise对异步操作进行管理异步编程中的回调地狱（都是异步） ajax的串行：请求是一个一个发送的，上一个请求完成后才进行下一个请求，每次请求成功后拿到此次请求的数据，最后一个请求成功后就拿到每一次请求的数据  ajax里面再次嵌套ajax执行 ajax的并行：多请求可以同时发送，但是需要所有请">
+  
+    <link rel="alternative" href="/atom.xml" title="码农乐园" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+  
+</head></html>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/1.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">陈文才</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">狂奔的小蜗牛</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="mail" target="_blank" href="/chen1241675760@163.com" title="mail">mail</a>
+					        
+								<a class="qq" target="_blank" href="/1241675760" title="qq">qq</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/面试/" style="font-size: 20px;">面试</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://wangyiye.github.io/">wangyiya</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://yuanxiaochen1.github.io">yuanxiaochen</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://jinshixi.github.io">jinshixi</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://chaiyongsheng0.github.io">chaiyongsheng0</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://ningwei7.github.io">ningwei</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">陈文才</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/1.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">陈文才</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">狂奔的小蜗牛</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="mail" target="_blank" href="/chen1241675760@163.com" title="mail">mail</a>
+			        
+						<a class="qq" target="_blank" href="/1241675760" title="qq">qq</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-Promise基础知识" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/09/16/Promise基础知识/" class="article-date">
+  	<time datetime="2019-09-16T05:16:13.000Z" itemprop="datePublished">2019-09-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Promise基础知识
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
+	</div>
+
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h1><ul>
+<li>ES6语法中新增加的内置类，用来处理JS中异步编程的。</li>
+<li>Promise设计模式：基于promise对异步操作进行管理<h2 id="异步编程中的回调地狱（都是异步）"><a href="#异步编程中的回调地狱（都是异步）" class="headerlink" title="异步编程中的回调地狱（都是异步）"></a>异步编程中的回调地狱（都是异步）</h2></li>
+<li>ajax的串行：请求是一个一个发送的，<strong>上一个请求完成</strong>后才进行下一个请求，每次请求成功后拿到此次请求的数据，最后一个请求成功后就拿到每一次请求的数据<br>  ajax里面再次嵌套ajax执行</li>
+<li>ajax的并行：多请求可以<strong>同时发送</strong>，但是需要<strong>所有请求都成功</strong>才可以做某些事情。<h2 id="Promise基础语法"><a href="#Promise基础语法" class="headerlink" title="Promise基础语法"></a>Promise基础语法</h2><h3 id="Promise实例的三种状态PromiseStatus"><a href="#Promise实例的三种状态PromiseStatus" class="headerlink" title="Promise实例的三种状态PromiseStatus"></a>Promise实例的三种状态PromiseStatus</h3></li>
+<li>pending：初始状态（new Promise（）后的状态）</li>
+<li>fulfilled：成功状态（在executor函数中把resolve执行，就是告诉Promise当前异步操作的结果是成功的，将状态由pending改为fulfilled）</li>
+<li>rejected：失败状态（在executor函数中把reject执行，就是告诉Promise当前异步操作的结果是失败的的，将状态由pending改为rejected）<h3 id="PromiseValue-resolve函数、reject函数中传递的参数"><a href="#PromiseValue-resolve函数、reject函数中传递的参数" class="headerlink" title="PromiseValue:resolve函数、reject函数中传递的参数"></a>PromiseValue:resolve函数、reject函数中传递的参数</h3></li>
+<li>resolve函数或者reject函数执行后可以改变PromiseValue的值</li>
+<li><strong>PromiseValue一旦被改变，立刻通知then方法，执行相应的方法。所以状态只可能改变一次。</strong><h3 id="执行方式：-new-Promise-executor"><a href="#执行方式：-new-Promise-executor" class="headerlink" title="执行方式： new Promise([executor])"></a>执行方式： new Promise([executor])</h3></li>
+<li>执行函数作为参数函数必须传递</li>
+</ul>
+<ol>
+<li>new Promise的时候执行executor函数，并创建一个promise实例（executor是Promise类的一个回调函数，Promise内部会把它执行）</li>
+<li>Promise不仅把executor执行，还会给执行（executor）函数传递两个参数，这两个参数也是函数类型的：<ul>
+<li>resolve函数：它执行代表Promise处理的异步事情是成功的，把Promise的状态改为fulfilled</li>
+<li>reject函数：它执行代表Promise处理的异步事情是失败的，把Promise的状态改为rejected</li>
+</ul>
+</li>
+<li>executor函数中放的就是当前要处理的异步操作</li>
+<li>resolve函数或者reject函数执行后根据resolve函数或者reject函数的参数可以改变PromiseValue的值<h3 id="Promise-prototy实例上三个的方法"><a href="#Promise-prototy实例上三个的方法" class="headerlink" title="Promise.prototy实例上三个的方法"></a>Promise.prototy实例上三个的方法</h3><h4 id="then方法："><a href="#then方法：" class="headerlink" title="then方法："></a>then方法：</h4></li>
+</ol>
+<ul>
+<li>向事件池中设置成功或者失败后执行的方法，两个都可以设置，也可以只设置一个</li>
+<li>基于then方法，构建成功或者失败后要做的事情。当实例状态执行后，状态改变，通知then方法，传递相应的参数执行对应的方法<h4 id="catch方法："><a href="#catch方法：" class="headerlink" title="catch方法："></a>catch方法：</h4></li>
+<li>向事件池中设置失败后执行的方法<h4 id="finally方法："><a href="#finally方法：" class="headerlink" title="finally方法："></a>finally方法：</h4></li>
+<li>设置不论成功还是失败都会执行的方法（一般不用）<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">let promiseExamp = new Promise((resolve, reject) =&gt; &#123;</span><br><span class="line">            //这里存放的一般是要处理的异步操作，任务成功我们执行resolve，任务失败执行reject</span><br><span class="line">            setTimeout(() =&gt; &#123;</span><br><span class="line">                if (Math.random() &gt; 0.5) &#123;</span><br><span class="line">                    reject(&quot;shibai&quot;);</span><br><span class="line">                    return;</span><br><span class="line">                &#125;</span><br><span class="line">                resolve(&quot;chenggong&quot;);</span><br><span class="line">            &#125;, 1000);</span><br><span class="line">        &#125;);</span><br><span class="line">        promiseExamp.then(result =&gt; &#123;</span><br><span class="line">            //状态为fulfilled成功后执行（result：[PromiseValue]）</span><br><span class="line">            console.log(&apos;成功&apos; + result)</span><br><span class="line">        &#125;, error =&gt; &#123;</span><br><span class="line">            //状态为rejected失败后执行（result：[PromiseValue]）</span><br><span class="line">            console.log(&apos;失败&apos; + error)</span><br><span class="line">        &#125;);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/09/13/AJAX基础操作/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">AJAX基础操作</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="ds-share share" data-thread-key="Promise基础知识" data-title="Promise基础知识" data-url="http://yoursite.com/2019/09/16/Promise基础知识/"  data-images="/img/1.jpg" data-content="Promise基础知识">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+ 
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2019 陈文才
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+</body>
+</html>
