@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>开源精神、极客精神-AXIOS基础知识 | 码农乐园</title>
+
+  <!-- keywords -->
+  
+    <meta name="keywords" content="开源精神、极客精神">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="AXIOS类库的应用 一款基于Promise设计模式封装的AJAX库options 在使用AXIOS之前，我们一般都需要配置默认的配置项   baseURL：基础的URL.后期再发送请求的时候，URL请求地址最前面的公共部分就不需要再写了 1axios.defaults.baseURL=&amp;quot;http://127.0.0.1:5500&amp;quot;;  transformRequest：处理请">
+<meta name="keywords" content="JS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AXIOS基础知识">
+<meta property="og:url" content="http://yoursite.com/2019/09/16/AXIOS基础知识/index.html">
+<meta property="og:site_name" content="码农乐园">
+<meta property="og:description" content="AXIOS类库的应用 一款基于Promise设计模式封装的AJAX库options 在使用AXIOS之前，我们一般都需要配置默认的配置项   baseURL：基础的URL.后期再发送请求的时候，URL请求地址最前面的公共部分就不需要再写了 1axios.defaults.baseURL=&amp;quot;http://127.0.0.1:5500&amp;quot;;  transformRequest：处理请">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2019-09-17T11:36:06.828Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AXIOS基础知识">
+<meta name="twitter:description" content="AXIOS类库的应用 一款基于Promise设计模式封装的AJAX库options 在使用AXIOS之前，我们一般都需要配置默认的配置项   baseURL：基础的URL.后期再发送请求的时候，URL请求地址最前面的公共部分就不需要再写了 1axios.defaults.baseURL=&amp;quot;http://127.0.0.1:5500&amp;quot;;  transformRequest：处理请">
+  
+    <link rel="alternative" href="/atom.xml" title="码农乐园" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+  
+</head></html>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/1.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">陈文才</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">狂奔的小蜗牛</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="mail" target="_blank" href="/chen1241675760@163.com" title="mail">mail</a>
+					        
+								<a class="qq" target="_blank" href="/1241675760" title="qq">qq</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://wangyiye.github.io/">wangyiya</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://yuanxiaochen1.github.io">yuanxiaochen</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://jinshixi.github.io">jinshixi</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://chaiyongsheng0.github.io">chaiyongsheng0</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://ningwei7.github.io">ningwei</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">陈文才</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/1.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">陈文才</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">狂奔的小蜗牛</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="mail" target="_blank" href="/chen1241675760@163.com" title="mail">mail</a>
+			        
+						<a class="qq" target="_blank" href="/1241675760" title="qq">qq</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-AXIOS基础知识" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/09/16/AXIOS基础知识/" class="article-date">
+  	<time datetime="2019-09-16T15:08:54.000Z" itemprop="datePublished">2019-09-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      AXIOS基础知识
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
+	</div>
+
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="AXIOS类库的应用"><a href="#AXIOS类库的应用" class="headerlink" title="AXIOS类库的应用"></a>AXIOS类库的应用</h1><ul>
+<li>一款基于Promise设计模式封装的AJAX库<h2 id="options"><a href="#options" class="headerlink" title="options"></a>options</h2></li>
+<li>在使用AXIOS之前，我们一般都需要配置默认的配置项</li>
+</ul>
+<ol>
+<li><p>baseURL：基础的URL.后期再发送请求的时候，URL请求地址最前面的公共部分就不需要再写了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axios.defaults.baseURL=&quot;http://127.0.0.1:5500&quot;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>transformRequest：处理请求参数（对post系列有作用）.设置请求拦截器（只对POST系列有用）：把基于请求主体传递给服务器的内容进行拦截，把内容格式变为x-www-form-urlencoded这种格式，再传递给服务器(JQ中默认传递了)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">axios.defaults.transformRequest = function (data) &#123;</span><br><span class="line">	if (!data) return data;</span><br><span class="line">	let str = `` ;</span><br><span class="line">	for (let key in data) &#123;</span><br><span class="line">	if (!data.hasOwnProperty(key)) break;</span><br><span class="line">		str += `&amp;$&#123;key&#125;=$&#123;data[key]&#125;`;</span><br><span class="line">	&#125;</span><br><span class="line">	return str.substring(1);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>transformResponse：处理返回的结果进行处理.设置响应拦截器：[成功状态]把从服务器获取的结果中的响应主体信息获取到即可，[失败状态]手动把错误信息抛出异常</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">axios.interceptors.response.use(function (response) &#123;</span><br><span class="line">			return response.data;</span><br><span class="line">		&#125;, function (error) &#123;</span><br><span class="line">			throw new Error(error);</span><br><span class="line">		&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>headers：设置请求头:POST系列中，我们传递给服务器数据的格式一般以x-www-form-urlencoded格式为主</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axios.defaults.headers[&apos;Content-Type&apos;] = &apos;application/x-www-form-urlencoded&apos;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>params：get系列请求传递给服务器的内容（会把Params中的内容拼接为x-www-form-urlencode这种格式，基于url问号传参传递给服务器）(JQ中默认清缓存，axios要手动去缓存)</p>
+</li>
+<li><p>paramsSerializer：传递参数的序列化</p>
+</li>
+<li><p>timeout：超时时间</p>
+</li>
+<li><p>withCedentials：跨域请求中是否允许携带凭证</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axios.defaults.withCredentials = true;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>responseType：预设服务器返回结果的格式：默认是json，支持buffer、text、stream、decument</p>
+</li>
+<li><p>validateStatus：axios本身只有在HTTP状态码以2开头的时候才认为是成功的，其余都认为是失败状态，当然我们可以基于validateStatus这个自己来修改。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">axios.defaults.validateStatus = function (status) &#123;</span><br><span class="line">			return /^(2|3)\d&#123;2&#125;$/.test(status);</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="axios中的get系列方法："><a href="#axios中的get系列方法：" class="headerlink" title="axios中的get系列方法："></a>axios中的get系列方法：</h2><p>axios.get([URL],[OPTIONS]);</p>
+<ul>
+<li>axios.get();</li>
+<li>axios.delete();</li>
+<li>axios.head();<h2 id="axios中的post系列方法"><a href="#axios中的post系列方法" class="headerlink" title="axios中的post系列方法"></a>axios中的post系列方法</h2>axios.post([URL],[DATA],[OPTIONS])：DATA通过请求主传递给服务器的内容</li>
+<li>axios.post();</li>
+<li>axios.put();<h2 id="axios中的all方法和spread方法"><a href="#axios中的all方法和spread方法" class="headerlink" title="axios中的all方法和spread方法"></a>axios中的all方法和spread方法</h2><h3 id="axios-all-promise1-promise2"><a href="#axios-all-promise1-promise2" class="headerlink" title="axios.all([promise1, promise2]):"></a>axios.all([promise1, promise2]):</h3></li>
+<li>和Promise.all()一样，都是参数是都成功后，axios.all()方法为成功，状态改变为fulfilled，执行事件池的对应发放<h3 id="axios-spread"><a href="#axios-spread" class="headerlink" title="axios.spread():"></a>axios.spread():</h3></li>
+<li>把基于axios.all获取的结果一项项的单独获取到。(一般不使用)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">axios.all([promise1, promise2]).then(axios.spread(function (val1, val2) &#123;</span><br><span class="line">			console.log(val1, val2);</span><br><span class="line">		&#125;))</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="AXIOS"><a href="#AXIOS" class="headerlink" title="AXIOS"></a>AXIOS</h2><ul>
+<li>执行axios.xxx()都会返回一个PROMISE实例，AJAX请求成功会把实例的状态改为fulfilled，请求失败状态改为rejected；并且获取的结果或者错误原因作为PROMISE的value<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">axios.get(&apos;http://127.0.0.1:5500/json/data2.json&apos;, &#123;</span><br><span class="line">			headers: &#123;</span><br><span class="line">				AAA: encodeURIComponent(&apos;珠峰哈哈哈&apos;)</span><br><span class="line">			&#125;,</span><br><span class="line">			params: &#123;</span><br><span class="line">				lx: 1,</span><br><span class="line">				from: &apos;WX&apos;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;).then(result =&gt; &#123;</span><br><span class="line">			//=&gt;result：从服务器获取的结果</span><br><span class="line">			/!*</span><br><span class="line">			 * CONFIG：我们自己配置的选项信息</span><br><span class="line">			 * DATA：存储的是响应主体内容 </span><br><span class="line">			 * HEADERS：存储响应头的信息</span><br><span class="line">			 * REQUEST：AJAX实例</span><br><span class="line">			 * STATUS：响应状态码</span><br><span class="line">			 * STATUS-TEXT：状态码的描述</span><br><span class="line">			 *!/</span><br><span class="line">			return result.data;</span><br><span class="line">		&#125;).catch(reason =&gt; &#123;</span><br><span class="line">			console.log(reason);</span><br><span class="line">			throw new Error(reason);</span><br><span class="line">		&#125;).then(data =&gt; &#123;</span><br><span class="line">			//=&gt;data：从服务器获取的响应主体内容</span><br><span class="line">			console.log(data);</span><br><span class="line">		&#125;);</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/09/16/Promise基础知识/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Promise基础知识</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="ds-share share" data-thread-key="AXIOS基础知识" data-title="AXIOS基础知识" data-url="http://yoursite.com/2019/09/16/AXIOS基础知识/"  data-images="/img/1.jpg" data-content="AXIOS基础知识">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+ 
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2019 陈文才
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+</body>
+</html>
