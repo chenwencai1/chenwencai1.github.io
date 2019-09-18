@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>开源精神、极客精神-常用的事件行为 | 码农乐园</title>
+
+  <!-- keywords -->
+  
+    <meta name="keywords" content="开源精神、极客精神">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="事件是元素天生自带的默认行为。 常用的事件行为鼠标事件  click  点击  （移动端click被识别为单击） dblclick 双击 mousedown  鼠标按下 mouseup  鼠标抬起 mouseover 鼠标滑过 mouseout  鼠标滑出 mouseenter 鼠标进入 mouseleave   鼠标离开 mousewhell  鼠标滚轮滚动   键盘事件  keydown  键">
+<meta name="keywords" content="JS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用的事件行为">
+<meta property="og:url" content="http://yoursite.com/2019/09/18/常用的事件行为/index.html">
+<meta property="og:site_name" content="码农乐园">
+<meta property="og:description" content="事件是元素天生自带的默认行为。 常用的事件行为鼠标事件  click  点击  （移动端click被识别为单击） dblclick 双击 mousedown  鼠标按下 mouseup  鼠标抬起 mouseover 鼠标滑过 mouseout  鼠标滑出 mouseenter 鼠标进入 mouseleave   鼠标离开 mousewhell  鼠标滚轮滚动   键盘事件  keydown  键">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2019-09-18T12:39:40.870Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="常用的事件行为">
+<meta name="twitter:description" content="事件是元素天生自带的默认行为。 常用的事件行为鼠标事件  click  点击  （移动端click被识别为单击） dblclick 双击 mousedown  鼠标按下 mouseup  鼠标抬起 mouseover 鼠标滑过 mouseout  鼠标滑出 mouseenter 鼠标进入 mouseleave   鼠标离开 mousewhell  鼠标滚轮滚动   键盘事件  keydown  键">
+  
+    <link rel="alternative" href="/atom.xml" title="码农乐园" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+  
+</head></html>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/1.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">陈文才</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">狂奔的小蜗牛</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="mail" target="_blank" href="/chen1241675760@163.com" title="mail">mail</a>
+					        
+								<a class="qq" target="_blank" href="/1241675760" title="qq">qq</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/面试/" style="font-size: 15px;">面试</a> <a href="/tags/项目/" style="font-size: 10px;">项目</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://wangyiye.github.io/">wangyiya</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://yuanxiaochen1.github.io">yuanxiaochen</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://jinshixi.github.io">jinshixi</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://chaiyongsheng0.github.io">chaiyongsheng0</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://ningwei7.github.io">ningwei</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">陈文才</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/1.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">陈文才</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">狂奔的小蜗牛</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="mail" target="_blank" href="/chen1241675760@163.com" title="mail">mail</a>
+			        
+						<a class="qq" target="_blank" href="/1241675760" title="qq">qq</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-常用的事件行为" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/09/18/常用的事件行为/" class="article-date">
+  	<time datetime="2019-09-18T12:29:55.000Z" itemprop="datePublished">2019-09-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      常用的事件行为
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
+	</div>
+
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><code>事件是元素天生自带的默认行为。</code></p>
+<h2 id="常用的事件行为"><a href="#常用的事件行为" class="headerlink" title="常用的事件行为"></a>常用的事件行为</h2><h3 id="鼠标事件"><a href="#鼠标事件" class="headerlink" title="鼠标事件"></a>鼠标事件</h3><blockquote>
+<ol>
+<li>click  点击  （移动端click被识别为单击）</li>
+<li>dblclick 双击</li>
+<li>mousedown  鼠标按下</li>
+<li>mouseup  鼠标抬起</li>
+<li>mouseover 鼠标滑过</li>
+<li>mouseout  鼠标滑出</li>
+<li>mouseenter 鼠标进入</li>
+<li>mouseleave   鼠标离开</li>
+<li>mousewhell  鼠标滚轮滚动</li>
+</ol>
+</blockquote>
+<h3 id="键盘事件"><a href="#键盘事件" class="headerlink" title="键盘事件"></a>键盘事件</h3><blockquote>
+<ol>
+<li>keydown  键按下</li>
+<li>keyup      抬起某个键</li>
+<li>keypress    除shift/FN/capsLock键以外，其他键按住连续触发</li>
+<li>contextmenu  鼠标右键触发</li>
+</ol>
+</blockquote>
+<h3 id="移动端手指事件"><a href="#移动端手指事件" class="headerlink" title="移动端手指事件"></a>移动端手指事件</h3><h4 id="单手指事件模型-Touch"><a href="#单手指事件模型-Touch" class="headerlink" title="单手指事件模型  Touch"></a>单手指事件模型  Touch</h4><blockquote>
+<ol>
+<li>touchstart   单手指按下</li>
+<li>touchmove  单手指移动</li>
+<li>touchend   单手指松开</li>
+<li>touchcancel  操作取消（一般应用于非正常状态下的操作结束：例如手机突然关机）</li>
+</ol>
+</blockquote>
+<h4 id="多手指事件模型-Gesture"><a href="#多手指事件模型-Gesture" class="headerlink" title="多手指事件模型 Gesture"></a>多手指事件模型 Gesture</h4><blockquote>
+<ol>
+<li>gesturestart  多手指按下（会记录多有按下手指的信息）</li>
+<li>gesturechange/gestureupdata</li>
+<li>gestureend</li>
+<li>gesturecancel</li>
+</ol>
+</blockquote>
+<h3 id="表单元素常用事件"><a href="#表单元素常用事件" class="headerlink" title="表单元素常用事件"></a>表单元素常用事件</h3><blockquote>
+<ol>
+<li>focus  获取焦点</li>
+<li>blur  失去焦点</li>
+<li>change  内容改变</li>
+</ol>
+</blockquote>
+<h3 id="音视频常用事件"><a href="#音视频常用事件" class="headerlink" title="音视频常用事件"></a>音视频常用事件</h3><blockquote>
+<ol>
+<li>canplay   可以播放（资源没有加载完，播放中可能会卡顿，边播放边加载）</li>
+<li>canplaythrouht   可以播放（资源已经加载完，播放中不会卡顿）</li>
+<li>play   开始播放</li>
+<li>playing  播放中</li>
+<li>pause 暂停播放</li>
+</ol>
+</blockquote>
+<h3 id="其他事件"><a href="#其他事件" class="headerlink" title="其他事件"></a>其他事件</h3><blockquote>
+<ol>
+<li>load  加载成功事件</li>
+<li>unload  文档或者一个资源被卸载</li>
+<li>beforeunload  当前页面关闭之前</li>
+<li>error  资源加载失败</li>
+<li>scroll  滚动事件</li>
+<li>readystatechange  AJAX请求状态改变事件</li>
+</ol>
+</blockquote>
+<h2 id="DOM0事件绑定和DOM2事件绑定"><a href="#DOM0事件绑定和DOM2事件绑定" class="headerlink" title="DOM0事件绑定和DOM2事件绑定"></a>DOM0事件绑定和DOM2事件绑定</h2><blockquote>
+<p>DOM0和DOM2操作dom的版本</p>
+</blockquote>
+<h3 id="DOM0"><a href="#DOM0" class="headerlink" title="DOM0"></a>DOM0</h3><blockquote>
+<p>元素.on事件行为=function(){}</p>
+</blockquote>
+<h3 id="DOM0事件绑定原理-只能绑定一个函数"><a href="#DOM0事件绑定原理-只能绑定一个函数" class="headerlink" title="DOM0事件绑定原理(只能绑定一个函数)"></a>DOM0事件绑定原理(只能绑定一个函数)</h3><blockquote>
+<p>给元素的私有属性（事件行为）赋值（就是绑定的函数），当事件触发时，浏览器会帮我们把赋值的函数执行。但是这样同一个元素相同的事件行为绑定一个方法，重复绑定时，触发时以最后一个方法为主执行</p>
+</blockquote>
+<h3 id="DOM0事件绑定移除"><a href="#DOM0事件绑定移除" class="headerlink" title="DOM0事件绑定移除"></a>DOM0事件绑定移除</h3><blockquote>
+<p>元素.on事件行为=null;   (根据绑定原理移除)</p>
+</blockquote>
+<h2 id="DOM2（DOM2事件绑定的时候，一般采用实名函数，目的：这样可以基于实名函数移除事件绑定）"><a href="#DOM2（DOM2事件绑定的时候，一般采用实名函数，目的：这样可以基于实名函数移除事件绑定）" class="headerlink" title="DOM2（DOM2事件绑定的时候，一般采用实名函数，目的：这样可以基于实名函数移除事件绑定）"></a>DOM2（DOM2事件绑定的时候，一般采用实名函数，目的：这样可以基于实名函数移除事件绑定）</h2><blockquote>
+<p>元素.addEventListener(事件行为，function fn(){},true/false);<br> <strong>JQ中</strong>元素.on(事件行为，function fn(){},true/false)<br>IE6~8中：元素.attachEvent(‘on事件行为’，function(){});</p>
+</blockquote>
+<h3 id="DOM2事件绑定原理（可以绑定多个函数）"><a href="#DOM2事件绑定原理（可以绑定多个函数）" class="headerlink" title="DOM2事件绑定原理（可以绑定多个函数）"></a>DOM2事件绑定原理（可以绑定多个函数）</h3><blockquote>
+<p>基于原型链查找机制，找到EventTarget.prototype上的方法并且执行，此方法执行，会把给当前元素某个事件行为绑定的所有方法，存放在浏览器某人的事件池中（绑定几个方法，会向事件池存储几个），当事件触发一次，会把事件池中存储的对应方法，依次按照顺序执行。<code>给当前元素某一个事件行为绑定多个不同的方法,同一个元素行为绑定多个同一个方法会默认去重</code></p>
+</blockquote>
+<h3 id="DOM2事件绑定移除"><a href="#DOM2事件绑定移除" class="headerlink" title="DOM2事件绑定移除"></a>DOM2事件绑定移除</h3><blockquote>
+<p>移除事件绑定：从事件池中移除，多以需要指定好事件类型、方法信息（要和绑定的时候一样才可以移除）<br>元素.removeEventListener(事件行为，func ,false);<br> <strong>JQ中</strong>    元素.off(事件行为，func ,false);</p>
+</blockquote>
+<h3 id="dom0-和dom2-同时出现时，执行顺序"><a href="#dom0-和dom2-同时出现时，执行顺序" class="headerlink" title="dom0 和dom2 同时出现时，执行顺序"></a>dom0 和dom2 同时出现时，执行顺序</h3><blockquote>
+<ol>
+<li>机制不同，不会有影响，按绑定顺序执行。</li>
+<li>dom0能做的事件绑定的事件行为，dom2都支持，dom2里面的事件，dom0不一定能处理绑定，例如：transitionend、DOMContentLoaded。。。<br>DOMContentLoaded：DOM结构加载完就可以触发。<br>$(function(){})和$(document).ready(function(){})这个方法就是采用的 DOMContentLoaded事件，并且依托DOM2事件绑定来处理，所以同一个页面中，此操作可以被使用多次<br><code>window.onload和$(document).ready()的区别</code><br><code>jQuery中的事件绑定采用的都是DOM2的事件绑定</code><br>load：所有的结构加载完才触发。</li>
+</ol>
+</blockquote>
+<h1 id="事件对象-ev"><a href="#事件对象-ev" class="headerlink" title="事件对象 ev"></a>事件对象 ev</h1><blockquote>
+<p> 给元素的事件行为绑定方法，当事件行为触发，方法被执行，不仅被执行，而且还会把当前操作的相关信息传递给这个函数。=&gt;传递的信息就是事件对象<br> 事件对象和函数以及给谁绑定的事件没有关系，它存储的是当前本次操作相关的信息，操作一次只能有一份信息，所以在哪个方法中获取的方法信息是一样的；第二次操作，存储的信息会把上一次的操作的信息替换掉。<br>每一次事件触发，浏览器都会这么做</p>
+<ol>
+<li>捕获到当前操作的行为（把操作的信息获取到），通过创建MouseEvent等类的实例，得到事件对象EV</li>
+<li>通知所有绑定的方法，（符合执行条件）</li>
+</ol>
+</blockquote>
+<h2 id="事件对象类型"><a href="#事件对象类型" class="headerlink" title="事件对象类型"></a>事件对象类型</h2><blockquote>
+<ol>
+<li>鼠标事件对象：鼠标操作，获取的是MouseEvent类的实例<br>鼠标事件对象-&gt;MouseEvent.prototype-&gt;UIEvent.prototype-&gt;Event.prototype-&gt;Object.prototype</li>
+<li>键盘事件对象：键盘操作，获取的是KeyboardEvent类的实例。</li>
+<li>普通事件对象：获取的是Event类的实例</li>
+<li>手指事件对象：获取的是TouchEvent类的实例</li>
+</ol>
+</blockquote>
+<h3 id="鼠标事件对象-语法：ev-事件对象"><a href="#鼠标事件对象-语法：ev-事件对象" class="headerlink" title="鼠标事件对象     语法：ev.事件对象"></a>鼠标事件对象     语法：ev.事件对象</h3><blockquote>
+<ol>
+<li>clientX/clientY:当前鼠标触发点距离窗口左上角的X/Y轴坐标</li>
+<li>pageX/Y:鼠标触发点距离当前页面左上角的X/Y轴坐标。</li>
+<li>type：当前触发事件的类型</li>
+<li>target：事件源（操作的目标元素就是事件源）</li>
+<li>preventDefault():阻止默认行为的方法，不兼容的浏览器中庸ev.returnValue=false,也可以的实现阻止默认行为</li>
+<li>stopPropagation()：阻止冒泡传播，不兼容的浏览器中用ev.cancelBubble=true也可以阻止默认行为。</li>
+</ol>
+<p><strong>点击A标签，先执行click事件，再执行href的跳转</strong></p>
+</blockquote>
+<h3 id="键盘事件对象"><a href="#键盘事件对象" class="headerlink" title="键盘事件对象"></a>键盘事件对象</h3><blockquote>
+<ol>
+<li>code/kry:存储的都是按键，code更细</li>
+<li>keyCode&amp;which:储存的是键盘按键上的码值。<br>方向键：上下左右键分别是37、38、39、40<br>空格键space：32<br>回车键：enter13<br>删除键：del46<br>后退键：back8<br>ALT：18<br>ctrl：17<br>shift：16</li>
+</ol>
+</blockquote>
+<h3 id="阻止默认行为三种方式"><a href="#阻止默认行为三种方式" class="headerlink" title="阻止默认行为三种方式"></a>阻止默认行为三种方式</h3><blockquote>
+<ol>
+<li>javascript:;</li>
+<li>在绑定事件中返回false</li>
+<li>使用preventDefault()</li>
+</ol>
+</blockquote>
+<h3 id="事件的传播机制"><a href="#事件的传播机制" class="headerlink" title="事件的传播机制"></a>事件的传播机制</h3><blockquote>
+<ol>
+<li>捕获阶段：从最外层向最里层事件源依次查找（目的：是为冒泡阶段事先计算好传播的层级路径）</li>
+<li>目标阶段：当前元素的相关事件行为触发。</li>
+<li>冒泡传播机制：触发当前元素的某一个事件行为，不仅本身的行为被触发了，而且所有的祖先元素（一直到window）相关的事件行为依次都会被触发（<code>从内到外的顺序</code>）<br>stopPropagation()：阻止冒泡传播</li>
+</ol>
+<p><strong><code>DOM0绑定的事件只能在目标阶段和冒泡阶段触发执行（也有捕获阶段）；DOM2绑定的方法，我们可以控制在捕获阶段执行</code></strong><br>false代表在冒泡阶段执行，默认为false，true代表在捕获阶段执行此方法（用的很少）</p>
+</blockquote>
+<h4 id="mouseenter和mouseover的区别"><a href="#mouseenter和mouseover的区别" class="headerlink" title="mouseenter和mouseover的区别"></a>mouseenter和mouseover的区别</h4><blockquote>
+<ol>
+<li>mouseover:本身不是进入，而是看光标在谁的上面，从子元素进入父元素，触发父元素的mouseover，从父元素进入子元素会触发父元素的mouseout。。。</li>
+</ol>
+</blockquote>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/09/16/AXIOS基础知识/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">AXIOS基础知识</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="ds-share share" data-thread-key="常用的事件行为" data-title="常用的事件行为" data-url="http://yoursite.com/2019/09/18/常用的事件行为/"  data-images="/img/1.jpg" data-content="常用的事件行为">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+ 
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2019 陈文才
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+</body>
+</html>

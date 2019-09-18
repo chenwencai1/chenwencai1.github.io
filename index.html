@@ -119,7 +119,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/面试/" style="font-size: 20px;">面试</a> <a href="/tags/项目/" style="font-size: 10px;">项目</a>
+						<a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/面试/" style="font-size: 15px;">面试</a> <a href="/tags/项目/" style="font-size: 10px;">项目</a>
 					</div>
 				</section>
 				
@@ -190,6 +190,207 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-常用的事件行为" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/09/18/常用的事件行为/" class="article-date">
+  	<time datetime="2019-09-18T12:29:55.000Z" itemprop="datePublished">2019-09-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/18/常用的事件行为/">
+        常用的事件行为
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><code>事件是元素天生自带的默认行为。</code></p>
+<h2 id="常用的事件行为"><a href="#常用的事件行为" class="headerlink" title="常用的事件行为"></a>常用的事件行为</h2><h3 id="鼠标事件"><a href="#鼠标事件" class="headerlink" title="鼠标事件"></a>鼠标事件</h3><blockquote>
+<ol>
+<li>click  点击  （移动端click被识别为单击）</li>
+<li>dblclick 双击</li>
+<li>mousedown  鼠标按下</li>
+<li>mouseup  鼠标抬起</li>
+<li>mouseover 鼠标滑过</li>
+<li>mouseout  鼠标滑出</li>
+<li>mouseenter 鼠标进入</li>
+<li>mouseleave   鼠标离开</li>
+<li>mousewhell  鼠标滚轮滚动</li>
+</ol>
+</blockquote>
+<h3 id="键盘事件"><a href="#键盘事件" class="headerlink" title="键盘事件"></a>键盘事件</h3><blockquote>
+<ol>
+<li>keydown  键按下</li>
+<li>keyup      抬起某个键</li>
+<li>keypress    除shift/FN/capsLock键以外，其他键按住连续触发</li>
+<li>contextmenu  鼠标右键触发</li>
+</ol>
+</blockquote>
+<h3 id="移动端手指事件"><a href="#移动端手指事件" class="headerlink" title="移动端手指事件"></a>移动端手指事件</h3><h4 id="单手指事件模型-Touch"><a href="#单手指事件模型-Touch" class="headerlink" title="单手指事件模型  Touch"></a>单手指事件模型  Touch</h4><blockquote>
+<ol>
+<li>touchstart   单手指按下</li>
+<li>touchmove  单手指移动</li>
+<li>touchend   单手指松开</li>
+<li>touchcancel  操作取消（一般应用于非正常状态下的操作结束：例如手机突然关机）</li>
+</ol>
+</blockquote>
+<h4 id="多手指事件模型-Gesture"><a href="#多手指事件模型-Gesture" class="headerlink" title="多手指事件模型 Gesture"></a>多手指事件模型 Gesture</h4><blockquote>
+<ol>
+<li>gesturestart  多手指按下（会记录多有按下手指的信息）</li>
+<li>gesturechange/gestureupdata</li>
+<li>gestureend</li>
+<li>gesturecancel</li>
+</ol>
+</blockquote>
+<h3 id="表单元素常用事件"><a href="#表单元素常用事件" class="headerlink" title="表单元素常用事件"></a>表单元素常用事件</h3><blockquote>
+<ol>
+<li>focus  获取焦点</li>
+<li>blur  失去焦点</li>
+<li>change  内容改变</li>
+</ol>
+</blockquote>
+<h3 id="音视频常用事件"><a href="#音视频常用事件" class="headerlink" title="音视频常用事件"></a>音视频常用事件</h3><blockquote>
+<ol>
+<li>canplay   可以播放（资源没有加载完，播放中可能会卡顿，边播放边加载）</li>
+<li>canplaythrouht   可以播放（资源已经加载完，播放中不会卡顿）</li>
+<li>play   开始播放</li>
+<li>playing  播放中</li>
+<li>pause 暂停播放</li>
+</ol>
+</blockquote>
+<h3 id="其他事件"><a href="#其他事件" class="headerlink" title="其他事件"></a>其他事件</h3><blockquote>
+<ol>
+<li>load  加载成功事件</li>
+<li>unload  文档或者一个资源被卸载</li>
+<li>beforeunload  当前页面关闭之前</li>
+<li>error  资源加载失败</li>
+<li>scroll  滚动事件</li>
+<li>readystatechange  AJAX请求状态改变事件</li>
+</ol>
+</blockquote>
+<h2 id="DOM0事件绑定和DOM2事件绑定"><a href="#DOM0事件绑定和DOM2事件绑定" class="headerlink" title="DOM0事件绑定和DOM2事件绑定"></a>DOM0事件绑定和DOM2事件绑定</h2><blockquote>
+<p>DOM0和DOM2操作dom的版本</p>
+</blockquote>
+<h3 id="DOM0"><a href="#DOM0" class="headerlink" title="DOM0"></a>DOM0</h3><blockquote>
+<p>元素.on事件行为=function(){}</p>
+</blockquote>
+<h3 id="DOM0事件绑定原理-只能绑定一个函数"><a href="#DOM0事件绑定原理-只能绑定一个函数" class="headerlink" title="DOM0事件绑定原理(只能绑定一个函数)"></a>DOM0事件绑定原理(只能绑定一个函数)</h3><blockquote>
+<p>给元素的私有属性（事件行为）赋值（就是绑定的函数），当事件触发时，浏览器会帮我们把赋值的函数执行。但是这样同一个元素相同的事件行为绑定一个方法，重复绑定时，触发时以最后一个方法为主执行</p>
+</blockquote>
+<h3 id="DOM0事件绑定移除"><a href="#DOM0事件绑定移除" class="headerlink" title="DOM0事件绑定移除"></a>DOM0事件绑定移除</h3><blockquote>
+<p>元素.on事件行为=null;   (根据绑定原理移除)</p>
+</blockquote>
+<h2 id="DOM2（DOM2事件绑定的时候，一般采用实名函数，目的：这样可以基于实名函数移除事件绑定）"><a href="#DOM2（DOM2事件绑定的时候，一般采用实名函数，目的：这样可以基于实名函数移除事件绑定）" class="headerlink" title="DOM2（DOM2事件绑定的时候，一般采用实名函数，目的：这样可以基于实名函数移除事件绑定）"></a>DOM2（DOM2事件绑定的时候，一般采用实名函数，目的：这样可以基于实名函数移除事件绑定）</h2><blockquote>
+<p>元素.addEventListener(事件行为，function fn(){},true/false);<br> <strong>JQ中</strong>元素.on(事件行为，function fn(){},true/false)<br>IE6~8中：元素.attachEvent(‘on事件行为’，function(){});</p>
+</blockquote>
+<h3 id="DOM2事件绑定原理（可以绑定多个函数）"><a href="#DOM2事件绑定原理（可以绑定多个函数）" class="headerlink" title="DOM2事件绑定原理（可以绑定多个函数）"></a>DOM2事件绑定原理（可以绑定多个函数）</h3><blockquote>
+<p>基于原型链查找机制，找到EventTarget.prototype上的方法并且执行，此方法执行，会把给当前元素某个事件行为绑定的所有方法，存放在浏览器某人的事件池中（绑定几个方法，会向事件池存储几个），当事件触发一次，会把事件池中存储的对应方法，依次按照顺序执行。<code>给当前元素某一个事件行为绑定多个不同的方法,同一个元素行为绑定多个同一个方法会默认去重</code></p>
+</blockquote>
+<h3 id="DOM2事件绑定移除"><a href="#DOM2事件绑定移除" class="headerlink" title="DOM2事件绑定移除"></a>DOM2事件绑定移除</h3><blockquote>
+<p>移除事件绑定：从事件池中移除，多以需要指定好事件类型、方法信息（要和绑定的时候一样才可以移除）<br>元素.removeEventListener(事件行为，func ,false);<br> <strong>JQ中</strong>    元素.off(事件行为，func ,false);</p>
+</blockquote>
+<h3 id="dom0-和dom2-同时出现时，执行顺序"><a href="#dom0-和dom2-同时出现时，执行顺序" class="headerlink" title="dom0 和dom2 同时出现时，执行顺序"></a>dom0 和dom2 同时出现时，执行顺序</h3><blockquote>
+<ol>
+<li>机制不同，不会有影响，按绑定顺序执行。</li>
+<li>dom0能做的事件绑定的事件行为，dom2都支持，dom2里面的事件，dom0不一定能处理绑定，例如：transitionend、DOMContentLoaded。。。<br>DOMContentLoaded：DOM结构加载完就可以触发。<br>$(function(){})和$(document).ready(function(){})这个方法就是采用的 DOMContentLoaded事件，并且依托DOM2事件绑定来处理，所以同一个页面中，此操作可以被使用多次<br><code>window.onload和$(document).ready()的区别</code><br><code>jQuery中的事件绑定采用的都是DOM2的事件绑定</code><br>load：所有的结构加载完才触发。</li>
+</ol>
+</blockquote>
+<h1 id="事件对象-ev"><a href="#事件对象-ev" class="headerlink" title="事件对象 ev"></a>事件对象 ev</h1><blockquote>
+<p> 给元素的事件行为绑定方法，当事件行为触发，方法被执行，不仅被执行，而且还会把当前操作的相关信息传递给这个函数。=&gt;传递的信息就是事件对象<br> 事件对象和函数以及给谁绑定的事件没有关系，它存储的是当前本次操作相关的信息，操作一次只能有一份信息，所以在哪个方法中获取的方法信息是一样的；第二次操作，存储的信息会把上一次的操作的信息替换掉。<br>每一次事件触发，浏览器都会这么做</p>
+<ol>
+<li>捕获到当前操作的行为（把操作的信息获取到），通过创建MouseEvent等类的实例，得到事件对象EV</li>
+<li>通知所有绑定的方法，（符合执行条件）</li>
+</ol>
+</blockquote>
+<h2 id="事件对象类型"><a href="#事件对象类型" class="headerlink" title="事件对象类型"></a>事件对象类型</h2><blockquote>
+<ol>
+<li>鼠标事件对象：鼠标操作，获取的是MouseEvent类的实例<br>鼠标事件对象-&gt;MouseEvent.prototype-&gt;UIEvent.prototype-&gt;Event.prototype-&gt;Object.prototype</li>
+<li>键盘事件对象：键盘操作，获取的是KeyboardEvent类的实例。</li>
+<li>普通事件对象：获取的是Event类的实例</li>
+<li>手指事件对象：获取的是TouchEvent类的实例</li>
+</ol>
+</blockquote>
+<h3 id="鼠标事件对象-语法：ev-事件对象"><a href="#鼠标事件对象-语法：ev-事件对象" class="headerlink" title="鼠标事件对象     语法：ev.事件对象"></a>鼠标事件对象     语法：ev.事件对象</h3><blockquote>
+<ol>
+<li>clientX/clientY:当前鼠标触发点距离窗口左上角的X/Y轴坐标</li>
+<li>pageX/Y:鼠标触发点距离当前页面左上角的X/Y轴坐标。</li>
+<li>type：当前触发事件的类型</li>
+<li>target：事件源（操作的目标元素就是事件源）</li>
+<li>preventDefault():阻止默认行为的方法，不兼容的浏览器中庸ev.returnValue=false,也可以的实现阻止默认行为</li>
+<li>stopPropagation()：阻止冒泡传播，不兼容的浏览器中用ev.cancelBubble=true也可以阻止默认行为。</li>
+</ol>
+<p><strong>点击A标签，先执行click事件，再执行href的跳转</strong></p>
+</blockquote>
+<h3 id="键盘事件对象"><a href="#键盘事件对象" class="headerlink" title="键盘事件对象"></a>键盘事件对象</h3><blockquote>
+<ol>
+<li>code/kry:存储的都是按键，code更细</li>
+<li>keyCode&amp;which:储存的是键盘按键上的码值。<br>方向键：上下左右键分别是37、38、39、40<br>空格键space：32<br>回车键：enter13<br>删除键：del46<br>后退键：back8<br>ALT：18<br>ctrl：17<br>shift：16</li>
+</ol>
+</blockquote>
+<h3 id="阻止默认行为三种方式"><a href="#阻止默认行为三种方式" class="headerlink" title="阻止默认行为三种方式"></a>阻止默认行为三种方式</h3><blockquote>
+<ol>
+<li>javascript:;</li>
+<li>在绑定事件中返回false</li>
+<li>使用preventDefault()</li>
+</ol>
+</blockquote>
+<h3 id="事件的传播机制"><a href="#事件的传播机制" class="headerlink" title="事件的传播机制"></a>事件的传播机制</h3><blockquote>
+<ol>
+<li>捕获阶段：从最外层向最里层事件源依次查找（目的：是为冒泡阶段事先计算好传播的层级路径）</li>
+<li>目标阶段：当前元素的相关事件行为触发。</li>
+<li>冒泡传播机制：触发当前元素的某一个事件行为，不仅本身的行为被触发了，而且所有的祖先元素（一直到window）相关的事件行为依次都会被触发（<code>从内到外的顺序</code>）<br>stopPropagation()：阻止冒泡传播</li>
+</ol>
+<p><strong><code>DOM0绑定的事件只能在目标阶段和冒泡阶段触发执行（也有捕获阶段）；DOM2绑定的方法，我们可以控制在捕获阶段执行</code></strong><br>false代表在冒泡阶段执行，默认为false，true代表在捕获阶段执行此方法（用的很少）</p>
+</blockquote>
+<h4 id="mouseenter和mouseover的区别"><a href="#mouseenter和mouseover的区别" class="headerlink" title="mouseenter和mouseover的区别"></a>mouseenter和mouseover的区别</h4><blockquote>
+<ol>
+<li>mouseover:本身不是进入，而是看光标在谁的上面，从子元素进入父元素，触发父元素的mouseover，从父元素进入子元素会触发父元素的mouseout。。。</li>
+</ol>
+</blockquote>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-AXIOS基础知识" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -1277,73 +1478,10 @@
 
 
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   
-    <div class="article-meta">
-      <a href="/2019/09/10/hello-world/" class="article-date">
-  	<time datetime="2019-09-10T10:56:32.958Z" itemprop="datePublished">2019-09-10</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/10/hello-world/">
-        Hello World
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 </div>
       <footer id="footer">
