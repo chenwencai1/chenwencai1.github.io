@@ -191,6 +191,489 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-前端性能优化" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/09/11/前端性能优化/" class="article-date">
+  	<time datetime="2019-09-11T12:26:57.000Z" itemprop="datePublished">2019-09-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/11/前端性能优化/">
+        前端性能优化
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h2><p>本篇文章缘起一次偶然的面试问答所引申出的思考整理，着笔于浏览器渲染的角度，探讨前端性能优化的思路和实践建议，当然，浏览器渲染是一个复杂的过程，本文笔者将围绕重排和重绘两个关键词开始行文。</p>
+<h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><p>文章大致行文思路如下：</p>
+<ul>
+<li>URL从输入到页面展示的过程</li>
+<li>DOM和JavaScript的关系</li>
+<li>为什么操作DOM会很“慢”</li>
+<li>浏览器解析HTML的过程</li>
+<li>重排</li>
+<li>重绘</li>
+<li>优化方案<h2 id="URL从输入到页面展示的过程"><a href="#URL从输入到页面展示的过程" class="headerlink" title="URL从输入到页面展示的过程"></a>URL从输入到页面展示的过程</h2>在探讨浏览器解析html之前，先了解url从输入到最后页面渲染的过程是一个很有必要的步骤，它可以帮助我们把握整体流程，让我们在了解HTML解析细节之前知道它处于整个请求周期中的哪一阶段，这对我们构建完善知识图谱很有帮助。</li>
+<li>首先，我们假设输入的url的请求为最简单的Http请求，以GET请求为例，大致分以下几个步骤：</li>
+<li><ol>
+<li>用户在浏览器的地址栏输入访问的URL地址。浏览器会先根据这个URL查看浏览器缓存-系统缓存-路由器缓存，若缓存中有，直接跳到第6步操作，若没有，则按照下面的步骤进行操作。</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>浏览器根据输入的URL地址解析出主机名。</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>浏览器将主机名转换成服务器ip地址。浏览器先查找本地DNS缓存列表，看缓存里面是否存在这个ip,如果有则进入第4步，如果缓存中不存在这个ip地址，就再向浏览器默认的DNS服务器发送查询请求，同时缓存当前这个ip到DNS缓存列表中。更详细步骤参考DNS查找域名的过程。</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>拿到ip地址后，浏览器再从URL中解析出端口号。</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>拿到ip和端口后，浏览器会建立一条与目标Web服务器的TCP连接，也就是传说中的三次握手。传送门：完整的tcp链接。</li>
+</ol>
+</li>
+<li><ol start="6">
+<li>浏览器向服务器发送一条HTTP请求报文。</li>
+</ol>
+</li>
+<li><ol start="7">
+<li>服务器向浏览器返回一条HTTP响应报文。</li>
+</ol>
+</li>
+<li><ol start="8">
+<li>关闭连接 浏览器解析文档。</li>
+</ol>
+</li>
+<li><ol start="9">
+<li>如果文档中有资源则重复6、7、8动作，直至资源全部加载完毕。</li>
+</ol>
+</li>
+<li>以上步骤简述了浏览器从输入url到最后页面呈现的大致过程，但这并不很具体，比如浏览器请求报文类型是什么，会遇到哪些错误场景、浏览器又是如何解析响应报文等等都没具体描述。<br>实际上在http请求方式不同、有无代理、有无负载均衡等不同场景下访问服务器的细节流程也会有一些差别，但这并不影响我们对整个访问环节的理解，有兴趣的同学可网上自行详细了解，在此不做详述。<h2 id="DOM和JavaScript的关系"><a href="#DOM和JavaScript的关系" class="headerlink" title="DOM和JavaScript的关系"></a>DOM和JavaScript的关系</h2></li>
+<li>文档对象模型（DOM）是一个独立于语言，用于操作XML和HTML文档的API,在web端，我们常用来操作HTML，但其实DOM也是可以操作XML文档的。</li>
+<li>我们现在知道，DOM是一个独立于语言的API，换句话说，DOM是一个与语言无关的API，别的语言也可以实现操作DOM的具体api，但是它在浏览器中是用JavaScript来实现的，也因此，DOM是现在JavaScript编码中很重要的一部分，因为JavaScript很多时候都在操作底层文档。<h2 id="为什么操作DOM会很慢"><a href="#为什么操作DOM会很慢" class="headerlink" title="为什么操作DOM会很慢"></a>为什么操作DOM会很慢</h2></li>
+<li>虽然DOM是由JavaScript实现的，但是在浏览器中都是把DOM和JavaScript分开来实现的，比如IE中，JavaScript的实现名为JScript，放在jscript.dll文件中，而DOM则放在另一个叫做mshtml.dll的库中。在Safari中，DOM和渲染是使用Webkit中的WebCore实现，而JavaScript是由独立的JavaScriptCore引擎实现，同样在Chrome中，同样是使用WebCore来实现渲染，而JavaScript引擎则是他们自己研发的V8引擎。</li>
+<li>由于DOM和JavaScript是被分开独立实现的，因此，每一次在通过js操作DOM的时候，就需要先去连接js和DOM，我们可以这样理解：把DOM和JavaScript比作两个岛，他们之间通过一个收费的桥连接着，每一次访问DOM的时候，就需要经过这座桥，并且给“过路费”，访问的次数越多，路费就会越高，并且访问到DOM后，操作具体的DOM还需要给“操作费”，由于浏览器访问DOM的操作很多，因此，“路费”和“操作费”自然会增加，这就是为什么操作DOM会很慢的原因<h2 id="浏览器渲染HTML的步骤"><a href="#浏览器渲染HTML的步骤" class="headerlink" title="浏览器渲染HTML的步骤"></a>浏览器渲染HTML的步骤</h2></li>
+<li>HTML渲染大致分为如下几步：</li>
+<li><ol>
+<li>HTML被HTML解析器解析成DOM Tree, css则被css解析器解析成CSSOM Tree。</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>DOM Tree和CSSOM Tree解析完成后，被附加到一起，形成渲染树（Render Tree）。</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>节点信息计算(重排)，这个过程被叫做Layout(Webkit)或者Reflow(Mozilla)。即根据渲染树计算每个节点的几何信息。</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>渲染绘制(重绘)，这个过程被叫做(Painting 或者 Repaint)。即根据计算好的信息绘制整个页面。</li>
+</ol>
+</li>
+<li>以上4步简述浏览器的一次渲染过程，理论上，每一次的dom更改或者css几何属性更改，都会引起一次浏览器的重排/重绘过程，而如果是css的非几何属性更改，则只会引起重绘过程。所以说重排一定会引起重绘，而重绘不一定会引起重排。<h2 id="重排（Relayout-Reflow）"><a href="#重排（Relayout-Reflow）" class="headerlink" title="重排（Relayout/Reflow）"></a>重排（Relayout/Reflow）</h2></li>
+<li>在弄明白什么是重排之前，我们要知道：浏览器渲染页面默认采用的是流式布局模型（Flow Based Layout），这一点很重要。</li>
+<li>所谓重排，实际上是根据渲染树中每个渲染对象的信息，计算出各自渲染对象的几何信息（DOM对象的位置和尺寸大小），并将其安置在界面中的正确位置。</li>
+<li>由于浏览器渲染界面是基于流式布局模型的，也就是某一个DOM节点信息更改了，就需要对DOM结构进行重新计算，重新布局界面，再次引发回流，只是这个结构更改程度会决定周边DOM更改范围，即全局范围和局部范围，全局范围就是从根节点html开始对整个渲染树进行重新布局，例如当我们改变了窗口尺寸或方向或者是修改了根元素的尺寸或者字体大小等；而局部布局可以是对渲染树的某部分或某一个渲染对象进行重新布局。<h2 id="在此，总结会引起重排的操作有："><a href="#在此，总结会引起重排的操作有：" class="headerlink" title="在此，总结会引起重排的操作有："></a>在此，总结会引起重排的操作有：</h2></li>
+<li><ol>
+<li>页面首次渲染。</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>浏览器窗口大小发生改变。</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>元素尺寸或位置发生改变。</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>元素内容变化（文字数量或图片大小等等）。</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>元素字体大小变化。</li>
+</ol>
+</li>
+<li><ol start="6">
+<li>添加或者删除可见的DOM元素。</li>
+</ol>
+</li>
+<li><ol start="7">
+<li>激活CSS伪类（例如：:hover）。</li>
+</ol>
+</li>
+<li><ol start="8">
+<li>设置style属性</li>
+</ol>
+</li>
+<li><ol start="9">
+<li>查询某些属性或调用某些方法。<h2 id="常见引起重排属性和方法"><a href="#常见引起重排属性和方法" class="headerlink" title="常见引起重排属性和方法"></a>常见引起重排属性和方法</h2>width height margin padding<br>display border position overflow<br>clientWidth clientHeight clientTop clientLeft<br>offsetWidth offsetHeight offsetTop offsetLeft<br>scrollWidth scrollHeight scrollTop scrollLeft<br>scrollIntoView() scrollTo() getComputedStyle()<br>getBoundingClientRect() scrollIntoViewIfNeeded()</li>
+</ol>
+</li>
+<li>重排也叫回流，实际上，reflow的字面意思也是回流，之所以有的叫做重排，也许是因为重排更好理解，更符合中国人的思维。标准文档之所以叫做回流（Reflow）,是因为浏览器渲染是基于“流式布局”的模型，流实际就使我们常说的文档流，当dom或者css几何属性发生改变的时候，文档流会受到波动联动的去更改，流就好比一条河里的水，回流就好比向河里扔了一块石头，激起涟漪，然后引起周边水流受到波及，所以叫做回流，这样理解似乎更标准更规范，不过叫什么并不重要，重要的是我们真正理解了这个过程便好。<h2 id="重绘（Repainting）"><a href="#重绘（Repainting）" class="headerlink" title="重绘（Repainting）"></a>重绘（Repainting）</h2></li>
+<li>相比重排，重绘就简单多了，所谓重绘，就是当页面中元素样式的改变并不影响它在文档流中的位置时，例如更改了字体颜色,浏览器会将新样式赋予给元素并重新绘制的过程称。</li>
+<li>常见引起浏览器绘制过程的属性包含：<br>color border-style visibility background<br>text-decoration background-image background-position background-repeat<br>outline-color outline outline-style border-radius<br>outline-width box-shadow background-size<h2 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h2></li>
+<li>我们知道操作DOM是一个高成本的操作，不仅是因为本身js与DOM的链接访问，还包括操作DOM后会引起一连串的连锁反应（重排），因此，从性能优化角度，我们可以从以下几个方面着手：</li>
+<li><ol>
+<li>减少DOM操作</li>
+</ol>
+</li>
+<li><ul>
+<li>最小化DOM访问次数，尽量缓存访问DOM的样式信息，避免过度触发回流。</li>
+</ul>
+</li>
+<li><ul>
+<li>如果在一个局部方法中需要多次访问同一个dom，则先暂存它的引用。</li>
+</ul>
+</li>
+<li><ol start="2">
+<li>采用更优的API替代消费高的api，转换优化消费高的集合</li>
+</ol>
+</li>
+<li><ul>
+<li>用querySelectorAll()替代getElementByXX()。</li>
+</ul>
+</li>
+<li><ul>
+<li>开启动画的GPU加速，把渲染计算交给GPU。</li>
+</ul>
+</li>
+<li><ul>
+<li>少用HTML集合（类数组）来遍历，因为集合遍历比真数组遍历耗费更高。</li>
+</ul>
+</li>
+<li><ul>
+<li>用事件委托来减少事件处理器的数量。</li>
+</ul>
+</li>
+<li><ol start="3">
+<li>减少重排</li>
+</ol>
+</li>
+<li><ul>
+<li>避免设置大量的style属性，因为通过设置style属性改变结点样式的话，每一次设置都会触发一次reflow，所以最好是使用class属性</li>
+</ul>
+</li>
+<li><ul>
+<li>实现元素的动画，它的position属性，最好是设为absoulte或fixed，这样不会影响其他元素的布局</li>
+</ul>
+</li>
+<li><ul>
+<li>动画实现的速度的选择。比如实现一个动画，以1个像素为单位移动这样最平滑，但是reflow就会过于频繁，大量消耗CPU资源，如果以3个像素为单位移动则会好很多。</li>
+</ul>
+</li>
+<li><ul>
+<li>不要使用table布局，因为table中某个元素旦触发了reflow，那么整个table的元素都会触发reflow。那么在不得已使用table的场合，可以设置table-layout:auto;或者是table-layout:fixed这样可以让table一行一行的渲染，这种做法也是为了限制reflow的影响范围</li>
+</ul>
+</li>
+<li><ol start="4">
+<li>css及动画处理</li>
+</ol>
+</li>
+<li><ul>
+<li>少用css表达式</li>
+</ul>
+</li>
+<li><ul>
+<li>减少通过JavaScript代码修改元素样式，尽量使用修改class名方式操作样式或动画；</li>
+</ul>
+</li>
+<li><ul>
+<li>动画尽量使用在绝对定位或固定定位的元素上；</li>
+</ul>
+</li>
+<li><ul>
+<li>隐藏在屏幕外，或在页面滚动时，尽量停止动画；<h2 id="最后总结"><a href="#最后总结" class="headerlink" title="最后总结"></a>最后总结</h2></li>
+</ul>
+</li>
+<li>本篇文章主要抓取url从输入到最后渲染成界面这一流程中的浏览器解析渲染HTML这一步骤来探讨前端优化的思路和原因，核心思想基于重排和重绘的关系来展开讨论，主题大致有如下几点：</li>
+<li>url从输入到最后渲染的大致环节。</li>
+<li>重排一定会重绘，重绘不一定有重排。</li>
+<li>Js操作DOM是一个高消费过程。</li>
+<li>会引起重排/重绘的属性和方法列举</li>
+<li>优化思路（减少dom操作、替换高性能api、暂存引用、减少重排、开启硬件加速等）。<br>感谢这个时代，让我们可以站在巨人的肩膀上，窥探程序世界的宏伟壮观，我愿以一颗赤子心，踏遍程序世界的千山万水！愿每一个行走在程序世界的同仁，都活成心中想要的样子，加油。<br>来源：慕课网<br>本文原创发布于慕课网 ，转载请注明出处，谢谢合作</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试/">面试</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-客户端和服务器端-1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/09/11/客户端和服务器端-1/" class="article-date">
+  	<time datetime="2019-09-11T03:46:21.000Z" itemprop="datePublished">2019-09-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/11/客户端和服务器端-1/">
+        客户端和服务器端
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="客户端和服务器端"><a href="#客户端和服务器端" class="headerlink" title="客户端和服务器端"></a>客户端和服务器端</h1><h2 id="客户端和服务器端的理解"><a href="#客户端和服务器端的理解" class="headerlink" title="客户端和服务器端的理解"></a>客户端和服务器端的理解</h2><ul>
+<li>客户端：可以向服务器发请求，并接收返回的内容进行处理</li>
+<li>服务器端：能够接收客户端请求，并且把相关的资源<h2 id="客户端和服务器端之间的交互模型"><a href="#客户端和服务器端之间的交互模型" class="headerlink" title="客户端和服务器端之间的交互模型"></a>客户端和服务器端之间的交互模型</h2><h3 id="请求阶段request："><a href="#请求阶段request：" class="headerlink" title="请求阶段request："></a>请求阶段request：</h3></li>
+</ul>
+<ol>
+<li>浏览器进行 URL 地址解析</li>
+<li>DNS（域名服务器）进行域名解析，确定要连接哪台服务器</li>
+<li>和服务器建立TCP连接</li>
+<li>把客户端信息传递给服务器（发送HTTP请求）</li>
+<li>服务器得到并处理请求（HTTP响应内容） <h3 id="响应阶段response："><a href="#响应阶段response：" class="headerlink" title="响应阶段response："></a>响应阶段response：</h3></li>
+<li>客户端渲染服务器返回的内容</li>
+<li>断开和服务器的TCP连接<h3 id="地址解析URL-URI-URN"><a href="#地址解析URL-URI-URN" class="headerlink" title="地址解析URL/URI/URN"></a>地址解析URL/URI/URN</h3></li>
+</ol>
+<ul>
+<li>URL：统一资源定位器，根据这个地址能够找到对应的资源</li>
+<li>URN：统一资源名称，一般指国际上通用的一些名字，例如国际统一发版的编号</li>
+<li>URI：统一资源标识符，URL和URN都是URI的子集。<h3 id="一个完整的URL所包含的内容"><a href="#一个完整的URL所包含的内容" class="headerlink" title="一个完整的URL所包含的内容"></a>一个完整的URL所包含的内容</h3></li>
+<li><a href="http://www.zhufengpeixun.cn:80/stu/index.html?form=wx&amp;lx=1#zhufeng" target="_blank" rel="noopener">http://www.zhufengpeixun.cn:80/stu/index.html?form=wx&amp;lx=1#zhufeng</a></li>
+</ul>
+<p><strong>协议(http://)  :传输协议就是能够把客户端和服务器端通信的信息进行传输的工具。（类似于快递小哥）</strong></p>
+<ul>
+<li>常见的传输协议：</li>
+</ul>
+<ol>
+<li>http 超文本传输协议。除了传输文本，还可以传输媒体资源文件（或者流文件）及XML格式数据</li>
+<li>https 更加安全的http，一般涉及支付的网站都要采用https协议（s:ssl加密传输）</li>
+<li>ftp 文件传输协议。FileZilla:ftp上传工具，通过这个工具可以把本地文件上传服务器上。（一般应用于把本地资源上传到服务器端）</li>
+</ol>
+<p><strong>域名(<a href="http://www.zhufengpeixun.cn" target="_blank" rel="noopener">www.zhufengpeixun.cn</a>)  ：一个让用户方便记忆的名字（不通过域名，通过外网IP也可以访问服务器）</strong></p>
+<ul>
+<li>顶级域名  qq.com</li>
+<li>一级域名 <a href="http://www.qq.com" target="_blank" rel="noopener">www.qq.com</a></li>
+<li>二级域名 sports.qq.com</li>
+<li>三级域名 kbs.sports.qq.com</li>
+<li>.com  国际域名</li>
+<li>.cn     中文域名</li>
+<li>.com.cn  怎么用都行</li>
+<li>.edu  教育单位</li>
+<li>.gov  政府单位</li>
+<li>.io   博客</li>
+<li>.org  官方组织</li>
+<li>.net   系统类网站</li>
+</ul>
+<p><strong>端口号(:80)   范围：0~65535  用端口号来区分同一台服务器上的不同项目</strong></p>
+<ul>
+<li>http默认端口号：80</li>
+<li>https默认端口号：443</li>
+<li>ftp默认端口号：21</li>
+<li>如果项目采用的就是默认端口号，我们在书写地址的时候不用加端口号，浏览器在发送请求的时候会帮我们默认加上</li>
+</ul>
+<p><strong>请求资源路径名称(/stu/index.html)</strong></p>
+<ul>
+<li>默认的路径或者名称（不指定资源名，服务器会找到默认的资源，一般默认的资源名是defaule.html 可以自己配置）</li>
+<li>注意伪URL的处理</li>
+<li>URL重写技术是为了增加SEO搜索引擎优化的，动态的网址一般不能被搜索引擎收录，所以我们要把动态网址静态化，此时需要的是重写URL</li>
+<li>服务器接收到请求后</li>
+</ul>
+<ol>
+<li>根据端口号找到对应的项目</li>
+<li>根据请求资源的路径名称找到对应的资源</li>
+<li>将找到的资源传递给客户端</li>
+</ol>
+<p><strong>问号传参信息(?form=wx&amp;lx=1)</strong></p>
+<ul>
+<li>客户端把信息传递给服务器的方式</li>
+<li>URL地址问号传参</li>
+<li>请求报文传输（请求头和请求主体）</li>
+<li>也可以不同页面之间的信息交互，例如从列表到详情</li>
+</ul>
+<p><strong>HASH值(#zhufeng)</strong></p>
+<ul>
+<li>也能充当信息传输的方式</li>
+<li>锚点定位</li>
+<li>基于HASH实现路由管控（不同的HASH值，代表不同的组件和模块）</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-less" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/09/10/less/" class="article-date">
+  	<time datetime="2019-09-10T11:16:39.000Z" itemprop="datePublished">2019-09-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/10/less/">
+        less介绍
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="less"><a href="#less" class="headerlink" title="less"></a>less</h1><blockquote>
+<p><a href="http://lesscss.cn/" target="_blank" rel="noopener">http://lesscss.cn/</a><br>Less 是一门 CSS 预处理语言，它扩展了 CSS 语言，增加了变量、Mixin、函数等特性，使 CSS 更易维护和扩展。<br>预期类似的预编译器（语言）还有：sass/stylus等；所谓的预编译，就是把css这种标记语言，按照面向对象（编程语言）的方式进行编写，但是这种写法浏览器不能直接识别，需要我们把其再编译为正常的css代码才可以</p>
+</blockquote>
+<h2 id="less使用方式"><a href="#less使用方式" class="headerlink" title="less使用方式"></a>less使用方式</h2><blockquote>
+<p> less的编译常用的分为两种</p>
+</blockquote>
+<h3 id="1-开发环境下（开发项目的时候）"><a href="#1-开发环境下（开发项目的时候）" class="headerlink" title="1.开发环境下（开发项目的时候）"></a>1.开发环境下（开发项目的时候）</h3><blockquote>
+<p>我们基于less-2.5.3.min.js进行编译：基于link把less文件导入，但是rel的值必须是stylesheet/less，这样导入的js会找到这些less文件，把less编译为css即可</p>
+</blockquote>
+<p>###2.生产环境中（项目部署上线的时候）</p>
+<blockquote>
+<p>我们需要把less编译为css，然后让页面中导入的都是编译后的css，需要基于node环境，并且基于less模块进行编译（命令操作方式）<br> 安装node（安装npm）<br>          $ npm install less -g<br>找到对应的less文件目录，在目录中：$ lessc xxx.less xxx.css  -x(设置-x是为了把代码压缩))</p>
+</blockquote>
+<p>###less注意事项</p>
+<blockquote>
+<p>我们基于@import最好导入的是LESS文件（只有这样最后才能编译到一起；设置reference是只导入进来调取使用，编译的时候不进行编译；</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@import (reference) &apos;./common.less&apos;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="less-1"><a href="#less-1" class="headerlink" title="less"></a>less</h3><blockquote>
+<ol>
+<li>嵌套（减少前缀） </li>
+<li>每一个大括号都是一个私有的作用域，在里面用到的变量，先看是否为私有的（是否在当前作用域中声明过和形参变量），不是私有的，找上级作用域中的 =&gt;”类似于JS作用域链这套机制” </li>
+<li>unit(变量名，变更单位)：less中内置的函数，用来设置或者去除单位的（有单位就是去除单位，没单位就是加上单位）</li>
+<li>一般变量设置时都不加单位，什么时候用再加单位</li>
+<li>&amp;嵌套中的连接符,让后面的选择器紧挨着父选择器 .box1&gt;img</li>
+<li>@W-20这样被理解为是一个变量名（变量名可以包含-）</li>
+</ol>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">.box1 &#123;</span><br><span class="line">	@A1: lightgreen;</span><br><span class="line">	@W: 200;</span><br><span class="line">	@H: 200px;</span><br><span class="line">	.func_center(@W, unit(@H, px));</span><br><span class="line">	box-sizing: border-box;</span><br><span class="line">	width: unit(@W, px);</span><br><span class="line">	height: @H;</span><br><span class="line">	border: 5px solid @A1;</span><br><span class="line">	//.box1 img</span><br><span class="line">	img &#123;</span><br><span class="line">		//@W-20这样被理解为是一个变量名（变量名可以包含-）</span><br><span class="line">		width: unit((@W)-20, px);</span><br><span class="line">		height: unit(unit(@H, px)-20, px);</span><br><span class="line">	&#125;</span><br><span class="line">	//&amp;嵌套中的连接符,让后面的选择器紧挨着父选择器 .box1&gt;img</span><br><span class="line">	// &amp;&gt;img &#123;</span><br><span class="line">	// 	transform: skew(45deg);</span><br><span class="line">	// &#125;</span><br><span class="line">	//.box1:hover</span><br><span class="line">	&amp;:hover &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="less中的三种函数"><a href="#less中的三种函数" class="headerlink" title="less中的三种函数"></a>less中的三种函数</h3><blockquote>
+<p> 1.每一个样式类都能被充当一个函数，直接在其它的作用域中调取执行（执行特点：不需要传参，可以不加小括号） =&gt;这种函数的调用是把原有的代码都原封不动的拿过来一份一模一样的（包括其所有的后代样式）<br> 2.带参数的函数（创建函数带着小括号），也是直接点的方式调用，但是编译成为css的时候，函数不会编译，但是函数执行出来的代码会放到每一个调取函数的选择器中，<strong>存在argument</strong><br>3.less中的内置函数</p>
+<blockquote>
+<p>  unit(变量名，变量单位)<br> darken(颜色变量名，变深百分比)<br> lighten(颜色变量名，变浅百分比)</p>
+</blockquote>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">.box2 &#123;</span><br><span class="line"> 	.box1;</span><br><span class="line"> &#125;</span><br><span class="line"> .box2 &#123;</span><br><span class="line"> 	&amp;:extend(.box1);</span><br><span class="line"> &#125;</span><br><span class="line"> .box2:extend(.box1) &#123;&#125;</span><br><span class="line"> .link &#123;</span><br><span class="line">	@BG: lightblue;</span><br><span class="line">	margin: 20px;</span><br><span class="line">	width: 100px;</span><br><span class="line">	height: 35px;</span><br><span class="line">	border: 1px solid #AAA;</span><br><span class="line">	background: @BG;</span><br><span class="line">	&amp;:hover &#123;</span><br><span class="line">		background: lighten(@BG, 10%);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="less中的继承extend"><a href="#less中的继承extend" class="headerlink" title="less中的继承extend"></a>less中的继承extend</h3><blockquote>
+<p>1.基于继承也能实现样式的公用（原理：两个样式类公用同一套代码，但是后代样式不能被继承）</p>
+</blockquote>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>开源精神、极客精神-数组的相关方法 | 码农乐园</title>
+
+  <!-- keywords -->
+  
+    <meta name="keywords" content="开源精神、极客精神">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="数组及常用方法 数组是对象数据类型的，属于特殊的对象。 数字作为索引(key)，length代表数组长度。 ary[key]:表示数组中第key个元素。Array.prototype上的方法从哪些方面记忆数组   方法的作用和含义 方法的实参（类型和含义） 方法的返回值 原来的数组会不会发生改变数组中增删改查的方法这部分方法都会修改原有的数组arg[arg.length]=5;可以根据这种方式进行">
+<meta name="keywords" content="JS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数组的相关方法">
+<meta property="og:url" content="http://yoursite.com/2019/09/21/数组的相关方法/index.html">
+<meta property="og:site_name" content="码农乐园">
+<meta property="og:description" content="数组及常用方法 数组是对象数据类型的，属于特殊的对象。 数字作为索引(key)，length代表数组长度。 ary[key]:表示数组中第key个元素。Array.prototype上的方法从哪些方面记忆数组   方法的作用和含义 方法的实参（类型和含义） 方法的返回值 原来的数组会不会发生改变数组中增删改查的方法这部分方法都会修改原有的数组arg[arg.length]=5;可以根据这种方式进行">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2019-09-21T13:55:44.549Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数组的相关方法">
+<meta name="twitter:description" content="数组及常用方法 数组是对象数据类型的，属于特殊的对象。 数字作为索引(key)，length代表数组长度。 ary[key]:表示数组中第key个元素。Array.prototype上的方法从哪些方面记忆数组   方法的作用和含义 方法的实参（类型和含义） 方法的返回值 原来的数组会不会发生改变数组中增删改查的方法这部分方法都会修改原有的数组arg[arg.length]=5;可以根据这种方式进行">
+  
+    <link rel="alternative" href="/atom.xml" title="码农乐园" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+  
+</head></html>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/1.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">陈文才</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">狂奔的小蜗牛</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="mail" target="_blank" href="/chen1241675760@163.com" title="mail">mail</a>
+					        
+								<a class="qq" target="_blank" href="/1241675760" title="qq">qq</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/面试/" style="font-size: 15px;">面试</a> <a href="/tags/项目/" style="font-size: 10px;">项目</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://wangyiye.github.io/">wangyiya</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://yuanxiaochen1.github.io">yuanxiaochen</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://jinshixi.github.io">jinshixi</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://chaiyongsheng0.github.io">chaiyongsheng0</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://ningwei7.github.io">ningwei</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">陈文才</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/1.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">陈文才</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">狂奔的小蜗牛</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="mail" target="_blank" href="/chen1241675760@163.com" title="mail">mail</a>
+			        
+						<a class="qq" target="_blank" href="/1241675760" title="qq">qq</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-数组的相关方法" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/09/21/数组的相关方法/" class="article-date">
+  	<time datetime="2019-09-21T09:42:53.000Z" itemprop="datePublished">2019-09-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      数组的相关方法
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
+	</div>
+
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="数组及常用方法"><a href="#数组及常用方法" class="headerlink" title="数组及常用方法"></a>数组及常用方法</h1><ul>
+<li>数组是对象数据类型的，属于特殊的对象。</li>
+<li>数字作为索引(key)，length代表数组长度。</li>
+<li>ary[key]:表示数组中第key个元素。<h2 id="Array-prototype上的方法"><a href="#Array-prototype上的方法" class="headerlink" title="Array.prototype上的方法"></a>Array.prototype上的方法</h2>从哪些方面记忆数组</li>
+</ul>
+<ol>
+<li>方法的作用和含义</li>
+<li>方法的实参（类型和含义）</li>
+<li>方法的返回值</li>
+<li>原来的数组会不会发生改变<h3 id="数组中增删改查的方法"><a href="#数组中增删改查的方法" class="headerlink" title="数组中增删改查的方法"></a>数组中增删改查的方法</h3>这部分方法都会<strong>修改原有的数组</strong><br>arg[arg.length]=5;可以根据这种方式进行数组增加，但是不能删除，删除只能删除索引和值，但不会改变length属性，破坏了数组的结构。</li>
+<li>push():向数组末尾增加内容<br> @params：多个任意类型的实参<br> @return：新增后数组的<strong>长度</strong></li>
+<li>unshift()：向数组开头增加内容<br> @params：多个任意类型的实参<br> @return：新增后数组的<strong>长度</strong></li>
+<li>shift() :删除数组中的第一项<br> @params:没有参数<br> @return:删除的那一项值</li>
+<li>pop():删除数组最后一项内容<br> @params:没有参数<br> @return:删除的那一项值<br> 用原生JS方式：length–;</li>
+<li>splice():可以进行数组的增删改。万能方法</li>
+</ol>
+<ul>
+<li>删除：<br>  @params:n,m  都是数字（代表从索引n开始，删除m个元素，m不写，一直删除到数组末尾）<br>  @return:删除的那部分以新数组的形式存储起来，返回<br>  arg.splice(n,m)</li>
+<li>修改：<br>  @params:n,m,xxx （代表从索引n开始，删除m个元素，用xxx代替删除的内容）<br>  @return:删除的那部分以新数组的形式存储起来，返回<br>  arg.splice(n,m,xxx)</li>
+<li>增加：<br>  @params:n,0,xxx  （代表从索引n开始，删除0个元素，把xxx插入到索引为n处）<br>  @return:增加不删除，所以返回的是空数组<br>  arg.splice(n,0,xxx)<h3 id="数组中查询和拼接的方法"><a href="#数组中查询和拼接的方法" class="headerlink" title="数组中查询和拼接的方法"></a>数组中查询和拼接的方法</h3>这部分方法都<strong>不会修改原有的数组</strong></li>
+</ul>
+<ol>
+<li>slice(): 实现数组的查询(支持负数索引)<br> @params:n,m 都是数字（从索引n 开始,一直找到索引m,不包括m）<br> @return:把找到的内容以新数组的形式返回</li>
+<li>concat():实现数组拼接<br> @params:多个任意类型值<br> @return:拼接后的新数组（原数组不变）<h3 id="把数组转化为字符串的方法"><a href="#把数组转化为字符串的方法" class="headerlink" title="把数组转化为字符串的方法"></a>把数组转化为字符串的方法</h3></li>
+</ol>
+<p><strong>原数组不变</strong></p>
+<ol>
+<li>toString(): 把数组转换为字符串<br> @params:没有<br> @return:转换后的字符串，每一项用<strong>逗号</strong>隔开（原数组不变）</li>
+<li>joio():将数组转换为字符串（可以指定分隔符）<br> @params:需要指定的分隔符（字符串格式，默认为<strong>逗号</strong>）<br> @return:转换后的字符串，每一项用<strong>逗号</strong>隔开（原数组不变）<br> eval(res);:将字符串res变为JS表达式<h3 id="检测数组中是否包含某一项"><a href="#检测数组中是否包含某一项" class="headerlink" title="检测数组中是否包含某一项"></a>检测数组中是否包含某一项</h3></li>
+</ol>
+<p><strong>原来的数组不变</strong></p>
+<ol>
+<li>indexOf()：检测当前数组项在数组中第一次出现的索引<br> @params:需要查找的数组项<br> @return:当前数组项在数组中第一次出现的索引，如果数组中没有这一项，返回的结果是-1</li>
+<li>lasetIndexOf()：检测当前数组项在数组中最后一次出现的索引<br> @params:需要查找的数组项<br> @return:当前数组项在数组中最后一次出现的索引，如果数组中没有这一项，返回的结果是-1</li>
+<li>includes():检测数组中是否包含某项<br> @params:需要查找的数组项<br> @return:如果存在返回true，否则返回false<h3 id="数组排序或者排列的方法"><a href="#数组排序或者排列的方法" class="headerlink" title="数组排序或者排列的方法"></a>数组排序或者排列的方法</h3></li>
+</ol>
+<p><strong>原来的数组改变</strong></p>
+<ol>
+<li>reverse()：把数组倒过来排列<br> @params:无<br> @return:排序后的数组</li>
+<li>sort():实现数组排序（默认从小到大排序）<br> @params:可以没有，也可以是个函数(如果不传递参数是无法实现10以上数字排序的，因为他是按照第一个字符大小排序的<br> @return:排序后的新数组<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[12, 23, 34].sort((a, b) =&gt; &#123;</span><br><span class="line">	//a:数组下一项 23</span><br><span class="line">	//b:数组当前项 12</span><br><span class="line">	//如果返回&lt;0的值，让a/b交换位置</span><br><span class="line">	// return a - b;</span><br><span class="line">    //如果a,b是字符</span><br><span class="line">    //a.localeCompare(b)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="遍历数组中每一项中的方法"><a href="#遍历数组中每一项中的方法" class="headerlink" title="遍历数组中每一项中的方法"></a>遍历数组中每一项中的方法</h3><ol>
+<li>forEach():遍历数组中每一项的方法<br> @params:回调函数<br> @return:无<br> <strong>注意：forEach()不改变原数组</strong><h3 id="填充数组的方法。改变原数组"><a href="#填充数组的方法。改变原数组" class="headerlink" title="填充数组的方法。改变原数组"></a>填充数组的方法。改变原数组</h3></li>
+<li>fill(xxx,n,m):用一个固定值填充一个数组中从其实索引到终止索引（不包括终止索引）的所有元素<br> @params:第一个是要被填充的元素，后两个是索引，不写默认全部填充<br> @return:填充后的数组<h2 id="Array私有属性上的方法"><a href="#Array私有属性上的方法" class="headerlink" title="Array私有属性上的方法"></a>Array私有属性上的方法</h2></li>
+</ol>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/09/21/字符串的相关方法/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          字符串的相关方法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/09/18/常用的事件行为/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">常用的事件行为</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="ds-share share" data-thread-key="数组的相关方法" data-title="数组的相关方法" data-url="http://yoursite.com/2019/09/21/数组的相关方法/"  data-images="/img/1.jpg" data-content="数组的相关方法">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+ 
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2019 陈文才
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+</body>
+</html>
