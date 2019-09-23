@@ -119,7 +119,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/面试/" style="font-size: 15px;">面试</a> <a href="/tags/项目/" style="font-size: 10px;">项目</a>
+						<a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/面试/" style="font-size: 15px;">面试</a> <a href="/tags/项目/" style="font-size: 10px;">项目</a>
 					</div>
 				</section>
 				
@@ -190,6 +190,182 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-AJAX介绍" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/09/13/AJAX介绍/" class="article-date">
+  	<time datetime="2019-09-13T09:13:43.000Z" itemprop="datePublished">2019-09-13</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/13/AJAX介绍/">
+        AJAX介绍
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="AJAX（客户端和服务器之间的数据交互）"><a href="#AJAX（客户端和服务器之间的数据交互）" class="headerlink" title="AJAX（客户端和服务器之间的数据交互）"></a>AJAX（客户端和服务器之间的数据交互）</h1><h2 id="AJAX基础知识"><a href="#AJAX基础知识" class="headerlink" title="AJAX基础知识"></a>AJAX基础知识</h2><h3 id="AJAX介绍"><a href="#AJAX介绍" class="headerlink" title="AJAX介绍"></a>AJAX介绍</h3><pre><code>1. ajax：async JavaScript and xml（异步的js和xml）
+2. 此处的异步指的是局部刷新（对应的是全局刷新）</code></pre><h3 id="服务器渲染"><a href="#服务器渲染" class="headerlink" title="服务器渲染"></a>服务器渲染</h3><pre><code>1. 服务器接收到请求后，找到指定的页面，找到页面源代码
+2. 根据需求从数据库中获取到需要动态展示的数据
+3. 把页面和数据混合在一起进行渲染，生成有结构样式和数据的完整页面
+4. 把渲染的完整页面返回给客户端</code></pre><p><strong>服务器渲染特点：</strong><br>    1. 我们看到的内容都是在服务器端渲染的，客户端只是将渲染后的完整页面展示出来。但是<strong>服务器渲染只能全局刷新</strong><br>    2. 全局刷新性能体验差，服务器压力大<br>    3. 当服务器性很高时，页面呈现速度快，异步到位<br>    4. 由于内容在服务器端已经渲染好了，所以在页面源代码中都可以看到内容，有利于SEO搜索优化<br>    5. 不利于团队协作开发</p>
+<h3 id="客户端渲染"><a href="#客户端渲染" class="headerlink" title="客户端渲染"></a>客户端渲染</h3><pre><code>1. 服务器接收请求后，把需要的页面代码返回给客户端
+2. 客户端拿到代码进行渲染，此时只有结构和样式，没有数据
+3. 客户端向服务器发送请求，请求数据
+4. 服务器获得请求信息，把数据返回给客户端
+5. 客户端获取数据并展示在页面上（**可以实现局部刷新**）</code></pre><p><strong>客户端渲染特点：</strong><br>    1. 可以实现页面的局部刷新。减少服务器的压力<br>    2. 可以实现数据的分批加载。先请求结构和样式，不请求数据，滚动到当前页再发送ajax请求，渲染数据。<br>    3. 由客户端渲染的内容不会出现在页面的源代码中，不利于SEO优化。</p>
+<p>###当代项目开发的整个架构模型<br>    1. 纯服务器渲染（需要做SEO优化）<br>    2. 混编模式：部分是服务器渲染，部分是客户端渲染的<br>        * 骨架屏：首屏内容是服务器渲染（目的是首屏加载速度变快，对服务器压力大），其余屏内容都是客户端基于ajax获取渲染的，对于表单提交等数据操作都是客户端基于ajax操作<br>    3. 完全客户端和服务器分离开发（目前常用，完全前后端分离）<br>        * vue<br>        * react<br>    4. 把vue、react在服务器端基于node来渲染(服务器渲染)</p>
+<h2 id="XML介绍"><a href="#XML介绍" class="headerlink" title="XML介绍"></a>XML介绍</h2><p><strong>xml：</strong>可扩展标记语言。可扩展标记语言仅仅是存储数据，用自己定义的标签来存储数据。可以清晰的展示对应的数据和结构层级。<br><strong>JSON：</strong>现在开发使用的存储数据的语言。比xml更清晰的展示数据结构，而且同样的数据存储，json更加轻量，操作更加简单。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试/">面试</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-性能优化" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/09/13/性能优化/" class="article-date">
+  	<time datetime="2019-09-13T06:03:08.000Z" itemprop="datePublished">2019-09-13</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/13/性能优化/">
+        性能优化
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前端性能优化"><a href="#前端性能优化" class="headerlink" title="前端性能优化"></a>前端性能优化</h1><h2 id="1-减少HTTP请求次数和传输报文的大小"><a href="#1-减少HTTP请求次数和传输报文的大小" class="headerlink" title="1. 减少HTTP请求次数和传输报文的大小"></a>1. 减少HTTP请求次数和传输报文的大小</h2><ol>
+<li><strong>文件合并压缩</strong></li>
+<li>雪碧图 css sprite</li>
+<li>图片base64（用base码代表图片，减少HTTP请求，增加浏览器渲染速度，所以真实项目中，尤其是移动端，如果图片加载缓慢，可能base64就好了；但是，base64不利于维护和开发，所以少使用；）</li>
+<li>尽量使用字体图标（icon font）或者SVG等矢量图<br> <strong>优势：</strong><ol>
+<li>减少HTTP请求次数和传输报文的大小</li>
+<li>渲染更快：他们都是基于代码渲染的，而对于位图（.gif/jpg/gif）是需要先把图片编码在渲染</li>
+<li>不容易失帧变形</li>
+</ol>
+</li>
+<li><strong>图片懒加载（延迟加载技术）（数据懒加载，不要一次加载太多数据）</strong><br> <strong>优势：</strong><ol>
+<li>第一次加载不去加载真实的图片，提高第一次渲染页面的速度</li>
+<li>当页面加载完，把出现在用户视野中的图片加载，不出现的不加载（节约流量，也减少了对服务器的压力）</li>
+</ol>
+</li>
+<li>音视频取消预加载</li>
+<li>在客户端和服务器端进行信息交互的时候，对于多项数据我们尽可能基于JSON格式来进行传送（JSON格式的数据处理方便，资源偏小），XML格式比JSON格式要大（还可以基于二进制或者文件流传输）</li>
+<li>开启服务器端的gzip压缩。把页面中的CSS、JS、图片等文件进行合并并压缩<br> 合并：争取css和js都只导入一个（webpack可以实现自动合并压缩）<br> 压缩：基于webpack可以压缩，对于图片自己可以先压缩，还可以使用服务器的GZIP压缩</li>
+<li>图片地图：对于多次调取使用的图片（尤其是背景图），我们尽可能把它提取成为公共的样式，需要的时候加上样式就可以了，不需要每次都舍此background。<h2 id="2-设置各种缓存、预处理和长连接机制"><a href="#2-设置各种缓存、预处理和长连接机制" class="headerlink" title="2. 设置各种缓存、预处理和长连接机制"></a>2. 设置各种缓存、预处理和长连接机制</h2><h3 id="网络缓存优化"><a href="#网络缓存优化" class="headerlink" title="网络缓存优化"></a>网络缓存优化</h3></li>
+<li>DNS缓存或者预处理（DNS PREFETCH），减少DNS的查找</li>
+<li>把不经常更改的静态资源做缓存处理。强缓存(Expires HTTP) 和 协商缓存（304）</li>
+<li>建立connection：keep-alive ，TCP长连接<h3 id="本地缓存优化"><a href="#本地缓存优化" class="headerlink" title="本地缓存优化"></a>本地缓存优化</h3></li>
+<li>设置本地的离线存储（manifest）或者把一些不经常更改的数据做成本地临时存储<br>###其他优化</li>
+<li>地域分布式服务器CDN。还可以加服务器（都需要很多钱）</li>
+<li>使用HTTP2版本协议（现在一般都是HTTP1.1）<br> HTTP2版本协议支持多条TCP通道共存=》管道化连接<h2 id="3-代码方面的性能优化"><a href="#3-代码方面的性能优化" class="headerlink" title="3. 代码方面的性能优化"></a>3. 代码方面的性能优化</h2></li>
+<li>减少DOM的重绘和回流（减少直接对DOM操作），当代项目一般都是基于mvvm、mvc数据驱动视图渲染的，性能要好。</li>
+<li>在JS中尽量减少闭包的使用<br> <strong>原理：</strong>过多使用闭包会产生不销毁的内存，处理不好会导致“栈溢出”<br> 栈溢出实例：<ol>
+<li>死递归（可以用定时器方式解决）</li>
+<li>相互引用，形成嵌套式内存</li>
+</ol>
+</li>
+<li>在JS中避免“嵌套循环（嵌套循环会成倍增加循环次数）”和“死循环”</li>
+<li>尽可能使用事件委托。（也是减少dom操作）</li>
+<li>手动回收堆栈内存（赋值为null）</li>
+<li>尽可能减少选择器的层级。（CSS选择器解析规则是从右向左解析）</li>
+<li>避免使用iframe（因为iframe会嵌入其他页面，这样父页面渲染的时候还会把子页面渲染了，渲染进度会变慢）</li>
+<li>尽可能实现JS的封装（低耦合高内聚），减少页面中的冗余代码。</li>
+<li><ol>
+<li>尽量减少对于filter滤镜属性的使用（耗性能）。</li>
+<li>避免使用with语句（性能特别差）。</li>
+<li>尽量减少CSS表达式的使用(expression)（性能特别差，和with一样）</li>
+</ol>
+</li>
+<li>在项目中尽可能使用异步编程来模拟出多线程的效果，避免主线程阻塞。（在CSS导入的时候尽量减少使用@import导入式）</li>
+<li>对于动画来说，能使用css解决的不适用js，（能使用transform处理的，不用传统的css样式，应为transform开启了性能加速，不会引发回流，再或者使用定位元素，脱离文档流。使用window.requestAnimationFrame（JS中的帧动画）代替传统的定时器动画）<br>window.requestAnimationFrame：当页面处于休眠无访问状态，动画会自己暂停，知道恢复访问才开始，而定时器是不论什么状态，只要页面不关闭，动画一直运行</li>
+<li>减少递归的使用，避免死递归，避免由于递归导致的栈内存嵌套</li>
+<li>减少使用eval（主要原因是防止压缩代码时候，由于符号书写不规范，导致代码混乱）</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试/">面试</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-前端性能优化" class="article article-type-post" itemscope itemprop="blogPost">
   
