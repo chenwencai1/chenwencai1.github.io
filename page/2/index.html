@@ -119,7 +119,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/面试/" style="font-size: 15px;">面试</a> <a href="/tags/项目/" style="font-size: 10px;">项目</a>
+						<a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/面向对象/" style="font-size: 10px;">面向对象</a> <a href="/tags/面试/" style="font-size: 15px;">面试</a> <a href="/tags/项目/" style="font-size: 10px;">项目</a>
 					</div>
 				</section>
 				
@@ -241,6 +241,140 @@
       
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试/">面试</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-项目知识" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/09/13/项目知识/" class="article-date">
+  	<time datetime="2019-09-13T09:13:43.000Z" itemprop="datePublished">2019-09-13</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/13/项目知识/">
+        项目知识
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="项目结构目录"><a href="#项目结构目录" class="headerlink" title="项目结构目录"></a>项目结构目录</h1><ul>
+<li>admin：存储所有的后台程序</li>
+<li>client：客户端所有的程序<h2 id="admin"><a href="#admin" class="headerlink" title="admin"></a>admin</h2></li>
+</ul>
+<ol>
+<li>首先跑环境 $ npm i </li>
+<li>纠正一下基础的配置：config.js<ul>
+<li>port:后台程序运行的端口</li>
+<li>cros.allow_origin: 客户端程序运行的服务地址</li>
+</ul>
+</li>
+<li>启动服务：$ node server.js</li>
+<li>启动后的运行窗口不能关闭，关闭则后台服务器关闭<h2 id="client"><a href="#client" class="headerlink" title="client"></a>client</h2>客户端采用的技术栈：</li>
+<li>HTML5、CSS3（会用到字体图标）</li>
+<li>jQuery</li>
+<li>AXIOS</li>
+<li>辅助插件：jQuery.cookie/MD5/自己写的一些方法</li>
+<li>基于iframe构建最初版本的SPA单页面应用开发<br>服务端采用的技术栈：</li>
+<li>node</li>
+<li>express/express-pouter</li>
+<li>本应基于数据库存储，临时采用json文件存储数据</li>
+<li>session<h2 id="本地存储-VS-服务器存储"><a href="#本地存储-VS-服务器存储" class="headerlink" title="本地存储 VS 服务器存储"></a>本地存储 VS 服务器存储</h2><h3 id="本地存储：把信息存储在客户端本地。"><a href="#本地存储：把信息存储在客户端本地。" class="headerlink" title="本地存储：把信息存储在客户端本地。"></a>本地存储：把信息存储在客户端本地。</h3>谷歌控制台Application中都可以看到</li>
+</ol>
+<ul>
+<li>cookie</li>
+<li>H5中webStorage：localStorge/sessionStorage</li>
+<li>本地数据库存储：IndexDB</li>
+<li>本地缓存存储：manifest</li>
+<li>…<h4 id="本地存储使用场景"><a href="#本地存储使用场景" class="headerlink" title="本地存储使用场景"></a>本地存储使用场景</h4></li>
+</ul>
+<ol>
+<li>记住用户名和密码（或者自动登录）</li>
+<li>未登录状态下，加入购物车的信息一般也先存储到本地，当登录后再把信息存储到服务器上，实现多平台数据共享</li>
+<li>对应非实时刷新数据，我们可以在从服务器把数据获取到后，临时储存到本地（设置有效时间，在有效时间内内页面刷新，不再重新从服务器中获取信息，而是读取本地信息，超多有效时间，重新从服务器中获取信息）“前端数据优化的一点”</li>
+<li>实现同一个网站不同页面之间的信息共享和通信<h4 id="本地存储的特点"><a href="#本地存储的特点" class="headerlink" title="本地存储的特点"></a>本地存储的特点</h4></li>
+<li>本地存储是受浏览器限制的。不同浏览器之间不能信息共享</li>
+<li>受源（域）的限制。例如，都是谷歌浏览器，在京东网站存储的数据，在百度网站中获取不到。</li>
+<li>本地存储的信息在控制台可以看到，而且是明文存储，所以敏感的数据最好不要存储带本地，一定要存储到本地一定要做安全处理。（例如：加密）<h3 id="本地存储方法："><a href="#本地存储方法：" class="headerlink" title="本地存储方法："></a>本地存储方法：</h3>向本地存储的信息都是string字符串格式的</li>
+<li><strong>localStorage</strong>：持久化存储在客户端本地，除非手动清除或者浏览器卸载，否则一直存储下来，没有过期时间。</li>
+</ol>
+<ul>
+<li>localStorage.setItem([key],[value]) 存储信息</li>
+<li>localStorage.getItem([key])   获取信息</li>
+<li>localStorage.removeItem([key])  移除信息</li>
+<li>localStorage.clear()  清除所有存储的信息</li>
+</ul>
+<ol start="2">
+<li><strong>sessionStorage</strong>：会话存储（页面刷新存储页面还在，但是页面关闭后存储的信息就消失了）</li>
+</ol>
+<ul>
+<li>sessionStorage.setItem([key],[value]) 存储信息</li>
+<li>sessionStorage.getItem([key])   获取信息</li>
+<li>sessionStorage.removeItem([key])  移除信息</li>
+<li>sessionStorage.clear()  清除所有存储的信息</li>
+</ul>
+<ol start="3">
+<li><strong>cookie</strong>:</li>
+</ol>
+<ul>
+<li>设置、获取、移除cookie都是使用document.cookie=’age=25’;移除就是把cookit过期时间设置为已经过去的一个时间就可以了</li>
+<li>使用jQuery插件设置、获取、移除cookit<br>cookie=&gt;jquery.cookie.js<br>$.cookie(“userName”,”陈文才”)    设置cookie<br>$.cookie(“userName”)     获取cookie<br>$.cookie(“userName”,”陈文才”,{<br>  expires:new Date(new Date().getTime()+30<em>24</em>60<em>60</em>1000)<br>});<h4 id="cookie和localStorage的区别："><a href="#cookie和localStorage的区别：" class="headerlink" title="cookie和localStorage的区别："></a>cookie和localStorage的区别：</h4></li>
+</ul>
+<ol>
+<li>大小限制，一般浏览器允许一个源下cookie最多存储8kB。而localStorage被允许存储5MB</li>
+<li>兼容问题。cookie兼容所有浏览器，而localStorage是H5 中新增的，不兼容IE低版本浏览器</li>
+<li>稳定性。cookie有过期时间，但是一般不等到时间cookie可能就没有了，因为清除浏览器记录可以清除cookie，安全卫士清除也可以清除，而这些操作对localStorage没有影响。</li>
+<li>浏览器开启无痕浏览或者隐私模式，此时无法设置cookie，但是可以设置localStorage的信息。</li>
+<li>和服务器有联系。客户端和服务器端交互的时候，cookie信息会传来传去，而localStorage和服务器没有必然的联系，是单纯的本地存储</li>
+<li>存储时间。cookie有过期时间，而localStorage是持久化存储。<h3 id="服务器存储：把信息存储在服务器端"><a href="#服务器存储：把信息存储在服务器端" class="headerlink" title="服务器存储：把信息存储在服务器端"></a>服务器存储：把信息存储在服务器端</h3></li>
+</ol>
+<ul>
+<li>数据库存储：SQLServer/mySQL/oracle/Mongodb</li>
+<li>redis:缓存数据存储</li>
+<li>session</li>
+<li>…</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/项目/">项目</a></li></ul>
 	</div>
 
       
