@@ -11,18 +11,18 @@
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="欢迎进行交流纠正">
-<meta name="keywords" content="开源精神、极客精神">
+  <meta name="description" content="字符串以及字符串中常用的方法字符串 所有用单引号、双引号、反引号 包起来的都是字符串123456let str = &amp;apos;zhufengpeixunyangfanqihang&amp;apos;;// 每一个字符串都是由零到多个字符组成的str.length //=&amp;gt;字符串长度str[0] //=&amp;gt;获取索引为零（第一个）字符str[str.length-1] //=&amp;gt;获取最后一个字">
+<meta name="keywords" content="JS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="字符串的相关方法">
 <meta property="og:url" content="http://yoursite.com/2019/09/21/字符串的相关方法/index.html">
 <meta property="og:site_name" content="码农乐园">
-<meta property="og:description" content="欢迎进行交流纠正">
+<meta property="og:description" content="字符串以及字符串中常用的方法字符串 所有用单引号、双引号、反引号 包起来的都是字符串123456let str = &amp;apos;zhufengpeixunyangfanqihang&amp;apos;;// 每一个字符串都是由零到多个字符组成的str.length //=&amp;gt;字符串长度str[0] //=&amp;gt;获取索引为零（第一个）字符str[str.length-1] //=&amp;gt;获取最后一个字">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2019-09-21T09:43:37.433Z">
+<meta property="og:updated_time" content="2019-09-30T12:24:35.960Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="字符串的相关方法">
-<meta name="twitter:description" content="欢迎进行交流纠正">
+<meta name="twitter:description" content="字符串以及字符串中常用的方法字符串 所有用单引号、双引号、反引号 包起来的都是字符串123456let str = &amp;apos;zhufengpeixunyangfanqihang&amp;apos;;// 每一个字符串都是由零到多个字符组成的str.length //=&amp;gt;字符串长度str[0] //=&amp;gt;获取索引为零（第一个）字符str[str.length-1] //=&amp;gt;获取最后一个字">
   
     <link rel="alternative" href="/atom.xml" title="码农乐园" type="application/atom+xml">
   
@@ -216,6 +216,10 @@
       
       <div class="article-info article-info-post">
         
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
+	</div>
+
         
 
         
@@ -225,7 +229,51 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="字符串以及字符串中常用的方法"><a href="#字符串以及字符串中常用的方法" class="headerlink" title="字符串以及字符串中常用的方法"></a>字符串以及字符串中常用的方法</h1><h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><ul>
+<li>所有用单引号、双引号、反引号 包起来的都是字符串<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let str = &apos;zhufengpeixunyangfanqihang&apos;;</span><br><span class="line">// 每一个字符串都是由零到多个字符组成的</span><br><span class="line">str.length //=&gt;字符串长度</span><br><span class="line">str[0] //=&gt;获取索引为零（第一个）字符</span><br><span class="line">str[str.length-1] //=&gt;获取最后一个字符str.length-1最后一项索引</span><br><span class="line">str[10000] //=&gt;undefined 不存在这个索引</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="字符串常用的方法"><a href="#字符串常用的方法" class="headerlink" title="字符串常用的方法"></a>字符串常用的方法</h2><h3 id="charAt-n-：根据索引获取指定位置的字符"><a href="#charAt-n-：根据索引获取指定位置的字符" class="headerlink" title="charAt(n)：根据索引获取指定位置的字符"></a>charAt(n)：根据索引获取指定位置的字符</h3><pre><code>@params
+    n [number] 获取字符指定的索引
+@return 
+  返回查找到的字符
+  找不到返回的是空字符串，
+  而不是undefined，</code></pre><h3 id="charCodeAt-：获取指定字符的ASCII码值（Unicode编码值）"><a href="#charCodeAt-：获取指定字符的ASCII码值（Unicode编码值）" class="headerlink" title="charCodeAt()：获取指定字符的ASCII码值（Unicode编码值）"></a>charCodeAt()：获取指定字符的ASCII码值（Unicode编码值）</h3><pre><code>@params
+    n [number] 获取字符指定的索引
+@return 
+  返回查找到的字符的对应的编码值，找不到返回NaN </code></pre><pre><code>let str = &apos;zhufengpeixunyangfanqihang&apos;;
+console.log(str.charAt(0)); //=&gt;&apos;z&apos;
+console.log(str[0]); //=&gt;&apos;z&apos;
+console.log(str.charAt(10000)); //=&gt;&apos;&apos;
+console.log(str[10000]); //=&gt;undefined
+console.log(str.charCodeAt(0)); //=&gt;122
+console.log(String.fromCharCode(122)); //=&gt;&apos;z&apos;
+console.log(str.charCodeAt(30)) 
+//NaN</code></pre><h3 id="substr-substring-slice"><a href="#substr-substring-slice" class="headerlink" title="substr() /substring()/slice()"></a>substr() /substring()/slice()</h3><ul>
+<li>都是为了实现字符串的截取（在原来字符串中查找到自己想要的）</li>
+<li>substr(n,m)：从索引n开始截取<strong>m个字符</strong>，m不写截取到末尾（后面方法也是）</li>
+<li>substring(n,m)：从索引n开始找到索引为m处(不含m)</li>
+<li>slice(n,m)：和substring一样，都是找到索引为m处，但是slice可以支持负数作为索引，其余两个方法是不可以的<h3 id="indexOf-lastIndexOf-includes"><a href="#indexOf-lastIndexOf-includes" class="headerlink" title="indexOf()/lastIndexOf()/includes()"></a>indexOf()/lastIndexOf()/includes()</h3></li>
+<li>indexOf(x,y)：获取x第一次出现位置的索引，y是控制查找的起始位置索引</li>
+<li>lastIndexOf(x)：最后一次出现位置的索引</li>
+<li>=&gt;没有这个字符，<strong>返回的结果是-1</strong></li>
+<li>includes(),判断是否存在某个元素，存在返回true，否则false<h3 id="toUpperCase-toLowerCase"><a href="#toUpperCase-toLowerCase" class="headerlink" title="toUpperCase()/toLowerCase()"></a>toUpperCase()/toLowerCase()</h3></li>
+<li>字符串中字母的大小写转换</li>
+<li>toUpperCase()：转大写</li>
+<li>toLowerCase()：转小写<h3 id="split"><a href="#split" class="headerlink" title="split()"></a>split()</h3></li>
+<li>split([分隔符]):把字符串按照指定的分隔符拆分成数组（和数组中join对应） </li>
+<li>split支持传递正则表达式 <h3 id="replace-老字符，新字符"><a href="#replace-老字符，新字符" class="headerlink" title="replace(老字符，新字符)"></a>replace(老字符，新字符)</h3></li>
+<li>实现字符串的替换（经常伴随着正则使用）</li>
+<li>在不使用正则的情况下，执行一次replace()只能替换一次字符，并且每次都是从左到右一次查找<h3 id="match"><a href="#match" class="headerlink" title="match()"></a>match()</h3></li>
+<li>该match()方法检索将字符串与正则表达式匹配的结果。</li>
+<li>配合全局匹配下的正则可以解决正则的懒惰性。</li>
+<li>但是match()配合正则使用不能匹配小分组的内容<h3 id="localCompare"><a href="#localCompare" class="headerlink" title="localCompare()"></a>localCompare()</h3></li>
+<li>localeCompare() 方法返回一个数字来指示一个参考字符串是否在排序顺序前面或之后或与给定字符串相同。<br>  @return 如果引用字符存在于比较字符之前则为负数; 如果引用字符存在于比较字符之后则为正数; 相等的时候返回 0 </li>
+<li>一般先将字符串转为数组然后配合sort()方法进行字符串排序<h3 id="trim-trimLeft-trimRight"><a href="#trim-trimLeft-trimRight" class="headerlink" title="trim()/trimLeft()/trimRight()"></a>trim()/trimLeft()/trimRight()</h3></li>
+<li>trim()/trimLeft()/trimRight() 方法会从一个字符串的两端/左边/右边删除空白字符。</li>
+</ul>
+
       
     </div>
     
