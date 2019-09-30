@@ -11,18 +11,18 @@
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="数组及常用方法 数组是对象数据类型的，属于特殊的对象。 数字作为索引(key)，length代表数组长度。 ary[key]:表示数组中第key个元素。Array.prototype上的方法从哪些方面记忆数组   方法的作用和含义 方法的实参（类型和含义） 方法的返回值 原来的数组会不会发生改变数组中增删改查的方法这部分方法都会修改原有的数组arg[arg.length]=5;可以根据这种方式进行">
+  <meta name="description" content="数组及常用方法 数组是对象数据类型的，属于特殊的对象,也是由键值对组成的。 1234567let arg=[1,2,3,4];&amp;lt;!-- 结构： --&amp;gt;0：11：22：33：4length:4  数组以数字为索引（属性名），从零开始，逐级递增   数字作为索引(key).length代表数组长度。  ary[key]:表示数组中第key个元素。 Array.prototype上的方法从哪">
 <meta name="keywords" content="JS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数组的相关方法">
 <meta property="og:url" content="http://yoursite.com/2019/09/21/数组的相关方法/index.html">
 <meta property="og:site_name" content="码农乐园">
-<meta property="og:description" content="数组及常用方法 数组是对象数据类型的，属于特殊的对象。 数字作为索引(key)，length代表数组长度。 ary[key]:表示数组中第key个元素。Array.prototype上的方法从哪些方面记忆数组   方法的作用和含义 方法的实参（类型和含义） 方法的返回值 原来的数组会不会发生改变数组中增删改查的方法这部分方法都会修改原有的数组arg[arg.length]=5;可以根据这种方式进行">
+<meta property="og:description" content="数组及常用方法 数组是对象数据类型的，属于特殊的对象,也是由键值对组成的。 1234567let arg=[1,2,3,4];&amp;lt;!-- 结构： --&amp;gt;0：11：22：33：4length:4  数组以数字为索引（属性名），从零开始，逐级递增   数字作为索引(key).length代表数组长度。  ary[key]:表示数组中第key个元素。 Array.prototype上的方法从哪">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2019-09-21T13:55:44.549Z">
+<meta property="og:updated_time" content="2019-09-30T04:07:56.557Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数组的相关方法">
-<meta name="twitter:description" content="数组及常用方法 数组是对象数据类型的，属于特殊的对象。 数字作为索引(key)，length代表数组长度。 ary[key]:表示数组中第key个元素。Array.prototype上的方法从哪些方面记忆数组   方法的作用和含义 方法的实参（类型和含义） 方法的返回值 原来的数组会不会发生改变数组中增删改查的方法这部分方法都会修改原有的数组arg[arg.length]=5;可以根据这种方式进行">
+<meta name="twitter:description" content="数组及常用方法 数组是对象数据类型的，属于特殊的对象,也是由键值对组成的。 1234567let arg=[1,2,3,4];&amp;lt;!-- 结构： --&amp;gt;0：11：22：33：4length:4  数组以数字为索引（属性名），从零开始，逐级递增   数字作为索引(key).length代表数组长度。  ary[key]:表示数组中第key个元素。 Array.prototype上的方法从哪">
   
     <link rel="alternative" href="/atom.xml" title="码农乐园" type="application/atom+xml">
   
@@ -230,9 +230,16 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="数组及常用方法"><a href="#数组及常用方法" class="headerlink" title="数组及常用方法"></a>数组及常用方法</h1><ul>
-<li>数组是对象数据类型的，属于特殊的对象。</li>
-<li>数字作为索引(key)，length代表数组长度。</li>
-<li>ary[key]:表示数组中第key个元素。<h2 id="Array-prototype上的方法"><a href="#Array-prototype上的方法" class="headerlink" title="Array.prototype上的方法"></a>Array.prototype上的方法</h2>从哪些方面记忆数组</li>
+<li><p>数组是对象数据类型的，属于特殊的对象,也是由键值对组成的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let arg=[1,2,3,4];</span><br><span class="line">&lt;!-- 结构： --&gt;</span><br><span class="line">0：1</span><br><span class="line">1：2</span><br><span class="line">2：3</span><br><span class="line">3：4</span><br><span class="line">length:4</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数组以数字为索引（属性名），从零开始，逐级递增 </p>
+</li>
+<li><p>数字作为索引(key).length代表数组长度。</p>
+</li>
+<li><p>ary[key]:表示数组中第key个元素。</p>
+<h2 id="Array-prototype上的方法"><a href="#Array-prototype上的方法" class="headerlink" title="Array.prototype上的方法"></a>Array.prototype上的方法</h2><p>从哪些方面记忆数组</p>
+</li>
 </ul>
 <ol>
 <li>方法的作用和含义</li>
@@ -257,9 +264,11 @@
 <p><strong>原数组不变</strong></p>
 <ol>
 <li>toString(): 把数组转换为字符串<br> @params:没有<br> @return:转换后的字符串，每一项用<strong>逗号</strong>隔开（原数组不变）</li>
-<li>joio():将数组转换为字符串（可以指定分隔符）<br> @params:需要指定的分隔符（字符串格式，默认为<strong>逗号</strong>）<br> @return:转换后的字符串，每一项用<strong>逗号</strong>隔开（原数组不变）<br> eval(res);:将字符串res变为JS表达式<h3 id="检测数组中是否包含某一项"><a href="#检测数组中是否包含某一项" class="headerlink" title="检测数组中是否包含某一项"></a>检测数组中是否包含某一项</h3></li>
+<li>join():将数组转换为字符串（可以指定分隔符）<br> @params:需要指定的分隔符（字符串格式，默认为<strong>逗号</strong>）<br> @return:转换后的字符串，每一项用<strong>逗号</strong>隔开（原数组不变）<br> eval(res);:将字符串res变为JS表达式 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let arg=[1,2,3,4,5,6,7,8,9];</span><br><span class="line">let n=eval(arg.join(&apos;+&apos;));</span><br><span class="line">consolg.log(n);  // n=55</span><br></pre></td></tr></table></figure>
+
+</li>
 </ol>
-<p><strong>原来的数组不变</strong></p>
+<h3 id="检测数组中是否包含某一项"><a href="#检测数组中是否包含某一项" class="headerlink" title="检测数组中是否包含某一项"></a>检测数组中是否包含某一项</h3><p><strong>原来的数组不变</strong></p>
 <ol>
 <li>indexOf()：检测当前数组项在数组中第一次出现的索引<br> @params:需要查找的数组项<br> @return:当前数组项在数组中第一次出现的索引，如果数组中没有这一项，返回的结果是-1</li>
 <li>lasetIndexOf()：检测当前数组项在数组中最后一次出现的索引<br> @params:需要查找的数组项<br> @return:当前数组项在数组中最后一次出现的索引，如果数组中没有这一项，返回的结果是-1</li>
@@ -268,13 +277,49 @@
 <p><strong>原来的数组改变</strong></p>
 <ol>
 <li>reverse()：把数组倒过来排列<br> @params:无<br> @return:排序后的数组</li>
-<li>sort():实现数组排序（默认从小到大排序）<br> @params:可以没有，也可以是个函数(如果不传递参数是无法实现10以上数字排序的，因为他是按照第一个字符大小排序的<br> @return:排序后的新数组<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[12, 23, 34].sort((a, b) =&gt; &#123;</span><br><span class="line">	//a:数组下一项 23</span><br><span class="line">	//b:数组当前项 12</span><br><span class="line">	//如果返回&lt;0的值，让a/b交换位置</span><br><span class="line">	// return a - b;</span><br><span class="line">    //如果a,b是字符</span><br><span class="line">    //a.localeCompare(b)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<li>sort():实现数组排序（默认从小到大排序）<br> @params:可以没有，也可以是个函数(如果不传递参数是无法实现10以上数字排序的，因为他是按照第一个字符大小排序的<br> @return:排序后的新数组<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[12, 23, 34].sort((a, b) =&gt; &#123;</span><br><span class="line">	//a:数组下一项 23</span><br><span class="line">	//b:数组当前项 12</span><br><span class="line">	//如果返回&lt;0的值，让a/b交换位置</span><br><span class="line">	// return a - b;</span><br><span class="line">    //如果a,b是字符（用于字符串排序）</span><br><span class="line">    //a.localeCompare(b)</span><br><span class="line">    //同样a是数组下一项字符，b是数组当前项</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
 <h3 id="遍历数组中每一项中的方法"><a href="#遍历数组中每一项中的方法" class="headerlink" title="遍历数组中每一项中的方法"></a>遍历数组中每一项中的方法</h3><ol>
 <li>forEach():遍历数组中每一项的方法<br> @params:回调函数<br> @return:无<br> <strong>注意：forEach()不改变原数组</strong><h3 id="填充数组的方法。改变原数组"><a href="#填充数组的方法。改变原数组" class="headerlink" title="填充数组的方法。改变原数组"></a>填充数组的方法。改变原数组</h3></li>
-<li>fill(xxx,n,m):用一个固定值填充一个数组中从其实索引到终止索引（不包括终止索引）的所有元素<br> @params:第一个是要被填充的元素，后两个是索引，不写默认全部填充<br> @return:填充后的数组<h2 id="Array私有属性上的方法"><a href="#Array私有属性上的方法" class="headerlink" title="Array私有属性上的方法"></a>Array私有属性上的方法</h2></li>
+<li>fill(xxx,n,m):用一个固定值填充一个数组中从其实索引到终止索引（不包括终止索引）的所有元素<br> @params:第一个是要被填充的元素，后两个是索引，不写默认全部填充<br> @return:填充后的数组<h3 id="every"><a href="#every" class="headerlink" title="every()"></a>every()</h3></li>
+<li>方法测试一个数组内的所有元素是否都能通过某个指定函数的测试。它返回一个布尔值<br> @params：回调函数<br> @return：布尔值<br> 语法：arg.every(callback)<br> callback 在被调用时可传入三个参数：元素值，元素的索引，原数组。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function isBigEnough(element, index, array) &#123;</span><br><span class="line"> return element &gt;= 10;</span><br><span class="line">&#125;</span><br><span class="line">[12, 5, 8, 130, 44].every(isBigEnough);   // false</span><br><span class="line">[12, 54, 18, 130, 44].every(isBigEnough); // true</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="filter-不改变原来数组"><a href="#filter-不改变原来数组" class="headerlink" title="filter():不改变原来数组"></a>filter():不改变原来数组</h3><ol>
+<li><p>filter(callback) 方法创建一个新数组, 其包含通过所提供函数实现的测试的所有元素。<br> 语法：<br> var newArray = arr.filter(callback(element[, index[, array]])[, thisArg])<br> @return:一个新的、由通过测试的元素组成的数组，如果没有任何数组元素通过测试，则返回空数组。</p>
+<h3 id="find"><a href="#find" class="headerlink" title="find()"></a>find()</h3></li>
+<li><p>find(callback) 方法返回数组中满足提供的测试函数的第一个元素的值。否则返回 undefined。<br>语法：arr.find(callback[, thisArg])<br>@params:callback<br>@return:返回数组中满足提供的测试函数的第一个元素的值。否则返回</p>
+</li>
+<li><p>findIndex() 方法，它返回数组中找到的元素的索引，而不是其值。</p>
+<h3 id="some"><a href="#some" class="headerlink" title="some()"></a>some()</h3></li>
+<li><p>some(callback) 方法测试数组中是不是有元素通过了被提供的函数测试。它返回的是一个Boolean类型的值。<br> 语法：<br> arr.some(callback(element[, index[, array]])[, thisArg])<br> @params:callback<br> @return:通过返回true，否则返回false</p>
+<h3 id="map"><a href="#map" class="headerlink" title="map()"></a>map()</h3></li>
+<li><p>map() 方法创建一个新数组，其结果是该数组中的每个元素都调用一个提供的函数后返回的结果。<br>  语法：<br>  var new_array = arr.map(item=&gt;{})<br>  @return:一个新数组，每个元素都是回调函数的结果。</p>
+<h3 id="数组扁平化方法"><a href="#数组扁平化方法" class="headerlink" title="数组扁平化方法"></a>数组扁平化方法</h3></li>
+<li><p>flat() 方法会按照一个可指定的深度递归遍历数组，并将所有元素与遍历到的子数组中的元素合并为一个新数组返回。<br> 语法：<br> var newArray = arr.flat([depth])<br> @params:<br> 指定要提取嵌套数组的结构深度，默认值为 1,<strong>如果参数为Infinity，可以展开任意深度的嵌套数组</strong><br> @return:<br> 一个包含将数组与子数组中所有元素的新数组。</p>
+<h3 id="reduce-reduceRight"><a href="#reduce-reduceRight" class="headerlink" title="reduce()/reduceRight()"></a>reduce()/reduceRight()</h3></li>
+<li><p>reduce() 方法对数组中的每个元素执行一个由您提供的reducer函数(升序执行)，将其结果汇总为单个返回值。<br> 语法：<br> arr.reduce(callback(accumulator, currentValue[, index[, array]])[, initialValue])<br> @params:<br> callback<br> initialValue可选<br> 作为第一次调用 callback函数时的第一个参数的值。 如果没有提供初始值，则将使用数组中的第一个元素。 在没有初始值的空数组上调用 reduce 将报错。<br> @return:<br> 函数累计处理的结果<br> 注意：如果没有提供initialValue，reduce 会从索引1的地方开始执行 callback 方法，跳过第一个索引。如果提供initialValue，从索引0开始。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let ar=[23,2,5,6];</span><br><span class="line">let k=arg.reduce((t,y)=&gt;t-y);</span><br><span class="line">//k=10</span><br></pre></td></tr></table></figure>
+
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let ao=[23,2,5,6];</span><br><span class="line">let c=arg.reduce((t,y=10)=&gt;t-y,10);</span><br><span class="line">//c=10-23-2-5-6=-26</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>该reduceRight()方法对一个累加器和数组的每个值（从右到左）应用一个函数，以将其减小为单个值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">汇总数组Section中的所有值</span><br><span class="line">var sum = [0, 1, 2, 3].reduceRight(function(a, b) &#123;</span><br><span class="line">  return a + b;</span><br><span class="line">&#125;);</span><br><span class="line">// sum is 6</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">拼合数组的数组节(从右到左)</span><br><span class="line">var flattened = [[0, 1], [2, 3], [4, 5]].reduceRight(function(a, b) &#123;</span><br><span class="line">    return a.concat(b);</span><br><span class="line">&#125;, []);</span><br><span class="line">// flattened is [4, 5, 2, 3, 0, 1]</span><br></pre></td></tr></table></figure>
+
+<h2 id="Array私有属性上的方法"><a href="#Array私有属性上的方法" class="headerlink" title="Array私有属性上的方法"></a>Array私有属性上的方法</h2><h3 id="Array-from"><a href="#Array-from" class="headerlink" title="Array.from()"></a>Array.from()</h3><ol>
+<li>Array.from() 方法从一个类似数组或可迭代对象中创建一个新的，浅拷贝的数组实例。（可以应用于数组扁平化）<br> 语法：Array.from(arrayLike[, mapFn[, thisArg]])<br> return:一个新的数组实例 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let arg=[1,1,2,1,2,3,5,3];</span><br><span class="line"> arg=arg.flat(Infinsity);</span><br><span class="line"> arg=Array.form(arg);</span><br><span class="line"> //arg=[1,2,3,5]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="Array-isArray"><a href="#Array-isArray" class="headerlink" title="Array.isArray()"></a>Array.isArray()</h3><ol>
+<li>Array.isArray() 用于确定传递的值是否是一个 Array。<br> 语法：Array.isArray(obj)<br> @params:需要检测的值<br> @return:一个布尔值</li>
 </ol>
 
       

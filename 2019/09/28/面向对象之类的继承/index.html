@@ -11,23 +11,18 @@
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="面向对象之类的继承知识铺垫封装低耦合高内聚 多态 重载：方法名相同，但是形参个数和类型不一样（JS不存在重载，JS重载重载指的是同一个方法，根据传参不同实现不同的功能效果） 重写：在类的继承当中，子类可以重写父类中的方法，返回值和形参都不能改变。面向对象的理解 面向对象是一种编程思想。JS本身就是基于面向对象构建出来的（例如：JS当中有很多内置类，向Promise就是ES6中一个新增的内置类，我">
+  <meta name="description" content="面向对象之类的继承知识铺垫封装低耦合高内聚 多态 重载：方法名相同，但是形参个数和类型不一样（JS不存在重载，JS重载重载指的是同一个方法，根据传参不同实现不同的功能效果）  重写：在类的继承当中，子类可以重写父类中的方法，返回值和形参都不能改变。 面向对象的理解 面向对象是一种编程思想。JS本身就是基于面向对象构建出来的（例如：JS当中有很多内置类，向Promise就是ES6中一个新增的内置类，">
 <meta name="keywords" content="面向对象">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面向对象之类的继承">
 <meta property="og:url" content="http://yoursite.com/2019/09/28/面向对象之类的继承/index.html">
 <meta property="og:site_name" content="码农乐园">
-<meta property="og:description" content="面向对象之类的继承知识铺垫封装低耦合高内聚 多态 重载：方法名相同，但是形参个数和类型不一样（JS不存在重载，JS重载重载指的是同一个方法，根据传参不同实现不同的功能效果） 重写：在类的继承当中，子类可以重写父类中的方法，返回值和形参都不能改变。面向对象的理解 面向对象是一种编程思想。JS本身就是基于面向对象构建出来的（例如：JS当中有很多内置类，向Promise就是ES6中一个新增的内置类，我">
+<meta property="og:description" content="面向对象之类的继承知识铺垫封装低耦合高内聚 多态 重载：方法名相同，但是形参个数和类型不一样（JS不存在重载，JS重载重载指的是同一个方法，根据传参不同实现不同的功能效果）  重写：在类的继承当中，子类可以重写父类中的方法，返回值和形参都不能改变。 面向对象的理解 面向对象是一种编程思想。JS本身就是基于面向对象构建出来的（例如：JS当中有很多内置类，向Promise就是ES6中一个新增的内置类，">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:image" content="http://yoursite.com/2019/09/28/面向对象之类的继承/1.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/28/面向对象之类的继承/2.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/28/面向对象之类的继承/1.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/28/面向对象之类的继承/2.png">
-<meta property="og:updated_time" content="2019-09-28T07:34:34.297Z">
+<meta property="og:updated_time" content="2019-09-30T04:08:44.201Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面向对象之类的继承">
-<meta name="twitter:description" content="面向对象之类的继承知识铺垫封装低耦合高内聚 多态 重载：方法名相同，但是形参个数和类型不一样（JS不存在重载，JS重载重载指的是同一个方法，根据传参不同实现不同的功能效果） 重写：在类的继承当中，子类可以重写父类中的方法，返回值和形参都不能改变。面向对象的理解 面向对象是一种编程思想。JS本身就是基于面向对象构建出来的（例如：JS当中有很多内置类，向Promise就是ES6中一个新增的内置类，我">
-<meta name="twitter:image" content="http://yoursite.com/2019/09/28/面向对象之类的继承/1.png">
+<meta name="twitter:description" content="面向对象之类的继承知识铺垫封装低耦合高内聚 多态 重载：方法名相同，但是形参个数和类型不一样（JS不存在重载，JS重载重载指的是同一个方法，根据传参不同实现不同的功能效果）  重写：在类的继承当中，子类可以重写父类中的方法，返回值和形参都不能改变。 面向对象的理解 面向对象是一种编程思想。JS本身就是基于面向对象构建出来的（例如：JS当中有很多内置类，向Promise就是ES6中一个新增的内置类，">
   
     <link rel="alternative" href="/atom.xml" title="码农乐园" type="application/atom+xml">
   
@@ -234,18 +229,27 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><img src="/2019/09/28/面向对象之类的继承/1.png" alt="Alt text"><br><img src="/2019/09/28/面向对象之类的继承/2.png" alt="Alt text"></p>
-<h1 id="面向对象之类的继承"><a href="#面向对象之类的继承" class="headerlink" title="面向对象之类的继承"></a>面向对象之类的继承</h1><h2 id="知识铺垫"><a href="#知识铺垫" class="headerlink" title="知识铺垫"></a>知识铺垫</h2><h3 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h3><p>低耦合高内聚</p>
+        <h1 id="面向对象之类的继承"><a href="#面向对象之类的继承" class="headerlink" title="面向对象之类的继承"></a>面向对象之类的继承</h1><h2 id="知识铺垫"><a href="#知识铺垫" class="headerlink" title="知识铺垫"></a>知识铺垫</h2><h3 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h3><p>低耦合高内聚</p>
 <h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><ul>
-<li>重载：方法名相同，但是形参个数和类型不一样（<strong>JS不存在重载</strong>，JS重载重载指的是同一个方法，根据传参不同实现不同的功能效果）</li>
-<li>重写：在类的继承当中，子类可以重写父类中的方法，返回值和形参都不能改变。<h2 id="面向对象的理解"><a href="#面向对象的理解" class="headerlink" title="面向对象的理解"></a>面向对象的理解</h2></li>
-<li>面向对象是一种编程思想。JS本身就是基于面向对象构建出来的（例如：JS当中有很多内置类，向Promise就是ES6中一个新增的内置类，我们可以基于new Promise来创建一个实例，来管理异步编程，我在项目中Promise也经常用，自己也看过他的源码。。。），我们平时用的VUE/REACT/JQUERY也是基于面向对象构建出来的，他们都是类，平时开发的时候都是创建他们的实例来操作的。。。</li>
-<li>JS中的面向对象，和其它编程语言还是有略微不同的，JS中类和实例是基于原型和原型链机制来处理的；而且JS中关于类的重载、重写、继承也和其它语言不太一样…<h2 id="继承：子类继承父类上的属性和方法"><a href="#继承：子类继承父类上的属性和方法" class="headerlink" title="继承：子类继承父类上的属性和方法"></a>继承：子类继承父类上的属性和方法</h2>目的：让子类的实例能够使用父类中的属性和方法<h3 id="原型继承"><a href="#原型继承" class="headerlink" title="原型继承"></a>原型继承</h3></li>
-<li>继承方式：让父类中的属性和方法在子类的实例的原型上<br>  child.prototype=new parent();<br>  child.prototype.constructor=child;</li>
-<li>原型继承特点：<ol>
-<li>不像其他语言中的继承一样（其他的语言的继承一般是拷贝继承，也就是子类继承父类，会把父类中的属性和方法拷贝一份到子类中，供子类的实例调用），他是把父类的原型放到子类的原型链上，子类想调用这些方法是基于<strong>proto</strong>原型链机制查找继承的</li>
-<li>子类可以重写父类上的方法，这样会导致父类上其他的实例也会受到影响</li>
-<li>父类的私有或者公有的属性和方法都会编成子类中公有的属性和方法<br><img src="/2019/09/28/面向对象之类的继承/1.png" alt="Alt text"><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">   function A(x) &#123;</span><br><span class="line">	this.x = x;</span><br><span class="line">&#125;</span><br><span class="line">A.prototype.getX = function () &#123;</span><br><span class="line">	console.log(this.x);</span><br><span class="line">&#125;;</span><br><span class="line">function B(y) &#123;</span><br><span class="line">	this.y = y;</span><br><span class="line">&#125;</span><br><span class="line">B.prototype = new A(200);</span><br><span class="line">B.prototype.constructor = B;</span><br><span class="line">B.prototype.getY = function () &#123;</span><br><span class="line">	console.log(this.y);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<li><p>重载：方法名相同，但是形参个数和类型不一样（<strong>JS不存在重载</strong>，JS重载重载指的是同一个方法，根据传参不同实现不同的功能效果）</p>
+</li>
+<li><p>重写：在类的继承当中，子类可以重写父类中的方法，返回值和形参都不能改变。</p>
+<h2 id="面向对象的理解"><a href="#面向对象的理解" class="headerlink" title="面向对象的理解"></a>面向对象的理解</h2></li>
+<li><p>面向对象是一种编程思想。JS本身就是基于面向对象构建出来的（例如：JS当中有很多内置类，向Promise就是ES6中一个新增的内置类，我们可以基于new Promise来创建一个实例，来管理异步编程，我在项目中Promise也经常用，自己也看过他的源码。。。），我们平时用的VUE/REACT/JQUERY也是基于面向对象构建出来的，他们都是类，平时开发的时候都是创建他们的实例来操作的。。。</p>
+</li>
+<li><p>JS中的面向对象，和其它编程语言还是有略微不同的，JS中类和实例是基于原型和原型链机制来处理的；而且JS中关于类的重载、重写、继承也和其它语言不太一样…</p>
+<h2 id="继承：子类继承父类上的属性和方法"><a href="#继承：子类继承父类上的属性和方法" class="headerlink" title="继承：子类继承父类上的属性和方法"></a>继承：子类继承父类上的属性和方法</h2><p>目的：让子类的实例能够使用父类中的属性和方法</p>
+<h3 id="原型继承"><a href="#原型继承" class="headerlink" title="原型继承"></a>原型继承</h3></li>
+<li><p>继承方式：让父类中的属性和方法在子类的实例的原型上<br>  child.prototype=new parent();<br>  child.prototype.constructor=child;</p>
+</li>
+<li><p>原型继承特点：</p>
+<ol>
+<li><p>不像其他语言中的继承一样（其他的语言的继承一般是拷贝继承，也就是子类继承父类，会把父类中的属性和方法拷贝一份到子类中，供子类的实例调用），他是把父类的原型放到子类的原型链上，子类想调用这些方法是基于<strong>proto</strong>原型链机制查找继承的</p>
+</li>
+<li><p>子类可以重写父类上的方法，这样会导致父类上其他的实例也会受到影响</p>
+</li>
+<li><p>父类的私有或者公有的属性和方法都会编成子类中公有的属性和方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">   function A(x) &#123;</span><br><span class="line">	this.x = x;</span><br><span class="line">&#125;</span><br><span class="line">A.prototype.getX = function () &#123;</span><br><span class="line">	console.log(this.x);</span><br><span class="line">&#125;;</span><br><span class="line">function B(y) &#123;</span><br><span class="line">	this.y = y;</span><br><span class="line">&#125;</span><br><span class="line">B.prototype = new A(200);</span><br><span class="line">B.prototype.constructor = B;</span><br><span class="line">B.prototype.getY = function () &#123;</span><br><span class="line">	console.log(this.y);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
@@ -263,10 +267,10 @@
 </ul>
 <h3 id="寄生组合继承：call继承-类似于原型继承"><a href="#寄生组合继承：call继承-类似于原型继承" class="headerlink" title="寄生组合继承：call继承+类似于原型继承"></a>寄生组合继承：call继承+类似于原型继承</h3><ul>
 <li>继承方式：创建一个空对象，将空对象的原型指向父类的原型，将这个空对象作为子类对象原型</li>
-<li>寄生组合继承特点：父类的私有和公有的分别是子类实例的私有和公有属性方法（推荐使用）<br><img src="/2019/09/28/面向对象之类的继承/2.png" alt="Alt text"><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">function A(x) &#123;</span><br><span class="line">	this.x = x;</span><br><span class="line">&#125;</span><br><span class="line">A.prototype.getX = function () &#123;</span><br><span class="line">	console.log(this.x);</span><br><span class="line">&#125;;</span><br><span class="line">function B(y) &#123;</span><br><span class="line">	A.call(this, 200);</span><br><span class="line">	this.y = y;</span><br><span class="line">&#125;</span><br><span class="line">//=&gt;Object.create(OBJ):创建一个空对象，让空对象__proto__指向OBJ</span><br><span class="line">B.prototype = Object.create(A.prototype);</span><br><span class="line">B.prototype.constructor = B;</span><br><span class="line">B.prototype.getY = function () &#123;</span><br><span class="line">	console.log(this.y);</span><br><span class="line">&#125;;</span><br><span class="line">let b1 = new B(100);</span><br></pre></td></tr></table></figure>
-
-</li>
+<li>寄生组合继承特点：父类的私有和公有的分别是子类实例的私有和公有属性方法（推荐使用）</li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">function A(x) &#123;</span><br><span class="line">	this.x = x;</span><br><span class="line">&#125;</span><br><span class="line">A.prototype.getX = function () &#123;</span><br><span class="line">	console.log(this.x);</span><br><span class="line">&#125;;</span><br><span class="line">function B(y) &#123;</span><br><span class="line">	A.call(this, 200);</span><br><span class="line">	this.y = y;</span><br><span class="line">&#125;</span><br><span class="line">//=&gt;Object.create(OBJ):创建一个空对象，让空对象__proto__指向OBJ</span><br><span class="line">B.prototype = Object.create(A.prototype);</span><br><span class="line">B.prototype.constructor = B;</span><br><span class="line">B.prototype.getY = function () &#123;</span><br><span class="line">	console.log(this.y);</span><br><span class="line">&#125;;</span><br><span class="line">let b1 = new B(100);</span><br></pre></td></tr></table></figure>
+
 <h2 id="ES6中的继承处理"><a href="#ES6中的继承处理" class="headerlink" title="ES6中的继承处理"></a>ES6中的继承处理</h2><ul>
 <li><p>语法：<br>  class child extends parent{}相当于实现child.prototype.<em>\</em>proto__=parent.prototype</p>
 <ul>
