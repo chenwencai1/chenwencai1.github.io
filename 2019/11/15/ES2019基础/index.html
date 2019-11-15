@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>开源精神、极客精神-ES2019基础 | 码农乐园</title>
+
+  <!-- keywords -->
+  
+    <meta name="keywords" content="开源精神、极客精神">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="JavaScript What’s new in ES2019 Array.flat()现在可以递归地将嵌套数组扁平化到指定的深度。默认值是1，如果你想完全深入使用无穷大。该方法不修改原始数组，而是创建一个新的数组: 12345678const arr1 = [1, 2, [3, 4]];arr1.flat(); // [1, 2, 3, 4]const arr2 = [1, 2, [3, 4,">
+<meta name="keywords" content="JS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES2019基础">
+<meta property="og:url" content="http://yoursite.com/2019/11/15/ES2019基础/index.html">
+<meta property="og:site_name" content="码农乐园">
+<meta property="og:description" content="JavaScript What’s new in ES2019 Array.flat()现在可以递归地将嵌套数组扁平化到指定的深度。默认值是1，如果你想完全深入使用无穷大。该方法不修改原始数组，而是创建一个新的数组: 12345678const arr1 = [1, 2, [3, 4]];arr1.flat(); // [1, 2, 3, 4]const arr2 = [1, 2, [3, 4,">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:image" content="http://yoursite.com/2019/11/15/ES2019基础/1.png">
+<meta property="og:updated_time" content="2019-11-15T07:42:11.760Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES2019基础">
+<meta name="twitter:description" content="JavaScript What’s new in ES2019 Array.flat()现在可以递归地将嵌套数组扁平化到指定的深度。默认值是1，如果你想完全深入使用无穷大。该方法不修改原始数组，而是创建一个新的数组: 12345678const arr1 = [1, 2, [3, 4]];arr1.flat(); // [1, 2, 3, 4]const arr2 = [1, 2, [3, 4,">
+<meta name="twitter:image" content="http://yoursite.com/2019/11/15/ES2019基础/1.png">
+  
+    <link rel="alternative" href="/atom.xml" title="码农乐园" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+  
+</head></html>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/1.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">陈文才</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">狂奔的小蜗牛</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="mail" target="_blank" href="/chen1241675760@163.com" title="mail">mail</a>
+					        
+								<a class="qq" target="_blank" href="/1241675760" title="qq">qq</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/面向对象/" style="font-size: 10px;">面向对象</a> <a href="/tags/面试/" style="font-size: 15px;">面试</a> <a href="/tags/项目/" style="font-size: 10px;">项目</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://wangyiye.github.io/">wangyiya</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://yuanxiaochen1.github.io">yuanxiaochen</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://jinshixi.github.io">jinshixi</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://chaiyongsheng0.github.io">chaiyongsheng0</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://ningwei7.github.io">ningwei</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">陈文才</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/1.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">陈文才</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">狂奔的小蜗牛</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="mail" target="_blank" href="/chen1241675760@163.com" title="mail">mail</a>
+			        
+						<a class="qq" target="_blank" href="/1241675760" title="qq">qq</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-ES2019基础" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/11/15/ES2019基础/" class="article-date">
+  	<time datetime="2019-11-15T07:41:04.000Z" itemprop="datePublished">2019-11-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ES2019基础
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
+	</div>
+
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="JavaScript-What’s-new-in-ES2019"><a href="#JavaScript-What’s-new-in-ES2019" class="headerlink" title="JavaScript What’s new in ES2019"></a>JavaScript What’s new in ES2019</h2><p><img src="/2019/11/15/ES2019基础/1.png" alt="Alt text"></p>
+<h3 id="Array-flat"><a href="#Array-flat" class="headerlink" title="Array.flat()"></a>Array.flat()</h3><p>现在可以递归地将嵌套数组扁平化到指定的深度。默认值是1，如果你想完全深入使用无穷大。该方法不修改原始数组，而是创建一个新的数组:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const arr1 = [1, 2, [3, 4]];</span><br><span class="line">arr1.flat(); // [1, 2, 3, 4]</span><br><span class="line"></span><br><span class="line">const arr2 = [1, 2, [3, 4, [5, 6]]];</span><br><span class="line">arr2.flat(2); // [1, 2, 3, 4, 5, 6]</span><br><span class="line"></span><br><span class="line">const arr3 = [1, 2, [3, 4, [5, 6, [7, 8]]]];</span><br><span class="line">arr3.flat(Infinity); // [1, 2, 3, 4, 5, 6, 7, 8]</span><br></pre></td></tr></table></figure>
+
+<p>如果你的数组中有一个空槽，它将被删除:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const arr4 = [1, 2, , 4, 5];</span><br><span class="line">arr4.flat(); // [1, 2, 4, 5]</span><br></pre></td></tr></table></figure>
+
+<h3 id="Array-flatMap"><a href="#Array-flatMap" class="headerlink" title="Array.flatMap()"></a>Array.flatMap()</h3><p>一个新的方法，结合了基本的map函数，然后使用新的Array.flat()方法将结果扁平化到1的深度:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const arr1 = [1, 2, 3];</span><br><span class="line"></span><br><span class="line">arr1.map(x =&gt; [x * 4]); // [[4], [8], [12]]</span><br><span class="line">arr1.flatMap(x =&gt; [x * 4]); // [4, 8, 12]</span><br></pre></td></tr></table></figure>
+
+<p>另一个更有用的例子:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const sentence = [&quot;This is a&quot;, &quot;regular&quot;, &quot;sentence&quot;];</span><br><span class="line"></span><br><span class="line">sentence.map(x =&gt; x.split(&quot; &quot;)); // [[&quot;This&quot;,&quot;is&quot;,&quot;a&quot;],[&quot;regular&quot;],[&quot;sentence&quot;]]</span><br><span class="line">sentence.flatMap(x =&gt; x.split(&quot; &quot;)); // [&quot;This&quot;,&quot;is&quot;,&quot;a&quot;,&quot;regular&quot;, &quot;sentence&quot;]</span><br></pre></td></tr></table></figure>
+
+<h3 id="String-trimStart-and-String-trimEnd"><a href="#String-trimStart-and-String-trimEnd" class="headerlink" title="String.trimStart() and String.trimEnd()"></a>String.trimStart() and String.trimEnd()</h3><p>除了string . trim()删除字符串两边的空格外，现在还有单独的方法只删除字符串两边的空格:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const test = &quot; hello &quot;;</span><br><span class="line"></span><br><span class="line">test.trim(); // &quot;hello&quot;;</span><br><span class="line">test.trimStart(); // &quot;hello &quot;;</span><br><span class="line">test.trimEnd(); // &quot; hello&quot;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Object-fromEntries"><a href="#Object-fromEntries" class="headerlink" title="Object.fromEntries"></a>Object.fromEntries</h3><p>将键值对列表转换为对象的新方法。它执行与已经熟悉的函数对象相反的操作。将对象转换为数组时使用的项，以便更容易地进行操作。在转换之后，您将得到一个数组，但是现在您可以将操作后的数组返回到一个对象中。让我们试着用一个例子，我们想平方所有对象属性的值:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123; prop1: 2, prop2: 10, prop3: 15 &#125;;</span><br><span class="line"></span><br><span class="line">let array = Object.entries(obj); // [[&quot;prop1&quot;, 2], [&quot;prop2&quot;, 10], [&quot;prop3&quot;, 15]]</span><br></pre></td></tr></table></figure>
+
+<p>让我们用一个简单的映射将键值对的新列表的值平方:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array = array.map(([key, value]) =&gt; [key, Math.pow(value, 2)]); // [[&quot;prop1&quot;, 4], [&quot;prop2&quot;, 100], [&quot;prop3&quot;, 225]]</span><br></pre></td></tr></table></figure>
+
+<p>我们已经转换了对象值，但我们只剩下一个数组，这就是object . fromentries的作用，它将数组转换回一个对象:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const newObj = Object.fromEntries(array); // &#123;prop1: 4, prop2: 100, prop3: 225&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Optional-Catch-Binding"><a href="#Optional-Catch-Binding" class="headerlink" title="Optional Catch Binding"></a>Optional Catch Binding</h3><p>新提案允许您完全省略catch()参数，因为在很多情况下，您不希望使用它:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">  //...</span><br><span class="line">&#125; catch (er) &#123;</span><br><span class="line">  //handle error with parameter er</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">try &#123;</span><br><span class="line">  //...</span><br><span class="line">&#125; catch &#123;</span><br><span class="line">  //handle error without parameter</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Symbol-description"><a href="#Symbol-description" class="headerlink" title="Symbol.description"></a>Symbol.description</h3><p>您现在可以访问符号的description属性，而不是使用toString()方法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const testSymbol = Symbol(&quot;Desc&quot;);</span><br><span class="line"></span><br><span class="line">testSymbol.description; // &quot;Desc&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Function-toString"><a href="#Function-toString" class="headerlink" title="Function.toString()"></a>Function.toString()</h3><p>现在，对函数调用toString()将返回函数的定义，包括空格和注释。之前我们有:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function /* foo comment */ foo() &#123;&#125;</span><br><span class="line"></span><br><span class="line">foo.toString(); // &quot;function foo() &#123;&#125;&quot;</span><br></pre></td></tr></table></figure>
+
+<p>And now it’s:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foo.toString(); // &quot;function /* foo comment */ foo() &#123;&#125;&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="JSON-parse-的改进"><a href="#JSON-parse-的改进" class="headerlink" title="JSON.parse()的改进"></a>JSON.parse()的改进</h3><p>行分隔符(\u2028)和段落分隔符(\u2029)符号现在可以正确解析，而不会导致SyntaxError。</p>
+<p>翻译自 <a href="https://blog.tildeloop.com/posts/javascript-what%E2%80%99s-new-in-es2019" target="_blank" rel="noopener">https://blog.tildeloop.com/posts/javascript-what%E2%80%99s-new-in-es2019</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/11/15/vue基础学习/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">vue基础学习</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="ds-share share" data-thread-key="ES2019基础" data-title="ES2019基础" data-url="http://yoursite.com/2019/11/15/ES2019基础/"  data-images="/img/1.jpg" data-content="ES2019基础">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ </div>
+ 
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2019 陈文才
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+</body>
+</html>
