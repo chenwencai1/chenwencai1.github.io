@@ -119,7 +119,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/node/" style="font-size: 15px;">node</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/指令/" style="font-size: 12.5px;">指令</a> <a href="/tags/面向对象/" style="font-size: 10px;">面向对象</a> <a href="/tags/面试/" style="font-size: 17.5px;">面试</a> <a href="/tags/项目/" style="font-size: 10px;">项目</a>
+						<a href="/tags/CSS、HTML/" style="font-size: 10px;">CSS、HTML</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/node/" style="font-size: 15px;">node</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/指令/" style="font-size: 12.5px;">指令</a> <a href="/tags/面向对象/" style="font-size: 10px;">面向对象</a> <a href="/tags/面试/" style="font-size: 17.5px;">面试</a> <a href="/tags/项目/" style="font-size: 10px;">项目</a>
 					</div>
 				</section>
 				
@@ -190,6 +190,139 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-客户端和服务器端-1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/09/11/客户端和服务器端-1/" class="article-date">
+  	<time datetime="2019-09-11T03:46:21.000Z" itemprop="datePublished">2019-09-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/11/客户端和服务器端-1/">
+        客户端和服务器端
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="客户端和服务器端"><a href="#客户端和服务器端" class="headerlink" title="客户端和服务器端"></a>客户端和服务器端</h1><h2 id="客户端和服务器端的理解"><a href="#客户端和服务器端的理解" class="headerlink" title="客户端和服务器端的理解"></a>客户端和服务器端的理解</h2><ul>
+<li>客户端：可以向服务器发请求，并接收返回的内容进行处理</li>
+<li>服务器端：能够接收客户端请求，并且把相关的资源<h2 id="客户端和服务器端之间的交互模型"><a href="#客户端和服务器端之间的交互模型" class="headerlink" title="客户端和服务器端之间的交互模型"></a>客户端和服务器端之间的交互模型</h2><h3 id="请求阶段request："><a href="#请求阶段request：" class="headerlink" title="请求阶段request："></a>请求阶段request：</h3></li>
+</ul>
+<ol>
+<li>浏览器进行 URL 地址解析</li>
+<li>DNS（域名服务器）进行域名解析，确定要连接哪台服务器</li>
+<li>和服务器建立TCP连接</li>
+<li>把客户端信息传递给服务器（发送HTTP请求）</li>
+<li>服务器得到并处理请求（HTTP响应内容） <h3 id="响应阶段response："><a href="#响应阶段response：" class="headerlink" title="响应阶段response："></a>响应阶段response：</h3></li>
+<li>客户端渲染服务器返回的内容</li>
+<li>断开和服务器的TCP连接<h3 id="地址解析URL-URI-URN"><a href="#地址解析URL-URI-URN" class="headerlink" title="地址解析URL/URI/URN"></a>地址解析URL/URI/URN</h3></li>
+</ol>
+<ul>
+<li>URL：统一资源定位器，根据这个地址能够找到对应的资源</li>
+<li>URN：统一资源名称，一般指国际上通用的一些名字，例如国际统一发版的编号</li>
+<li>URI：统一资源标识符，URL和URN都是URI的子集。<h3 id="一个完整的URL所包含的内容"><a href="#一个完整的URL所包含的内容" class="headerlink" title="一个完整的URL所包含的内容"></a>一个完整的URL所包含的内容</h3></li>
+<li><a href="http://www.zhufengpeixun.cn:80/stu/index.html?form=wx&amp;lx=1#zhufeng" target="_blank" rel="noopener">http://www.zhufengpeixun.cn:80/stu/index.html?form=wx&amp;lx=1#zhufeng</a></li>
+</ul>
+<p><strong>协议(http://)  :传输协议就是能够把客户端和服务器端通信的信息进行传输的工具。（类似于快递小哥）</strong></p>
+<ul>
+<li>常见的传输协议：</li>
+</ul>
+<ol>
+<li>http 超文本传输协议。除了传输文本，还可以传输媒体资源文件（或者流文件）及XML格式数据</li>
+<li>https 更加安全的http，一般涉及支付的网站都要采用https协议（s:ssl加密传输）</li>
+<li>ftp 文件传输协议。FileZilla:ftp上传工具，通过这个工具可以把本地文件上传服务器上。（一般应用于把本地资源上传到服务器端）</li>
+</ol>
+<p><strong>域名(<a href="http://www.zhufengpeixun.cn" target="_blank" rel="noopener">www.zhufengpeixun.cn</a>)  ：一个让用户方便记忆的名字（不通过域名，通过外网IP也可以访问服务器）</strong></p>
+<ul>
+<li>顶级域名  qq.com</li>
+<li>一级域名 <a href="http://www.qq.com" target="_blank" rel="noopener">www.qq.com</a></li>
+<li>二级域名 sports.qq.com</li>
+<li>三级域名 kbs.sports.qq.com</li>
+<li>.com  国际域名</li>
+<li>.cn     中文域名</li>
+<li>.com.cn  怎么用都行</li>
+<li>.edu  教育单位</li>
+<li>.gov  政府单位</li>
+<li>.io   博客</li>
+<li>.org  官方组织</li>
+<li>.net   系统类网站</li>
+</ul>
+<p><strong>端口号(:80)   范围：0~65535  用端口号来区分同一台服务器上的不同项目</strong></p>
+<ul>
+<li>http默认端口号：80</li>
+<li>https默认端口号：443</li>
+<li>ftp默认端口号：21</li>
+<li>如果项目采用的就是默认端口号，我们在书写地址的时候不用加端口号，浏览器在发送请求的时候会帮我们默认加上</li>
+</ul>
+<p><strong>请求资源路径名称(/stu/index.html)</strong></p>
+<ul>
+<li>默认的路径或者名称（不指定资源名，服务器会找到默认的资源，一般默认的资源名是defaule.html 可以自己配置）</li>
+<li>注意伪URL的处理</li>
+<li>URL重写技术是为了增加SEO搜索引擎优化的，动态的网址一般不能被搜索引擎收录，所以我们要把动态网址静态化，此时需要的是重写URL</li>
+<li>服务器接收到请求后</li>
+</ul>
+<ol>
+<li>根据端口号找到对应的项目</li>
+<li>根据请求资源的路径名称找到对应的资源</li>
+<li>将找到的资源传递给客户端</li>
+</ol>
+<p><strong>问号传参信息(?form=wx&amp;lx=1)</strong></p>
+<ul>
+<li>客户端把信息传递给服务器的方式</li>
+<li>URL地址问号传参</li>
+<li>请求报文传输（请求头和请求主体）</li>
+<li>也可以不同页面之间的信息交互，例如从列表到详情</li>
+</ul>
+<p><strong>HASH值(#zhufeng)</strong></p>
+<ul>
+<li>也能充当信息传输的方式</li>
+<li>锚点定位</li>
+<li>基于HASH实现路由管控（不同的HASH值，代表不同的组件和模块）</li>
+</ul>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-less" class="article article-type-post" itemscope itemprop="blogPost">
   

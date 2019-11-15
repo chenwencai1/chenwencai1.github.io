@@ -119,7 +119,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/node/" style="font-size: 15px;">node</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/指令/" style="font-size: 12.5px;">指令</a> <a href="/tags/面向对象/" style="font-size: 10px;">面向对象</a> <a href="/tags/面试/" style="font-size: 17.5px;">面试</a> <a href="/tags/项目/" style="font-size: 10px;">项目</a>
+						<a href="/tags/CSS、HTML/" style="font-size: 10px;">CSS、HTML</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/node/" style="font-size: 15px;">node</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/指令/" style="font-size: 12.5px;">指令</a> <a href="/tags/面向对象/" style="font-size: 10px;">面向对象</a> <a href="/tags/面试/" style="font-size: 17.5px;">面试</a> <a href="/tags/项目/" style="font-size: 10px;">项目</a>
 					</div>
 				</section>
 				
@@ -190,6 +190,156 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-数组的相关方法" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/09/21/数组的相关方法/" class="article-date">
+  	<time datetime="2019-09-21T09:42:53.000Z" itemprop="datePublished">2019-09-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/21/数组的相关方法/">
+        数组的相关方法
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="数组及常用方法"><a href="#数组及常用方法" class="headerlink" title="数组及常用方法"></a>数组及常用方法</h1><ul>
+<li><p>数组是对象数据类型的，属于特殊的对象,也是由键值对组成的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let arg=[1,2,3,4];</span><br><span class="line">&lt;!-- 结构： --&gt;</span><br><span class="line">0：1</span><br><span class="line">1：2</span><br><span class="line">2：3</span><br><span class="line">3：4</span><br><span class="line">length:4</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数组以数字为索引（属性名），从零开始，逐级递增 </p>
+</li>
+<li><p>数字作为索引(key).length代表数组长度。</p>
+</li>
+<li><p>ary[key]:表示数组中第key个元素。</p>
+<h2 id="Array-prototype上的方法"><a href="#Array-prototype上的方法" class="headerlink" title="Array.prototype上的方法"></a>Array.prototype上的方法</h2><p>从哪些方面记忆数组</p>
+</li>
+</ul>
+<ol>
+<li>方法的作用和含义</li>
+<li>方法的实参（类型和含义）</li>
+<li>方法的返回值</li>
+<li>原来的数组会不会发生改变<h3 id="数组中增删改查的方法"><a href="#数组中增删改查的方法" class="headerlink" title="数组中增删改查的方法"></a>数组中增删改查的方法</h3>这部分方法都会<strong>修改原有的数组</strong><br>arg[arg.length]=5;可以根据这种方式进行数组增加，但是不能删除，删除只能删除索引和值，但不会改变length属性，破坏了数组的结构。</li>
+<li>push():向数组末尾增加内容<br> @params：多个任意类型的实参<br> @return：新增后数组的<strong>长度</strong></li>
+<li>unshift()：向数组开头增加内容<br> @params：多个任意类型的实参<br> @return：新增后数组的<strong>长度</strong></li>
+<li>shift() :删除数组中的第一项<br> @params:没有参数<br> @return:删除的那一项值</li>
+<li>pop():删除数组最后一项内容<br> @params:没有参数<br> @return:删除的那一项值<br> 用原生JS方式：length–;</li>
+<li>splice():可以进行数组的增删改。万能方法</li>
+</ol>
+<ul>
+<li>删除：<br>  @params:n,m  都是数字（代表从索引n开始，删除m个元素，m不写，一直删除到数组末尾）<br>  @return:删除的那部分以新数组的形式存储起来，返回<br>  arg.splice(n,m)</li>
+<li>修改：<br>  @params:n,m,xxx （代表从索引n开始，删除m个元素，用xxx代替删除的内容）<br>  @return:删除的那部分以新数组的形式存储起来，返回<br>  arg.splice(n,m,xxx)</li>
+<li>增加：<br>  @params:n,0,xxx  （代表从索引n开始，删除0个元素，把xxx插入到索引为n处）<br>  @return:增加不删除，所以返回的是空数组<br>  arg.splice(n,0,xxx)<h3 id="数组中查询和拼接的方法"><a href="#数组中查询和拼接的方法" class="headerlink" title="数组中查询和拼接的方法"></a>数组中查询和拼接的方法</h3>这部分方法都<strong>不会修改原有的数组</strong></li>
+</ul>
+<ol>
+<li>slice(): 实现数组的查询(支持负数索引)<br> @params:n,m 都是数字（从索引n 开始,一直找到索引m,不包括m）<br> @return:把找到的内容以新数组的形式返回</li>
+<li>concat():实现数组拼接<br> @params:多个任意类型值<br> @return:拼接后的新数组（原数组不变）<h3 id="把数组转化为字符串的方法"><a href="#把数组转化为字符串的方法" class="headerlink" title="把数组转化为字符串的方法"></a>把数组转化为字符串的方法</h3></li>
+</ol>
+<p><strong>原数组不变</strong></p>
+<ol>
+<li>toString(): 把数组转换为字符串<br> @params:没有<br> @return:转换后的字符串，每一项用<strong>逗号</strong>隔开（原数组不变）</li>
+<li>join():将数组转换为字符串（可以指定分隔符）<br> @params:需要指定的分隔符（字符串格式，默认为<strong>逗号</strong>）<br> @return:转换后的字符串，每一项用<strong>逗号</strong>隔开（原数组不变）<br> eval(res);:将字符串res变为JS表达式 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let arg=[1,2,3,4,5,6,7,8,9];</span><br><span class="line">let n=eval(arg.join(&apos;+&apos;));</span><br><span class="line">consolg.log(n);  // n=55</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="检测数组中是否包含某一项"><a href="#检测数组中是否包含某一项" class="headerlink" title="检测数组中是否包含某一项"></a>检测数组中是否包含某一项</h3><p><strong>原来的数组不变</strong></p>
+<ol>
+<li>indexOf()：检测当前数组项在数组中第一次出现的索引<br> @params:需要查找的数组项<br> @return:当前数组项在数组中第一次出现的索引，如果数组中没有这一项，返回的结果是-1</li>
+<li>lasetIndexOf()：检测当前数组项在数组中最后一次出现的索引<br> @params:需要查找的数组项<br> @return:当前数组项在数组中最后一次出现的索引，如果数组中没有这一项，返回的结果是-1</li>
+<li>includes():检测数组中是否包含某项<br> @params:需要查找的数组项<br> @return:如果存在返回true，否则返回false<h3 id="数组排序或者排列的方法"><a href="#数组排序或者排列的方法" class="headerlink" title="数组排序或者排列的方法"></a>数组排序或者排列的方法</h3></li>
+</ol>
+<p><strong>原来的数组改变</strong></p>
+<ol>
+<li>reverse()：把数组倒过来排列<br> @params:无<br> @return:排序后的数组</li>
+<li>sort():实现数组排序（默认从小到大排序）<br> @params:可以没有，也可以是个函数(如果不传递参数是无法实现10以上数字排序的，因为他是按照第一个字符大小排序的<br> @return:排序后的新数组<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[12, 23, 34].sort((a, b) =&gt; &#123;</span><br><span class="line">	//a:数组下一项 23</span><br><span class="line">	//b:数组当前项 12</span><br><span class="line">	//如果返回&lt;0的值，让a/b交换位置</span><br><span class="line">	// return a - b;</span><br><span class="line">    //如果a,b是字符（用于字符串排序）</span><br><span class="line">    //a.localeCompare(b)</span><br><span class="line">    //同样a是数组下一项字符，b是数组当前项</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="遍历数组中每一项中的方法"><a href="#遍历数组中每一项中的方法" class="headerlink" title="遍历数组中每一项中的方法"></a>遍历数组中每一项中的方法</h3><ol>
+<li>forEach():遍历数组中每一项的方法<br> @params:回调函数<br> @return:无<br> <strong>注意：forEach()不改变原数组</strong><h3 id="填充数组的方法。改变原数组"><a href="#填充数组的方法。改变原数组" class="headerlink" title="填充数组的方法。改变原数组"></a>填充数组的方法。改变原数组</h3></li>
+<li>fill(xxx,n,m):用一个固定值填充一个数组中从其实索引到终止索引（不包括终止索引）的所有元素<br> @params:第一个是要被填充的元素，后两个是索引，不写默认全部填充<br> @return:填充后的数组<h3 id="every"><a href="#every" class="headerlink" title="every()"></a>every()</h3></li>
+<li>方法测试一个数组内的所有元素是否都能通过某个指定函数的测试。它返回一个布尔值<br> @params：回调函数<br> @return：布尔值<br> 语法：arg.every(callback)<br> callback 在被调用时可传入三个参数：元素值，元素的索引，原数组。 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function isBigEnough(element, index, array) &#123;</span><br><span class="line"> return element &gt;= 10;</span><br><span class="line">&#125;</span><br><span class="line">[12, 5, 8, 130, 44].every(isBigEnough);   // false</span><br><span class="line">[12, 54, 18, 130, 44].every(isBigEnough); // true</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="filter-不改变原来数组"><a href="#filter-不改变原来数组" class="headerlink" title="filter():不改变原来数组"></a>filter():不改变原来数组</h3><ol>
+<li><p>filter(callback) 方法创建一个新数组, 其包含通过所提供函数实现的测试的所有元素。<br> 语法：<br> var newArray = arr.filter(callback(element[, index[, array]])[, thisArg])<br> @return:一个新的、由通过测试的元素组成的数组，如果没有任何数组元素通过测试，则返回空数组。</p>
+<h3 id="find"><a href="#find" class="headerlink" title="find()"></a>find()</h3></li>
+<li><p>find(callback) 方法返回数组中满足提供的测试函数的第一个元素的值。否则返回 undefined。<br>语法：arr.find(callback[, thisArg])<br>@params:callback<br>@return:返回数组中满足提供的测试函数的第一个元素的值。否则返回</p>
+</li>
+<li><p>findIndex() 方法，它返回数组中找到的元素的索引，而不是其值。</p>
+<h3 id="some"><a href="#some" class="headerlink" title="some()"></a>some()</h3></li>
+<li><p>some(callback) 方法测试数组中是不是有元素通过了被提供的函数测试。它返回的是一个Boolean类型的值。<br> 语法：<br> arr.some(callback(element[, index[, array]])[, thisArg])<br> @params:callback<br> @return:通过返回true，否则返回false</p>
+<h3 id="map"><a href="#map" class="headerlink" title="map()"></a>map()</h3></li>
+<li><p>map() 方法创建一个新数组，其结果是该数组中的每个元素都调用一个提供的函数后返回的结果。<br>  语法：<br>  var new_array = arr.map(item=&gt;{})<br>  @return:一个新数组，每个元素都是回调函数的结果。</p>
+<h3 id="数组扁平化方法"><a href="#数组扁平化方法" class="headerlink" title="数组扁平化方法"></a>数组扁平化方法</h3></li>
+<li><p>flat() 方法会按照一个可指定的深度递归遍历数组，并将所有元素与遍历到的子数组中的元素合并为一个新数组返回。<br> 语法：<br> var newArray = arr.flat([depth])<br> @params:<br> 指定要提取嵌套数组的结构深度，默认值为 1,<strong>如果参数为Infinity，可以展开任意深度的嵌套数组</strong><br> @return:<br> 一个包含将数组与子数组中所有元素的新数组。</p>
+<h3 id="reduce-reduceRight"><a href="#reduce-reduceRight" class="headerlink" title="reduce()/reduceRight()"></a>reduce()/reduceRight()</h3></li>
+<li><p>reduce() 方法对数组中的每个元素执行一个由您提供的reducer函数(升序执行)，将其结果汇总为单个返回值。<br> 语法：<br> arr.reduce(callback(accumulator, currentValue[, index[, array]])[, initialValue])<br> @params:<br> callback<br> initialValue可选<br> 作为第一次调用 callback函数时的第一个参数的值。 如果没有提供初始值，则将使用数组中的第一个元素。 在没有初始值的空数组上调用 reduce 将报错。<br> @return:<br> 函数累计处理的结果<br> 注意：如果没有提供initialValue，reduce 会从索引1的地方开始执行 callback 方法，跳过第一个索引。如果提供initialValue，从索引0开始。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let ar=[23,2,5,6];</span><br><span class="line">let k=arg.reduce((t,y)=&gt;t-y);</span><br><span class="line">//k=10</span><br></pre></td></tr></table></figure>
+
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let ao=[23,2,5,6];</span><br><span class="line">let c=arg.reduce((t,y=10)=&gt;t-y,10);</span><br><span class="line">//c=10-23-2-5-6=-26</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>该reduceRight()方法对一个累加器和数组的每个值（从右到左）应用一个函数，以将其减小为单个值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">汇总数组Section中的所有值</span><br><span class="line">var sum = [0, 1, 2, 3].reduceRight(function(a, b) &#123;</span><br><span class="line">  return a + b;</span><br><span class="line">&#125;);</span><br><span class="line">// sum is 6</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">拼合数组的数组节(从右到左)</span><br><span class="line">var flattened = [[0, 1], [2, 3], [4, 5]].reduceRight(function(a, b) &#123;</span><br><span class="line">    return a.concat(b);</span><br><span class="line">&#125;, []);</span><br><span class="line">// flattened is [4, 5, 2, 3, 0, 1]</span><br></pre></td></tr></table></figure>
+
+<h2 id="Array私有属性上的方法"><a href="#Array私有属性上的方法" class="headerlink" title="Array私有属性上的方法"></a>Array私有属性上的方法</h2><h3 id="Array-from"><a href="#Array-from" class="headerlink" title="Array.from()"></a>Array.from()</h3><ol>
+<li>Array.from() 方法从一个类似数组或可迭代对象中创建一个新的，浅拷贝的数组实例。（可以应用于数组扁平化）<br> 语法：Array.from(arrayLike[, mapFn[, thisArg]])<br> return:一个新的数组实例 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">let arg=[1,1,2,1,2,3,5,3];</span><br><span class="line"> arg=arg.flat(Infinsity);</span><br><span class="line"> arg=Array.form(arg);</span><br><span class="line"> //arg=[1,2,3,5]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="Array-isArray"><a href="#Array-isArray" class="headerlink" title="Array.isArray()"></a>Array.isArray()</h3><ol>
+<li>Array.isArray() 用于确定传递的值是否是一个 Array。<br> 语法：Array.isArray(obj)<br> @params:需要检测的值<br> @return:一个布尔值</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-常用的事件行为" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -1299,139 +1449,6 @@
       
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试/">面试</a></li></ul>
-	</div>
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-客户端和服务器端-1" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/09/11/客户端和服务器端-1/" class="article-date">
-  	<time datetime="2019-09-11T03:46:21.000Z" itemprop="datePublished">2019-09-11</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/11/客户端和服务器端-1/">
-        客户端和服务器端
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="客户端和服务器端"><a href="#客户端和服务器端" class="headerlink" title="客户端和服务器端"></a>客户端和服务器端</h1><h2 id="客户端和服务器端的理解"><a href="#客户端和服务器端的理解" class="headerlink" title="客户端和服务器端的理解"></a>客户端和服务器端的理解</h2><ul>
-<li>客户端：可以向服务器发请求，并接收返回的内容进行处理</li>
-<li>服务器端：能够接收客户端请求，并且把相关的资源<h2 id="客户端和服务器端之间的交互模型"><a href="#客户端和服务器端之间的交互模型" class="headerlink" title="客户端和服务器端之间的交互模型"></a>客户端和服务器端之间的交互模型</h2><h3 id="请求阶段request："><a href="#请求阶段request：" class="headerlink" title="请求阶段request："></a>请求阶段request：</h3></li>
-</ul>
-<ol>
-<li>浏览器进行 URL 地址解析</li>
-<li>DNS（域名服务器）进行域名解析，确定要连接哪台服务器</li>
-<li>和服务器建立TCP连接</li>
-<li>把客户端信息传递给服务器（发送HTTP请求）</li>
-<li>服务器得到并处理请求（HTTP响应内容） <h3 id="响应阶段response："><a href="#响应阶段response：" class="headerlink" title="响应阶段response："></a>响应阶段response：</h3></li>
-<li>客户端渲染服务器返回的内容</li>
-<li>断开和服务器的TCP连接<h3 id="地址解析URL-URI-URN"><a href="#地址解析URL-URI-URN" class="headerlink" title="地址解析URL/URI/URN"></a>地址解析URL/URI/URN</h3></li>
-</ol>
-<ul>
-<li>URL：统一资源定位器，根据这个地址能够找到对应的资源</li>
-<li>URN：统一资源名称，一般指国际上通用的一些名字，例如国际统一发版的编号</li>
-<li>URI：统一资源标识符，URL和URN都是URI的子集。<h3 id="一个完整的URL所包含的内容"><a href="#一个完整的URL所包含的内容" class="headerlink" title="一个完整的URL所包含的内容"></a>一个完整的URL所包含的内容</h3></li>
-<li><a href="http://www.zhufengpeixun.cn:80/stu/index.html?form=wx&amp;lx=1#zhufeng" target="_blank" rel="noopener">http://www.zhufengpeixun.cn:80/stu/index.html?form=wx&amp;lx=1#zhufeng</a></li>
-</ul>
-<p><strong>协议(http://)  :传输协议就是能够把客户端和服务器端通信的信息进行传输的工具。（类似于快递小哥）</strong></p>
-<ul>
-<li>常见的传输协议：</li>
-</ul>
-<ol>
-<li>http 超文本传输协议。除了传输文本，还可以传输媒体资源文件（或者流文件）及XML格式数据</li>
-<li>https 更加安全的http，一般涉及支付的网站都要采用https协议（s:ssl加密传输）</li>
-<li>ftp 文件传输协议。FileZilla:ftp上传工具，通过这个工具可以把本地文件上传服务器上。（一般应用于把本地资源上传到服务器端）</li>
-</ol>
-<p><strong>域名(<a href="http://www.zhufengpeixun.cn" target="_blank" rel="noopener">www.zhufengpeixun.cn</a>)  ：一个让用户方便记忆的名字（不通过域名，通过外网IP也可以访问服务器）</strong></p>
-<ul>
-<li>顶级域名  qq.com</li>
-<li>一级域名 <a href="http://www.qq.com" target="_blank" rel="noopener">www.qq.com</a></li>
-<li>二级域名 sports.qq.com</li>
-<li>三级域名 kbs.sports.qq.com</li>
-<li>.com  国际域名</li>
-<li>.cn     中文域名</li>
-<li>.com.cn  怎么用都行</li>
-<li>.edu  教育单位</li>
-<li>.gov  政府单位</li>
-<li>.io   博客</li>
-<li>.org  官方组织</li>
-<li>.net   系统类网站</li>
-</ul>
-<p><strong>端口号(:80)   范围：0~65535  用端口号来区分同一台服务器上的不同项目</strong></p>
-<ul>
-<li>http默认端口号：80</li>
-<li>https默认端口号：443</li>
-<li>ftp默认端口号：21</li>
-<li>如果项目采用的就是默认端口号，我们在书写地址的时候不用加端口号，浏览器在发送请求的时候会帮我们默认加上</li>
-</ul>
-<p><strong>请求资源路径名称(/stu/index.html)</strong></p>
-<ul>
-<li>默认的路径或者名称（不指定资源名，服务器会找到默认的资源，一般默认的资源名是defaule.html 可以自己配置）</li>
-<li>注意伪URL的处理</li>
-<li>URL重写技术是为了增加SEO搜索引擎优化的，动态的网址一般不能被搜索引擎收录，所以我们要把动态网址静态化，此时需要的是重写URL</li>
-<li>服务器接收到请求后</li>
-</ul>
-<ol>
-<li>根据端口号找到对应的项目</li>
-<li>根据请求资源的路径名称找到对应的资源</li>
-<li>将找到的资源传递给客户端</li>
-</ol>
-<p><strong>问号传参信息(?form=wx&amp;lx=1)</strong></p>
-<ul>
-<li>客户端把信息传递给服务器的方式</li>
-<li>URL地址问号传参</li>
-<li>请求报文传输（请求头和请求主体）</li>
-<li>也可以不同页面之间的信息交互，例如从列表到详情</li>
-</ul>
-<p><strong>HASH值(#zhufeng)</strong></p>
-<ul>
-<li>也能充当信息传输的方式</li>
-<li>锚点定位</li>
-<li>基于HASH实现路由管控（不同的HASH值，代表不同的组件和模块）</li>
-</ul>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
 	</div>
 
       
